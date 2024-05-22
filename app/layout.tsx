@@ -1,10 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Inter, Lato, Montserrat, Open_Sans, Poppins } from "next/font/google";
 import "@/styles/globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const openSans = Open_Sans({ subsets: ["latin"] });
+
+const montserrat = Montserrat({ subsets: ["latin"] });
+
+const lato = Lato({
+  weight: ["400", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
@@ -22,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="">
-      <body className={poppins.className}>{children}</body>
+      <body className={lato.className}>{children}</body>
     </html>
   );
 }

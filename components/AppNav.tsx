@@ -4,8 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BsCoin } from "react-icons/bs";
 import { FaRegUser } from "react-icons/fa";
+import { IoIosList } from "react-icons/io";
 import {
   IoCalendarNumberOutline,
+  IoChatboxEllipsesOutline,
   IoChatboxOutline,
   IoHomeOutline,
   IoSettingsOutline,
@@ -20,7 +22,7 @@ const navLinks = [
   {
     name: "Meeting Requests",
     href: "/dashboard/meetings",
-    Icon: IoChatboxOutline,
+    Icon: IoChatboxEllipsesOutline,
   },
   {
     name: "Avalabilty",
@@ -30,7 +32,7 @@ const navLinks = [
   {
     name: "Services",
     href: "/dashboard/services",
-    Icon: IoHomeOutline,
+    Icon: IoIosList,
   },
   {
     name: "Profile",
