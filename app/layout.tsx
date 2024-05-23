@@ -15,7 +15,7 @@ const openSans = Open_Sans({ subsets: ["latin"] });
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 const lato = Lato({
-  weight: ["400", "700"],
+  weight: ["400", "900", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
@@ -33,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="">
-      <body className={lato.className}>{children}</body>
+      <body className={poppins.className}>{children}</body>
     </html>
   );
 }

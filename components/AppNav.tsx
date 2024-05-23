@@ -25,17 +25,17 @@ const navLinks = [
     Icon: IoChatboxEllipsesOutline,
   },
   {
-    name: "Avalabilty",
+    name: "Avalabilty Calender",
     href: "/dashboard/calender",
     Icon: IoCalendarNumberOutline,
   },
   {
-    name: "Services",
+    name: "My Services",
     href: "/dashboard/services",
     Icon: IoIosList,
   },
   {
-    name: "Profile",
+    name: "Public Profile",
     href: "/dashboard/profile",
     Icon: FaRegUser,
   },
@@ -59,7 +59,7 @@ export default function AppNav() {
         {navLinks.map((link) => {
           const { name, href, Icon } = link;
           return (
-            <li key={name} className="text-slate-500">
+            <li key={name} className="text-slate-600">
               <Link
                 href={href}
                 className={`
