@@ -217,14 +217,7 @@ export default function Page() {
           </button>
         </div>
       </div>
-      <div className="bg-gray-50 p-2 text-right">
-        <button
-          type="button"
-          className="relative inline-flex items-center justify-center border border-transparent font-medium shadow-sm text-black bg-purple-400 focus:outline-none px-3 py-3 rounded-sm hover:bg-purple-600"
-        >
-          <span className="inline-flex items-center">Save</span>
-        </button>
-      </div>
+      
     </div>
   );
 }
