@@ -1,6 +1,7 @@
 import { GoCopy } from "react-icons/go";
 import { RiExternalLinkLine } from "react-icons/ri";
 import { countryOptions } from "@/static_data/data";
+import { CustomSelect } from "@/components/CustomSelect";
 
 export default function Page() {
   return (
@@ -138,6 +139,82 @@ export default function Page() {
               value={``}
             />
           </div>
+        </div>
+
+        <div>
+          <label htmlFor="city" className="text-sm font-medium mb-1 block">
+            Language
+          </label>
+          {/* <CustomSelect /> */}
+        </div>
+
+        <div>
+          <label htmlFor="city" className="text-sm font-medium mb-1 block">
+            Website
+          </label>
+          <input
+            className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
+            type="text"
+            value={``}
+          />
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <label htmlFor="city" className="text-sm font-medium mb-1 block">
+              Linkedin
+            </label>
+            <input
+              className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
+              type="text"
+              value={``}
+            />
+          </div>
+          <div>
+            <label htmlFor="city" className="text-sm font-medium mb-1 block">
+              Twitter
+            </label>
+            <input
+              className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
+              type="text"
+              value={``}
+            />
+          </div>
+          <div>
+            <label htmlFor="city" className="text-sm font-medium mb-1 block">
+              Facebook
+            </label>
+            <input
+              className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
+              type="text"
+              value={``}
+            />
+          </div>
+          <div>
+            <label htmlFor="city" className="text-sm font-medium mb-1 block">
+              Instagram
+            </label>
+            <input
+              className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
+              type="text"
+              value={``}
+            />
+          </div>
+        </div>
+        <div>
+          <label htmlFor="city" className="text-sm font-medium mb-1 block">
+            About
+          </label>
+          <textarea
+            rows={6}
+            className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white placeholder:text-sm"
+            value={``}
+            placeholder="A few words about you and your professional experience?"
+          ></textarea>
+        </div>
+        <div className="flex justify-end">
+          <button className="bg-blue-600 text-md text-white hover:bg-blue-700 px-4 py-2 rounded-md font-medium">
+            Save
+          </button>
         </div>
       </div>
       <div className="bg-gray-50 p-2 text-right">
