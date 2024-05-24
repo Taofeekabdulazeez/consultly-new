@@ -1,5 +1,17 @@
 "use client";
 
+import {
+  CalendarCheck,
+  CalendarHeart,
+  CircleDollarSign,
+  CircleUser,
+  Home,
+  List,
+  ListChecks,
+  ListOrdered,
+  MessageSquareText,
+  Settings,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BsCoin } from "react-icons/bs";
@@ -17,37 +29,37 @@ const navLinks = [
   {
     name: "Dashboard",
     href: "/dashboard",
-    Icon: IoHomeOutline,
+    Icon: Home,
   },
   {
     name: "Meeting Requests",
     href: "/dashboard/meetings",
-    Icon: IoChatboxEllipsesOutline,
+    Icon: MessageSquareText,
   },
   {
     name: "Avalabilty Calender",
     href: "/dashboard/calender",
-    Icon: IoCalendarNumberOutline,
+    Icon: CalendarCheck,
   },
   {
     name: "My Services",
     href: "/dashboard/services",
-    Icon: IoIosList,
+    Icon: List,
   },
   {
     name: "Public Profile",
     href: "/dashboard/profile",
-    Icon: FaRegUser,
+    Icon: CircleUser,
   },
   {
     name: "Account Settings",
     href: "/dashboard/account",
-    Icon: IoSettingsOutline,
+    Icon: Settings,
   },
   {
     name: "Earnings",
     href: "/dashboard/earnings",
-    Icon: BsCoin,
+    Icon: CircleDollarSign,
   },
 ];
 
@@ -64,11 +76,13 @@ export default function AppNav() {
                 href={href}
                 className={`
                   md:flex md:gap-3 md:items-center md:py-2.5 md:px-3 md:text-sm font-medium hover:bg-slate-50 hover:text-blue-600 relative overflow-hidden rounded-sm
-                     after:content-[''] after:block after:h-full after:absolute after:w-1 after:left-0 ${
-                       href === pathname ? "bg-blue-50 text-blue-700" : ""
+                     after:content-[''] after:block after:h-full after:absolute after:w-[3px] after:right-0 ${
+                       href === pathname
+                         ? "bg-blue-50 text-blue-700 after:bg-blue-500"
+                         : ""
                      }`}
               >
-                <Icon size={20} />
+                <Icon size={20} strokeWidth={1.75} />
                 {name}
               </Link>
             </li>
