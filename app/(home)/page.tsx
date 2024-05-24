@@ -31,7 +31,7 @@ export default function Home() {
             </a>
             <a
               href="#"
-              className="rounded-full bg-purple-500 px-4 py-3 text-white hover:bg-purple-200"
+              className="rounded-full bg-purple-600 px-4 py-3 text-white hover:bg-purple-800"
             >
               {" "}
               Get Started
