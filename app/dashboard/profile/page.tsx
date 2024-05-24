@@ -2,6 +2,7 @@ import { GoCopy } from "react-icons/go";
 import { RiExternalLinkLine } from "react-icons/ri";
 import { countryOptions } from "@/static_data/data";
 import { CustomSelect } from "@/components/CustomSelect";
+import { Button } from "@/components/ui/button";
 
 export default function Page() {
   return (
@@ -212,9 +213,7 @@ export default function Page() {
           ></textarea>
         </div>
         <div className="flex justify-end">
-          <button className="bg-blue-600 text-md text-white hover:bg-blue-700 px-4 py-2 rounded-md font-medium">
-            Save
-          </button>
+          <Button>Save</Button>
         </div>
       </div>
     </div>

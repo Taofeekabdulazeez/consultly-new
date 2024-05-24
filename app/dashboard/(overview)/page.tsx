@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
@@ -18,7 +19,7 @@ export default function Page() {
                   Do you know there are 3 ways of scheduling meetings in
                   Consultly? Read about them{" "}
                   <a
-                    className="underline text-blue-600 font-medium"
+                    className="underline text-primary font-medium"
                     href="#"
                     target="_blank"
                   >
@@ -41,7 +42,7 @@ export default function Page() {
                 <FaAngleLeft className="size{40px}" />
               </button>
               <div className="flex flex-1 justify-between">
-                <button className="w-20 bg-blue-600 rounded-md">
+                <button className="w-20 bg-primary rounded-md">
                   <div className="flex flex-col justify-center text-sm gap-2 p-1 text-white">
                     <p>May</p>
                     <p>Thu</p>
@@ -190,9 +191,7 @@ export default function Page() {
               Complete your profile and share the availability calendar or{" "}
             </p>
             <div className="flex justify-center items-center mt-4">
-              <button className="p-4 bg-blue-600 rounded-xl text-white text-l">
-                Schedule Meeting
-              </button>
+              <Button size="lg">Schedule a meeting</Button>
             </div>
           </div>
         </div>

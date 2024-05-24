@@ -1,6 +1,7 @@
 "use client";
 import { DropdownMenuRadioGroupDemo } from "@/components/ActionMenu";
 import Menus from "@/components/Menus";
+import { Button } from "@/components/ui/button";
 import { DropdownMenu } from "@/components/ui/dropdown-menu";
 
 export default function Page() {
@@ -19,9 +20,7 @@ export default function Page() {
           </p>
         </div>
         <div>
-          <button className="bg-blue-600 text-md text-white hover:bg-blue-700 px-4 py-2 rounded-md font-medium">
-            Add a new service
-          </button>
+          <Button>Add a new service</Button>
         </div>
       </div>
       <div className="grid grid-cols-1 gap-3">

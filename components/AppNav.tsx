@@ -75,10 +75,10 @@ export default function AppNav() {
               <Link
                 href={href}
                 className={`
-                  md:flex md:gap-3 md:items-center md:py-2.5 md:px-3 md:text-sm font-medium hover:bg-slate-50 hover:text-blue-600 relative overflow-hidden rounded-sm
+                  md:flex md:gap-3 md:items-center md:py-2.5 md:px-3 md:text-sm font-medium hover:bg-slate-50 hover:text-primary relative overflow-hidden rounded-sm
                      after:content-[''] after:block after:h-full after:absolute after:w-[3px] after:right-0 ${
                        href === pathname
-                         ? "bg-blue-50 text-blue-700 after:bg-blue-500"
+                         ? "bg-blue-50 text-primary after:bg-primary"
                          : ""
                      }`}
               >

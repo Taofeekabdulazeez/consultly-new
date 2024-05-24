@@ -1,4 +1,5 @@
 import Table from "@/components/Table";
+import { Button } from "@/components/ui/button";
 import { countryOptions } from "@/static_data/data";
 
 export default function Page() {
@@ -112,9 +113,7 @@ export default function Page() {
           </div>
         </div>
         <div className="flex justify-end">
-          <button className="bg-blue-600 text-md text-white hover:bg-blue-700 px-4 py-2 rounded-md font-medium">
-            Update
-          </button>
+          <Button>Update</Button>
         </div>
       </div>
       <div className="bg-white grid gap-6 p-6 mb-10">
@@ -132,9 +131,7 @@ export default function Page() {
           </p>
         </div>
         <div>
-          <button className="text-md text-stone-800 border-2 px-4 py-2 rounded-md font-medium">
-            Change password
-          </button>
+          <Button variant="outline">Change password</Button>
         </div>
       </div>
 
@@ -146,9 +143,7 @@ export default function Page() {
           </p>
         </div>
         <div>
-          <button className="text-md text-red-600 border-2 border-red-600 px-4 py-2 rounded-md font-medium">
-            Delete account
-          </button>
+          <Button variant="destructive">Delete account</Button>
         </div>
       </div>
     </div>

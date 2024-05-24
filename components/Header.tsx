@@ -1,3 +1,4 @@
+import { LogOut, Moon } from "lucide-react";
 import { MdLogout, MdOutlineDarkMode } from "react-icons/md";
 
 export default function Header() {
@@ -10,10 +11,10 @@ export default function Header() {
         <p className="text-sm font-medium">Taofeek</p>
       </div>
       <button className="p-1.5 hover:bg-slate-50">
-        <MdOutlineDarkMode size={24} className="text-blue-600" />
+        <Moon className="text-primary" />
       </button>
       <button className="p-1.5 hover:bg-slate-50">
-        <MdLogout size={24} className="text-blue-600" />
+        <LogOut className="text-primary" />
       </button>
     </header>
   );

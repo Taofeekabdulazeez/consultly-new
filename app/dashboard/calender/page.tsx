@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 export default function Page() {
   return (
     <div className="bg-white rounded p-6">
@@ -10,9 +12,7 @@ export default function Page() {
           </p>
         </div>
         <div>
-          <button className="bg-blue-600 text-md text-white hover:bg-blue-700 px-4 py-2 rounded-md font-medium">
-            Set your availability
-          </button>
+          <Button>Set your availability</Button>
         </div>
       </div>
       <div className="grid grid-cols-1 gap-3">
