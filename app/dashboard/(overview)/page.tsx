@@ -190,7 +190,7 @@ export default function Page() {
               Complete your profile and share the availability calendar or{" "}
             </p>
             <div className="flex justify-center items-center mt-4">
-              <button className="p-4 bg-purple-500 rounded-xl text-white text-l">
+              <button className="p-4 bg-blue-600 rounded-xl text-white text-l">
                 Schedule Meeting
               </button>
             </div>
