@@ -7,6 +7,7 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
+    /* for text is foreground */
     --foreground: 224 71.4% 4.1%;
     --card: 0 0% 100%;
     --card-foreground: 224 71.4% 4.1%;
@@ -26,6 +27,19 @@
     --input: 220 13% 91%;
     --ring: 262.1 83.3% 57.8%;
     --radius: 0.5rem;
+    --color-gray-700: 0 0% 27%;
+
+    --color-gray-50: 0 0% 100%;
+    --color-gray-75: 0 0% 99%;
+    --color-gray-100: 0 0% 97%;
+    --color-gray-200: 0 0% 90%;
+    --color-gray-300: 0 0% 84%;
+    --color-gray-400: 0 0% 69%;
+    --color-gray-500: 0 0% 56%;
+    --color-gray-600: 0 0% 43%;
+    --color-gray-700: 0 0% 27%;
+    --color-gray-800: 0 0% 13%;
+    --color-gray-900: 0 0% 0%;
   }
 
   .dark {
@@ -48,6 +62,19 @@
     --border: 215 27.9% 16.9%;
     --input: 215 27.9% 16.9%;
     --ring: 263.4 70% 50.4%;
+    --color-gray-700: 0 0% 82%;
+
+    --color-gray-50: 0 0% 0%;
+    --color-gray-75: 0 0% 5%;
+    --color-gray-100: 0 0% 11%;
+    --color-gray-200: 0 0% 19%;
+    --color-gray-300: 0 0% 29%;
+    --color-gray-400: 0 0% 42%;
+    --color-gray-500: 0 0% 55%;
+    --color-gray-600: 0 0% 69%;
+    --color-gray-700: 0 0% 82%;
+    --color-gray-800: 0 0% 92%;
+    --color-gray-900: 0 0% 100%;
   }
 }
 

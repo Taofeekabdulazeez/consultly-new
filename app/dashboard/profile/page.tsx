@@ -1,54 +1,42 @@
 import { GoCopy } from "react-icons/go";
 import { RiExternalLinkLine } from "react-icons/ri";
-import { countryOptions } from "@/static_data/data";
-import { CustomSelect } from "@/components/CustomSelect";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import CustomSelect from "@/components/CustomSelect";
+import { countryOptions } from "@/static_data/data";
 
 export default function Page() {
   return (
-    <div className="bg-white p-2">
-      <h4 className="text-lg text-stone-900 mb-2 font-semibold">Profile</h4>
+    <div className="bg-gray-50 p-2">
+      <h4 className="text-lg mb-2 font-semibold">Profile</h4>
       <p className="text-slate-600 text-sm mb-10">
         Fill in the fields below to share your profile publicly via a link on
         your social media or website. You can preview your profile by clicking
         the {`"View Public Profile" button`}. Remember to click the {`"Save"`}
         button after filling in the fields or changing the data.
       </p>
-      <label htmlFor="username" className="text-sm font-semibold mb-2 block">
-        Username
-      </label>
+
+      <Label htmlFor="username">Username</Label>
       <div className="grid gap-4 md:grid-cols-[1fr_auto] mb-10">
         <div className="grid grid-cols-[auto_1fr] border rounded-md">
-          <div className="p-3 border-r flex items-center">
-            <span className="text-slate-400 text-sm">consultly.com/s/</span>
-          </div>
-          <input
-            className="text-slate-600 text-sm p-3 block w-full bg-white"
-            disabled
-            type="text"
-            value={`taofeek-abdulazeez`}
-          />
+          <Input disabled type="text" value={`consultly.com/s/`} />
+          <Input disabled type="text" value={`taofeek-abdulazeez`} />
         </div>
         <div className="grid grid-cols-2 gap-3">
-          <button className="flex items-center justify-center rounded-md gap-2 py-3 md:px-6 border">
+          <Button variant="outline">
             <GoCopy />
-            <span className="font-medium text-slate-900 text-sm">
-              Copy link
-            </span>
-          </button>
-          <button className="flex items-center justify-center rounded-md gap-2 py-3 md:px-6 border">
+            <span>Copy Link</span>
+          </Button>
+          <Button variant="outline">
             <RiExternalLinkLine />
-            <span className="font-medium text-slate-900 text-sm">
-              View profile
-            </span>
-          </button>
+            <span>View profile</span>
+          </Button>
         </div>
       </div>
 
-      <label htmlFor="avatar" className="text-sm font-semibold mb-2 block">
-        Avatar
-      </label>
-
+      <Label htmlFor="avatar">Avatar</Label>
       <div className="flex items-center gap-3 mb-10">
         <div className="h-16 w-16 rounded-full border flex items-center justify-center">
           <span className="text-xl text-stone-900 font-semibold">{`TA`}</span>
@@ -65,152 +53,73 @@ export default function Page() {
 
       <div className="grid gap-6">
         <div>
-          <label
-            htmlFor="firstName"
-            className="text-sm font-medium mb-1 block text-slate-500"
-          >
-            First name
-          </label>
-          <input
-            className="text-slate-500 border text-sm p-2 rounded-md block w-full bg-white"
-            disabled
-            type="text"
-            value={`Taofeek`}
-          />
+          <Label htmlFor="firstName">First name</Label>
+          <Input disabled type="text" value={`Taofeek`} />
         </div>
 
         <div>
-          <label
-            htmlFor="lastName"
-            className="text-sm font-medium mb-1 block text-slate-500"
-          >
-            Last name
-          </label>
-          <input
-            className="text-slate-500 border text-sm p-2 rounded-md block w-full bg-white"
-            disabled
-            type="text"
-            value={`Abdulazeez`}
-          />
+          <Label htmlFor="lastName">Last name</Label>
+          <Input disabled type="text" value={`Abdulazeez`} />
         </div>
 
         <div>
           <div className="mb-1 flex items-center justify-between">
-            <label htmlFor="profession" className="text-sm font-medium ">
-              Your profession
-            </label>
             <span className="text-xs text-stone-500">0 / 80</span>
+            <Label htmlFor="profession">Your profession</Label>
           </div>
-          <input
-            className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
-            type="text"
-            value={``}
-          />
+
+          <Input value={""} />
         </div>
 
         {/* country */}
         <div className="grid md:grid-cols-2 gap-6 ">
           <div>
-            <label
-              htmlFor="country"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Country
-            </label>
-            <select
-              id="country"
-              name="country"
-              className="focus:border-blue-600 focus:ring-blue-600 mt-1 block w-full rounded-md border  border-gray-300 bg-white px-3 py-2 focus:outline-none sm:text-sm"
-            >
-              {countryOptions.map((countryOpt) => (
-                <option key={countryOpt.value} value={countryOpt.value}>
-                  {countryOpt.label}
-                </option>
-              ))}
-            </select>
+            <Label htmlFor="country">Country</Label>
+            <CustomSelect options={countryOptions} />
           </div>
 
           <div>
-            <label htmlFor="city" className="text-sm font-medium mb-1 block">
-              City
-            </label>
-            <input
-              className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
-              type="text"
-              value={``}
-            />
+            <Label htmlFor="city">City</Label>
+            <Input type="text" value={``} />
           </div>
         </div>
 
         <div>
-          <label htmlFor="city" className="text-sm font-medium mb-1 block">
+          <Label htmlFor="city" className="text-sm font-medium mb-1 block">
             Language
-          </label>
+          </Label>
           {/* <CustomSelect /> */}
         </div>
 
         <div>
-          <label htmlFor="city" className="text-sm font-medium mb-1 block">
-            Website
-          </label>
-          <input
-            className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
-            type="text"
-            value={``}
-          />
+          <Label htmlFor="city">Website</Label>
+          <input type="text" value={``} />
         </div>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="city" className="text-sm font-medium mb-1 block">
-              Linkedin
-            </label>
-            <input
-              className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
-              type="text"
-              value={``}
-            />
+            <Label htmlFor="city">Linkedin</Label>
+            <Input type="text" value={``} />
           </div>
           <div>
-            <label htmlFor="city" className="text-sm font-medium mb-1 block">
-              Twitter
-            </label>
-            <input
-              className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
-              type="text"
-              value={``}
-            />
+            <Label htmlFor="city">Twitter</Label>
+            <Input type="text" value={``} />
           </div>
           <div>
-            <label htmlFor="city" className="text-sm font-medium mb-1 block">
-              Facebook
-            </label>
-            <input
-              className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
-              type="text"
-              value={``}
-            />
+            <Label htmlFor="city">Facebook</Label>
+            <Input type="text" value={``} />
           </div>
           <div>
-            <label htmlFor="city" className="text-sm font-medium mb-1 block">
-              Instagram
-            </label>
-            <input
-              className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
-              type="text"
-              value={``}
-            />
+            <Label htmlFor="city">Instagram</Label>
+            <Input type="text" value={``} />
           </div>
         </div>
         <div>
-          <label htmlFor="city" className="text-sm font-medium mb-1 block">
-            About
-          </label>
-          <textarea
+          <Label htmlFor="city">About</Label>
+          <Textarea
             rows={6}
-            className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white placeholder:text-sm"
             value={``}
             placeholder="A few words about you and your professional experience?"
-          ></textarea>
+          ></Textarea>
         </div>
         <div className="flex justify-end">
           <Button>Save</Button>

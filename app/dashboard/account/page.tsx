@@ -1,11 +1,14 @@
+import CustomSelect from "@/components/CustomSelect";
 import Table from "@/components/Table";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { countryOptions } from "@/static_data/data";
 
 export default function Page() {
   return (
     <div className="">
-      <div className="bg-white grid gap-6 p-6 mb-10">
+      <div className="bg-white grid gap-6 mb:gap-8 p-6 mb-10">
         <div>
           <h3 className="text-lg text-stone-900 font-medium mb-2">
             Billing information
@@ -15,101 +18,36 @@ export default function Page() {
           </p>
         </div>
         <div>
-          <label htmlFor="city" className="text-sm font-medium mb-1 block">
-            Company name
-          </label>
-          <input
-            className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
-            type="text"
-            value={`Taofeek Abdulazeez`}
-          />
+          <Label htmlFor="city">Company name</Label>
+          <Input type="text" value={`Taofeek Abdulazeez`} />
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div>
-            <label
-              htmlFor="adressLine1"
-              className="text-sm font-medium mb-1 block"
-            >
-              Address line 1
-            </label>
-            <input
-              className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
-              type="text"
-              value={``}
-              placeholder="Address line 1"
-            />
+            <Label htmlFor="adressLine1">Address line 1</Label>
+            <Input type="text" value={``} placeholder="Address line 1" />
           </div>
           <div>
-            <label
-              htmlFor="adressLine1"
-              className="text-sm font-medium mb-1 block"
-            >
-              Address line 2
-            </label>
-            <input
-              className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
-              type="text"
-              value={``}
-              placeholder="Address line 2"
-            />
+            <Label htmlFor="adressLine1">Address line 2</Label>
+            <Input type="text" value={``} placeholder="Address line 2" />
           </div>
         </div>
 
         <div className="grid md:grid-cols-4 gap-6">
           <div>
-            <label htmlFor="state" className="text-sm font-medium mb-1 block">
-              State
-            </label>
-            <input
-              className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
-              type="text"
-              value={``}
-              placeholder="State"
-            />
+            <Label htmlFor="state">State</Label>
+            <Input type="text" value={``} placeholder="State" />
           </div>
           <div>
-            <label htmlFor="city" className="text-sm font-medium mb-1 block">
-              City
-            </label>
-            <input
-              className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
-              type="text"
-              value={``}
-              placeholder="City"
-            />
+            <Label htmlFor="city">City</Label>
+            <Input type="text" value={``} placeholder="City" />
           </div>
           <div>
-            <label
-              htmlFor="postalCode"
-              className="text-sm font-medium mb-1 block"
-            >
-              Zip/Postal code
-            </label>
-            <input
-              className="border focus:outline-blue-600 text-sm p-2 rounded-md block w-full bg-white"
-              type="text"
-              value={``}
-              placeholder="Zip/Postal code"
-            />
+            <Label htmlFor="postalCode">Zip/Postal code</Label>
+            <Input type="text" value={``} placeholder="Zip/Postal code" />
           </div>
           <div>
-            <label
-              htmlFor="country"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Country
-            </label>
-            <select
-              id="country"
-              name="country"
-              className="focus:border-blue-600 focus:ring-blue-600 mt-1 block w-full rounded-md border  border-gray-300 bg-white px-3 py-2 focus:outline-none sm:text-sm"
-            >
-              {countryOptions.map((countryOpt) => (
-                <option key={countryOpt.value} value={countryOpt.value}>
-                  {countryOpt.label}
-                </option>
-              ))}
-            </select>
+            <Label htmlFor="country">Country</Label>
+            <CustomSelect options={countryOptions} />
           </div>
         </div>
         <div className="flex justify-end">
