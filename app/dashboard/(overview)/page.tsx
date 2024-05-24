@@ -35,7 +35,7 @@ export default function Page() {
               />
             </div>
           </div>
-          <div className="flex flex-1 flex-col justify-center py-1 space-y-0.5 py-1 sm:py-4">
+          <div className="flex flex-1 flex-col justify-center space-y-0.5 py-1 sm:py-4">
             <div className="flex justify-between rounded-md">
               <button className="m-1 self-center rounded-full p-1 hover:bg-gray-500">
                 <FaAngleLeft className="size{40px}" />
