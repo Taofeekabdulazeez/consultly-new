@@ -21,7 +21,7 @@ export default function Page() {
       <Label htmlFor="username">Username</Label>
       <div className="grid gap-4 md:grid-cols-[1fr_auto] mb-10">
         <div className="grid grid-cols-[auto_1fr] border rounded-md">
-          <Input disabled type="text" value={`consultly.com/s/`} />
+          <Input disabled type="text" value={`consultly.com/consult/`} />
           <Input disabled type="text" value={`taofeek-abdulazeez`} />
         </div>
         <div className="grid grid-cols-2 gap-3">
