@@ -1,4 +1,15 @@
+import { CustomDatePicker } from "@/components/CustomDataPicker";
+import CustomSelect from "@/components/CustomSelect";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 export default function Page() {
   return (
@@ -12,7 +23,61 @@ export default function Page() {
           </p>
         </div>
         <div>
-          <Button>Set your availability</Button>
+          <div>
+            <Sheet>
+              <SheetTrigger>
+                <Button>Set your availability</Button>
+              </SheetTrigger>
+              <SheetContent className="min-w-full sm:min-w-[500px]">
+                <SheetHeader className="mb-6">
+                  <SheetTitle className="text-lg">
+                    Set your availability
+                  </SheetTitle>
+                  <SheetDescription>
+                    Select the type of service and dates you want to set
+                    availability for, e.g., July 10 - July 15. Then, add the
+                    intervals you want to work on particular days, e.g.,
+                    10.00-15.00. Consultly will suggest meeting times depending
+                    on the duration of the specific type of service.
+                  </SheetDescription>
+                </SheetHeader>
+                <div className="grid gap-6">
+                  <div>
+                    <Label>Type of service</Label>
+                    <CustomSelect options={["IT consultancy", "Mentorship"]} />
+                  </div>
+
+                  <div>
+                    <Label>Time zone</Label>
+                    <CustomSelect
+                      options={[
+                        "(GMT+01:00) Lagos",
+                        "(GMT+01:00) Texas",
+                        "(GMT+02:00) Paris",
+                      ]}
+                    />
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-6 mb-14">
+                    <div>
+                      <Label>From</Label>
+                      <CustomDatePicker label="start date" />
+                    </div>
+
+                    <div>
+                      <Label>To</Label>
+                      <CustomDatePicker label="end date" />
+                    </div>
+                  </div>
+
+                  <div className="flex justify-end gap-3">
+                    <Button variant="outline">Cancel</Button>
+                    <Button>Suggest meeting times</Button>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
       <div className="grid grid-cols-1 gap-3">
