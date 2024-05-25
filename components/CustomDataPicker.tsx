@@ -21,6 +21,8 @@ type Props = {
 export function CustomDatePicker({ label, className }: Props) {
   const [date, setDate] = React.useState<Date>();
 
+  console.log(date);
+
   return (
     <Popover>
       <PopoverTrigger asChild>
