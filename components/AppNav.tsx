@@ -71,14 +71,14 @@ export default function AppNav() {
         {navLinks.map((link) => {
           const { name, href, Icon } = link;
           return (
-            <li key={name} className="text-slate-600">
+            <li key={name} className="text-gray-700">
               <Link
                 href={href}
                 className={`
-                  md:flex md:gap-3 md:items-center md:py-2.5 md:px-3 md:text-sm font-medium hover:bg-slate-50 hover:text-primary relative overflow-hidden rounded-sm
+                  md:flex md:gap-3 md:items-center md:py-2.5 md:px-3 md:text-sm font-medium hover:bg-gray-75 hover:text-primary relative overflow-hidden rounded-sm
                      after:content-[''] after:block after:h-full after:absolute after:w-[3px] after:right-0 ${
                        href === pathname
-                         ? "bg-blue-50 text-primary after:bg-primary"
+                         ? "bg-gray-100 text-primary after:bg-primary"
                          : ""
                      }`}
               >

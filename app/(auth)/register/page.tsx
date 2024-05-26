@@ -1,6 +1,10 @@
+export const metadata = {
+  title: "Register",
+};
+
 export default function Page() {
   return (
-    <div className="bg-gray-100 w-full h-full">
+    <div className="bg-gray-100 min-h-screen">
       <div className="pt-24">
         <div className="bg-gray-50 p-6 shadow-sm w-[450px] mx-auto">
           <h3 className="scroll-m-20 text-xl font-semibold tracking-tight">

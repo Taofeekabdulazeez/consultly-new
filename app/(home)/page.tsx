@@ -67,7 +67,7 @@ export default function Home() {
             <a
               className=" relative inline-flex items-center justify-center
                duration-150 ease-in-out border border-primary/70 hover:bg-purple-300
-                font-medium text-primary px-3 py-2 rounded-full hover:border-gray-300 px-5 md:px-10"
+                font-medium text-primary py-2 rounded-full hover:border-gray-300 px-5 md:px-10"
               href="#"
             >
               Learn more

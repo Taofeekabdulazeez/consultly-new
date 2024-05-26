@@ -1,3 +1,7 @@
+export const metadata = {
+  title: "Consult",
+};
+
 type Props = {
   params: {
     username: string;

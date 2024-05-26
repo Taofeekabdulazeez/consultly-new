@@ -95,6 +95,14 @@
   background-color: #eee;
 }
 
+.dark ::-webkit-scrollbar-track {
+  background-color: #181818;
+}
+
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(42, 69, 206);
+  background-color: rgb(67, 10, 158);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: rgb(67, 10, 158);
 }

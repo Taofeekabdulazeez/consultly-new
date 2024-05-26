@@ -5,15 +5,15 @@ export default function Header() {
   return (
     <header className="p-4 flex justify-end items-center gap-3 bg-gray-50">
       <div className="flex items-center gap-2">
-        <div className="flex items-center justify-center h-12 w-12 rounded-full bg-blue-50">
+        <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gray-100">
           <span className="text-xl font-bold">TA</span>
         </div>
         <p className="text-sm font-medium">Taofeek</p>
       </div>
-      <button className="p-1.5 hover:bg-slate-50">
+      <button className="p-1.5 hover:bg-gray-75">
         <Moon className="text-primary" />
       </button>
-      <button className="p-1.5 hover:bg-slate-50">
+      <button className="p-1.5 hover:bg-gray-75">
         <LogOut className="text-primary" />
       </button>
     </header>

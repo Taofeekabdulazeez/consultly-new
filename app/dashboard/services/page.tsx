@@ -1,5 +1,5 @@
-"use client";
 import { DropdownMenuRadioGroupDemo } from "@/components/ActionMenu";
+import { Heading } from "@/components/ui/Heading";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -13,22 +13,27 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Textarea } from "@/components/ui/textarea";
+import { P } from "@/components/ui/typography";
 import { Info } from "lucide-react";
+
+export const metadata = {
+  title: "Services",
+};
 
 export default function Page() {
   return (
-    <div className="bg-white rounded p-6">
+    <div className="bg-gray-50 rounded p-6">
       <div className="grid grid-cols-[1fr_auto] gap-48 mb-10">
         <div>
-          <h3 className="text-lg mb-3 font-medium">My Services</h3>
-          <p className="text-sm text-slate-600 leading-6">
+          <Heading>My Services</Heading>
+          <P size="sm">
             {`
           Add the types of consultations you provide, e.g., "English lesson" or
           "Medical consultation". It will enable your clients to book a
           consultation through your Public Profile. You can arrange the order in
           which they appear on your Public Profile by dragging and dropping them
           in the desired order.`}
-          </p>
+          </P>
         </div>
         <div>
           <Sheet>
@@ -91,55 +96,33 @@ export default function Page() {
         </div>
       </div>
       <div className="grid grid-cols-1 gap-3">
-        <div className="px-6 py-4 border grid grid-cols-[1fr_auto_auto] gap-3 justify-between items-center rounded-md">
+        <div className="px-6 py-4 border border-gray-200 grid grid-cols-[1fr_auto_auto] gap-3 justify-between items-center rounded-md">
           <div>
-            <h4 className="text-sm font-medium text-stone-900 mb-1">
-              Mentorship
-            </h4>
-            <p className="text-xs text-slate-600">
+            <Heading type="h6">Mentorship</Heading>
+            <P size="sm">
               This has to do with providing a guidance fro aspiring young
               individuals
-            </p>
+            </P>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-medium">Free</span>
-            <span className="text-slate-600 text-sm">/ 30m</span>
+            <P size="sm">Free</P>
+            <span className="text-gray-600 text-sm">/ 30m</span>
           </div>
           <div>
             <DropdownMenuRadioGroupDemo />
           </div>
         </div>
-        <div className="px-6 py-4 border grid grid-cols-[1fr_auto_auto] gap-3 justify-between items-center rounded-md">
+        <div className="px-6 py-4 border border-gray-200 grid grid-cols-[1fr_auto_auto] gap-3 justify-between items-center rounded-md">
           <div>
-            <h4 className="text-sm font-medium text-stone-900 mb-1">
-              Mentorship
-            </h4>
-            <p className="text-xs text-slate-600">
-              This has to do with providing a guidance fro aspiring young
-              individuals
-            </p>
+            <Heading type="h6">IT Consultancy</Heading>
+            <P size="sm">
+              This has to do with anything around CTO-as-a-Service, IT
+              consultancy service
+            </P>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-medium">Free</span>
-            <span className="text-slate-600 text-sm">/ 30m</span>
-          </div>
-          <div>
-            <DropdownMenuRadioGroupDemo />
-          </div>
-        </div>{" "}
-        <div className="px-6 py-4 border grid grid-cols-[1fr_auto_auto] gap-3 justify-between items-center rounded-md">
-          <div>
-            <h4 className="text-sm font-medium text-stone-900 mb-1">
-              Mentorship
-            </h4>
-            <p className="text-xs text-slate-600">
-              This has to do with providing a guidance fro aspiring young
-              individuals
-            </p>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-sm font-medium">Free</span>
-            <span className="text-slate-600 text-sm">/ 30m</span>
+            <P size="sm">Free</P>
+            <span className="text-gray-600 text-sm">/ 30m</span>
           </div>
           <div>
             <DropdownMenuRadioGroupDemo />

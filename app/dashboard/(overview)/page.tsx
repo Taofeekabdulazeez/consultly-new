@@ -3,20 +3,28 @@ import { Calendar } from "@/components/ui/calendar";
 import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
+import dashboardImg from "@/public/img1.png";
+import Image from "next/image";
+import { Heading } from "@/components/ui/Heading";
+import { P } from "@/components/ui/typography";
+
+export const metadata = {
+  title: "Dashboard",
+};
 
 export default function Page() {
   return (
     <div className="flex h-full flex-col gap-3">
       <div className="flex space-x-3 sm:space-x-6 rounded-md">
         <div className="flex flex-1 flex-col">
-          <div className=" bg-white flex-1 flex-row justify-between p-4 sm:flex">
+          <div className=" bg-gray-50 flex-1 flex-row justify-between p-4 sm:flex">
             <div>
-              <h2 className="text-xl font-medium">Good afternoon, Taofik!</h2>
-              <p className="text-sm">
+              <Heading>Good afternoon, Taofeek!</Heading>
+              <P size="sm">
                 Its <strong>Thu May 23, 2024</strong> today.
-              </p>
-              <div className="text-sm text-gray-600 mt-2 max-w-md space-y-1">
-                <p>
+              </P>
+              <div className="max-w-md space-y-1">
+                <P size="sm">
                   Do you know there are 3 ways of scheduling meetings in
                   Consultly? Read about them{" "}
                   <a
@@ -26,13 +34,13 @@ export default function Page() {
                   >
                     here.
                   </a>
-                </p>
+                </P>
               </div>
             </div>
             <div className="-m-4 self-end">
-              <img
+              <Image
                 className="-mt-2 h-auto w-[300px] object-contain cursor-pointer"
-                src="./img1.png"
+                src={dashboardImg}
                 alt="img"
               />
             </div>
@@ -44,54 +52,54 @@ export default function Page() {
               </button>
               <div className="flex flex-1 justify-between">
                 <button className="w-20 bg-primary rounded-md">
-                  <div className="flex flex-col justify-center text-sm gap-2 p-1 text-white">
+                  <div className="flex flex-col justify-center text-sm gap-2 p-1 text-gray-700">
                     <p>May</p>
                     <p>Thu</p>
                     <p>23</p>
                     <p></p>
                   </div>
                 </button>
-                <button className="w-20 bg-white rounded-md">
-                  <div className="flex flex-col justify-center text-sm gap-2 p-1 text-black">
+                <button className="w-20 bg-gray-50 rounded-md">
+                  <div className="flex flex-col justify-center text-sm gap-2 p-1 text-gray-700">
                     <p>May</p>
                     <p>Fri</p>
                     <p>24</p>
                     <p></p>
                   </div>
                 </button>
-                <button className="w-20 bg-white rounded-md">
-                  <div className="flex flex-col justify-center text-sm gap-2 p-1 text-black">
+                <button className="w-20 bg-gray-50 rounded-md">
+                  <div className="flex flex-col justify-center text-sm gap-2 p-1 text-gray-700">
                     <p>May</p>
                     <p>Sat</p>
                     <p>25</p>
                     <p></p>
                   </div>
                 </button>
-                <button className="w-20 bg-white rounded-md">
-                  <div className="flex flex-col justify-center text-sm gap-2 p-1 text-black">
+                <button className="w-20 bg-gray-50 rounded-md">
+                  <div className="flex flex-col justify-center text-sm gap-2 p-1 text-gray-700">
                     <p>May</p>
                     <p>Sun</p>
                     <p>26</p>
                     <p></p>
                   </div>
                 </button>
-                <button className="w-20 bg-white rounded-md">
-                  <div className="flex flex-col justify-center text-sm gap-2 p-1 text-black">
+                <button className="w-20 bg-gray-50 rounded-md">
+                  <div className="flex flex-col justify-center text-sm gap-2 p-1 text-gray-700">
                     <p>May</p>
                     <p>Mon</p>
                     <p>27</p>
                     <p></p>
                   </div>
                 </button>
-                <button className="w-20 bg-white rounded-md">
-                  <div className="flex flex-col justify-center text-sm gap-2 p-1 text-black">
+                <button className="w-20 bg-gray-50 rounded-md">
+                  <div className="flex flex-col justify-center text-sm gap-2 p-1 text-gray-700">
                     <p>May</p>
                     <p>Tue</p>
                     <p>28</p>
                     <p></p>
                   </div>
                 </button>
-                <button className="w-20 bg-white rounded-md">
+                <button className="w-20 bg-gray-50 rounded-md">
                   <div className="flex flex-col justify-center text-sm gap-2 p-1 text-black">
                     <p>May</p>
                     <p>Wed</p>
@@ -110,16 +118,14 @@ export default function Page() {
           <Calendar />
         </div>
       </div>
-      <div className="bg-white flex-1 rounded-md min-h[320px]">
+      <div className="bg-gray-50 flex-1 rounded-md min-h[320px]">
         <div className="flex justify-center p-2">
           <div className="my-10 flex flex-1 flex-col align-center justify-center text-center">
-            <div className="flex justify-center align-center text-gray-400">
+            <div className="flex justify-center align-center text-gray-400 mb-2">
               <FaCalendarAlt size={60} />
             </div>
-            <h3 className="mt-4 text-xl font-medium">No meetings today </h3>
-            <p className="mt-1 text-sm">
-              Complete your profile and share the availability calendar or{" "}
-            </p>
+            <Heading>No meetings today</Heading>
+            <P>Complete your profile and share the availability calendar or </P>
             <div className="flex justify-center items-center mt-4">
               <Button size="lg">Schedule a meeting</Button>
             </div>

@@ -1,21 +1,23 @@
 import CustomSelect from "@/components/CustomSelect";
 import Table from "@/components/Table";
+import { Heading } from "@/components/ui/Heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { P } from "@/components/ui/typography";
 import { countryOptions } from "@/static_data/data";
+
+export const metadata = {
+  title: "Account",
+};
 
 export default function Page() {
   return (
     <div className="">
-      <div className="bg-white grid gap-6 mb:gap-8 p-6 mb-10">
+      <div className="bg-gray-50 grid gap-6 mb:gap-8 p-6 mb-10">
         <div>
-          <h3 className="text-lg text-stone-900 font-medium mb-2">
-            Billing information
-          </h3>
-          <p className="text-sm text-stone-600">
-            Billing address, VAT ID, used to generate invoices
-          </p>
+          <Heading>Billing information</Heading>
+          <P size="sm">Billing address, VAT ID, used to generate invoices</P>
         </div>
         <div>
           <Label htmlFor="city">Company name</Label>
@@ -54,31 +56,27 @@ export default function Page() {
           <Button>Update</Button>
         </div>
       </div>
-      <div className="bg-white grid gap-6 p-6 mb-10">
-        <h3 className="text-lg text-stone-900 font-medium mb-2">
-          Billing history
-        </h3>
+      <div className="bg-gray-50 grid gap-6 p-6 mb-10">
+        <Heading type="h5">Billing history</Heading>
         <Table />
       </div>
 
-      <div className="grid md:grid-cols-[1fr_auto] gap-3 md:gap-48 mb-10 bg-white p-6 rounded-md">
+      <div className="grid md:grid-cols-[1fr_auto] gap-3 md:gap-48 mb-10 bg-gray-50 p-6 rounded-md">
         <div>
-          <h3 className="text-lg mb-2 font-medium">Change password</h3>
-          <p className="text-sm text-slate-600 leading-6">
-            {`We'll send you an email with a link to change your password`}
-          </p>
+          <Heading type="h5">Change password</Heading>
+          <P size="sm">{`We'll send you an email with a link to change your password`}</P>
         </div>
         <div>
           <Button variant="outline">Change password</Button>
         </div>
       </div>
 
-      <div className="grid md:grid-cols-[1fr_auto] gap-3 md:gap-48 mb-10 bg-white p-6 rounded-md">
+      <div className="grid md:grid-cols-[1fr_auto] gap-3 md:gap-48 mb-10 bg-gray-50 p-6 rounded-md">
         <div>
-          <h3 className="text-lg mb-2 font-medium">Delete Account</h3>
-          <p className="text-sm text-slate-600 leading-6">
+          <Heading type="h5">Delete Account</Heading>
+          <P size="sm">
             {`Upon removal, your account becomes unavailable, subscriptions are canceled, and your data is deleted. You can delete your account only when you don't have any scheduled meetings, and your Stripe account balance is zero`}
-          </p>
+          </P>
         </div>
         <div>
           <Button variant="destructive">Delete account</Button>
