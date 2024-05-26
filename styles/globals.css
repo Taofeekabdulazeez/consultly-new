@@ -106,3 +106,30 @@
 .dark ::-webkit-scrollbar-thumb {
   background-color: rgb(67, 10, 158);
 }
+
+.loader {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: block;
+  margin: 15px auto;
+  position: relative;
+  color: hsl(262.1 83.3% 57.8%);
+  box-sizing: border-box;
+  animation: animloader 1s linear infinite alternate;
+}
+
+@keyframes animloader {
+  0% {
+    box-shadow: -48px -16px, -18px 0, 18px 0, 48px 0;
+  }
+  33% {
+    box-shadow: -48px 0px, -18px -16px, 18px 0, 48px 0;
+  }
+  66% {
+    box-shadow: -48px 0px, -18px 0, 18px -16px, 48px 0;
+  }
+  100% {
+    box-shadow: -48px 0, -18px 0, 18px 0, 48px -16px;
+  }
+}

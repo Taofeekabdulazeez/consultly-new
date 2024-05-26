@@ -7,6 +7,7 @@ import dashboardImg from "@/public/img1.png";
 import Image from "next/image";
 import { Heading } from "@/components/ui/Heading";
 import { P } from "@/components/ui/typography";
+import Table from "@/components/MeetingsTable";
 
 export const metadata = {
   title: "Dashboard",
@@ -14,7 +15,7 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <div className="flex h-full flex-col gap-3">
+    <div className="flex flex-col gap-3 mb-8">
       <div className="flex space-x-3 sm:space-x-6 rounded-md">
         <div className="flex flex-1 flex-col">
           <div className=" bg-gray-50 flex-1 flex-row justify-between p-4 sm:flex">
@@ -119,7 +120,7 @@ export default function Page() {
         </div>
       </div>
       <div className="bg-gray-50 flex-1 rounded-md min-h[320px]">
-        <div className="flex justify-center p-2">
+        {/* <div className="flex justify-center p-2">
           <div className="my-10 flex flex-1 flex-col align-center justify-center text-center">
             <div className="flex justify-center align-center text-gray-400 mb-2">
               <FaCalendarAlt size={60} />
@@ -130,7 +131,8 @@ export default function Page() {
               <Button size="lg">Schedule a meeting</Button>
             </div>
           </div>
-        </div>
+        </div> */}
+        <Table />
       </div>
     </div>
   );

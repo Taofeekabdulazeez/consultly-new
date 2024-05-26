@@ -37,7 +37,7 @@ export default function Page() {
         </div>
         <div>
           <Sheet>
-            <SheetTrigger>
+            <SheetTrigger asChild>
               <Button>Add a new service</Button>
             </SheetTrigger>
             <SheetContent className="min-w-full sm:min-w-[500px]">

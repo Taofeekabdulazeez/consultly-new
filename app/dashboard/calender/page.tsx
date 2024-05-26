@@ -95,8 +95,8 @@ export default function Page() {
             </P>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-medium">Free</span>
-            <span className="text-slate-600 text-sm">/ 30m</span>
+            <P size="sm">Free</P>
+            <span className="text-gray-600 text-sm">/ 30m</span>
           </div>
         </div>
         <div className="px-6 py-4 border grid grid-cols-[1fr_auto_auto] gap-3 justify-between items-center rounded-md">
@@ -109,7 +109,7 @@ export default function Page() {
           </div>
           <div className="flex flex-col">
             <span className="text-sm font-medium">Free</span>
-            <span className="text-slate-600 text-sm">/ 30m</span>
+            <span className="text-gray-600 text-sm">/ 30m</span>
           </div>
         </div>
       </div>

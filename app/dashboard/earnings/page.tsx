@@ -1,4 +1,5 @@
 import { Heading } from "@/components/ui/Heading";
+import SpinnerPage from "@/components/ui/spinner";
 import { P } from "@/components/ui/typography";
 
 export const metadata = {
@@ -22,6 +23,9 @@ export default function Page() {
         <P size="md">I attended ikorodu junior high school</P>
         <P size="sm">I attended ikorodu junior high school</P>
         <P size="xs">I attended ikorodu junior high school</P>
+      </div>
+      <div>
+        <SpinnerPage />
       </div>
     </div>
   );
