@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import { signInAction } from "@/lib/actions";
 
 export const metadata = {
-  title: "Register",
+  title: "Sign up",
 };
 
 export default function Page() {

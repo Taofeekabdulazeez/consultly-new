@@ -10,7 +10,7 @@ import microsoftSVG from "@/public/microsoft.svg";
 import { Label } from "@/components/ui/label";
 
 export const metadata = {
-  title: "Sign in",
+  title: "Login",
 };
 
 export default function Page() {
