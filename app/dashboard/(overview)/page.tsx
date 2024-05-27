@@ -6,19 +6,23 @@ import Image from "next/image";
 import { Heading } from "@/components/ui/Heading";
 import { P } from "@/components/ui/typography";
 import MeetingsTable from "@/components/MeetingsTable";
+import { auth } from "@/lib/auth";
 
 export const metadata = {
   title: "Dashboard",
 };
 
-export default function Page() {
+export default async function Page() {
+  const session = await auth();
   return (
     <div className="flex flex-col gap-3 mb-8">
       <div className="flex space-x-3 sm:space-x-6 rounded-md">
         <div className="flex flex-1 flex-col">
           <div className=" bg-gray-50 flex-1 flex-row justify-between p-4 sm:flex">
             <div>
-              <Heading>Good afternoon, Taofeek!</Heading>
+              <Heading>
+                Good evening, {session?.user?.name?.split(" ")[0]}!
+              </Heading>
               <P size="sm">
                 Its <strong>Thu May 23, 2024</strong> today.
               </P>
