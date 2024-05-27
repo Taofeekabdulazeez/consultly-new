@@ -1,10 +1,21 @@
-import { meetings } from "@/static_data/data";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { P } from "./ui/typography";
-import clsx from "clsx";
 import { Button } from "./ui/button";
+import { meetingsData } from "@/static_data/data";
+import NoMeetings from "./NoMeetings";
+import StatusTag from "./StatusTag";
 
-export default function Table() {
+type Props = {
+  filter: MeetingFilter;
+};
+
+export default function MeetingsTable({ filter }: Props) {
+  const meetings = meetingsData;
+
+  if (!meetings.length) return <NoMeetings />;
+
+  const displayedMeetings = filterMeetings(meetings, filter);
+
   return (
     <div className="overflow-hidden rounded-lg w-full border border-gray-300">
       <table className="p-3 w-full text-left border-collapse">
@@ -21,7 +32,7 @@ export default function Table() {
           </tr>
         </thead>
         <tbody className="bg-gray-50 border-collapse">
-          {meetings.map((meeting) => {
+          {displayedMeetings?.map((meeting) => {
             return (
               <tr key={meeting.meetingId}>
                 <td className="p-2 flex items-center gap-4">
@@ -50,7 +61,7 @@ export default function Table() {
                   <P size="sm">{meeting.meetingType}</P>
                 </td>
                 <td>
-                  <Tag status={meeting.status} />
+                  <StatusTag status={meeting.status} />
                 </td>
                 <td className="flex items-center gap-2">
                   <Button size="sm">Join</Button>
@@ -61,148 +72,24 @@ export default function Table() {
               </tr>
             );
           })}
-
-          {/* <tr>
-            <td className="p-3 flex items-center gap-6">
-              <span className="inline-block h-6 w-6 rounded-full bg-yellow-300"></span>
-              <span className="flex flex-col">
-                <span className="text-md font-medium">Today</span>
-                <span className="text-sm font-medium text-stone-500">
-                  10:30am → 10:45am
-                </span>
-              </span>
-            </td>
-            <td className="p-3 ">
-              <span className="text-md font-medium flex flex-col">
-                Adeleke Muyideen
-              </span>
-              <span className="text-sm text-stone-600">
-                muyideeenadele@gmail.com
-              </span>
-            </td>
-            <td className="p-3 text-sm font-medium">15 mins</td>
-            <td className="p-3 text-sm font-medium">
-              <span className="w-fit uppercase text-xs font-semibold px-3 py-1.5 rounded-3xl bg-green-300">
-                Confirmed
-              </span>
-            </td>
-            <td className="p-4 text-sm font-medium"></td>
-          </tr>
-          <tr className="divide">
-            <td className="p-3 flex items-center gap-6">
-              <span className="inline-block h-6 w-6 rounded-full bg-yellow-300"></span>
-              <span className="flex flex-col">
-                <span className="text-md font-medium">May 27 2024</span>
-                <span className="text-sm font-medium text-stone-500">
-                  11:45am → 12:30am
-                </span>
-              </span>
-            </td>
-            <td className="p-4 ">
-              <span className="text-md font-medium flex flex-col">
-                Yusuf Balogun
-              </span>
-              <span className="text-sm text-stone-600">
-                balogunyusuf@gmail.com
-              </span>
-            </td>
-            <td className="p-4 text-sm font-medium">45 mins</td>
-            <td className="p-4 text-sm font-medium">
-              <span className="w-fit uppercase text-xs font-semibold px-3 py-1.5 rounded-3xl bg-blue-300">
-                scheduled
-              </span>
-            </td>
-            <td className="p-4 text-sm font-medium">
-              <button className="cursor-pointer">
-                <HiOutlineDotsVertical size={24} />
-              </button>
-            </td>
-          </tr>
-          <tr className="divide">
-            <td className="p-3 flex items-center gap-6">
-              <span className="inline-block h-6 w-6 rounded-full bg-yellow-300"></span>
-              <span className="flex flex-col">
-                <span className="text-md font-medium">May 30 2024</span>
-                <span className="text-sm font-medium text-stone-500">
-                  12:45pm → 01:15pm
-                </span>
-              </span>
-            </td>
-            <td className="p-4 ">
-              <span className="text-md font-medium flex flex-col">
-                Gideon Chukwudi
-              </span>
-              <span className="text-sm text-stone-600">
-                gideonthedon@gmail.com
-              </span>
-            </td>
-            <td className="p-4 text-sm font-medium">30 mins</td>
-            <td className="p-4 text-sm font-medium">
-              <span className="w-fit uppercase text-xs font-semibold px-3 py-1.5 rounded-3xl bg-orange-300">
-                pending
-              </span>
-            </td>
-            <td className="p-4 text-sm font-medium">
-              <button className="cursor-pointer">
-                <HiOutlineDotsVertical size={24} />
-              </button>
-            </td>
-          </tr>
-          <tr className="divide">
-            <td className="p-3 flex items-center gap-6">
-              <span className="inline-block h-6 w-6 rounded-full bg-yellow-300"></span>
-              <span className="flex flex-col">
-                <span className="text-md font-medium">May 5 2024</span>
-                <span className="text-sm font-medium text-stone-500">
-                  9:45am → 10:00am
-                </span>
-              </span>
-            </td>
-            <td className="p-4 ">
-              <span className="text-md font-medium flex flex-col">
-                Olanredwaju Adam
-              </span>
-              <span className="text-sm text-stone-600">
-                lanreadam@gmail.com
-              </span>
-            </td>
-            <td className="p-4 text-sm font-medium">15 mins</td>
-            <td className="p-4 text-sm font-medium">
-              <span className="w-fit uppercase text-xs font-semibold px-3 py-1.5 rounded-3xl bg-teal-300">
-                completed
-              </span>
-            </td>
-            <td className="p-4 text-sm font-medium">
-              <button className="cursor-pointer">
-                <HiOutlineDotsVertical size={24} />
-              </button>
-            </td>
-          </tr> */}
         </tbody>
       </table>
     </div>
   );
 }
 
-type Tag_Props = {
-  status: "confirmed" | "paid" | "in-progress" | "pending" | string;
-};
+const filterMeetings = (meetings: Meeting[], filter: MeetingFilter) => {
+  if (filter === "all") return meetings;
 
-function Tag({ status }: Tag_Props) {
-  return (
-    <span
-      className={clsx(
-        "w-fit uppercase text-xs font-semibold px-3 py-1.5 rounded-3xl",
-        {
-          "bg-blue-400   dark:bg-blue-600": status === "confirmed",
-          "bg-green-300 dark:bg-green-600": status === "paid",
-          "bg-purple-300 dark:bg-purple-600": status === "in-progress",
-          "bg-yellow-300 dark:bg-yellow-600 text-gray-900":
-            status === "pending",
-        }
-      )}
-    >
-      {status}
-    </span>
-  );
-}
+  if (filter === "confirmed")
+    return meetings.filter((meeting: any) => meeting.status === "confirmed");
+
+  if (filter === "in-progress")
+    return meetings.filter((meeting: any) => meeting.status === "in-progress");
+
+  if (filter === "pending")
+    return meetings.filter((meeting: any) => meeting.status === "pending");
+
+  if (filter === "paid")
+    return meetings.filter((meeting: any) => meeting.status === "paid");
+};

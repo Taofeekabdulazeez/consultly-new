@@ -38,7 +38,7 @@ export const countryOptions = [
   "United States",
 ];
 
-export const meetings = [
+export const meetingsData = [
   {
     meetingId: "1",
     duration: "15mins",

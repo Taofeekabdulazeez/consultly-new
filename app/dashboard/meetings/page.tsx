@@ -1,29 +1,29 @@
+import MeetingsFilter from "@/components/MeetingsFilter";
+import MeetingsTable from "@/components/MeetingsTable";
+import TableLoader from "@/components/TableLoader";
 import { Heading } from "@/components/ui/Heading";
-import { P } from "@/components/ui/typography";
-import { IoChatboxEllipses, IoChatboxEllipsesOutline } from "react-icons/io5";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Meetings",
 };
 
-export default function Page() {
+type Props = {
+  searchParams?: {
+    status: "paid" | "in-progress" | "confirmed" | "pending";
+  };
+};
+
+export default function Page({ searchParams }: Props) {
   return (
     <div>
-      <NoMeetings />
-    </div>
-  );
-}
-
-function NoMeetings() {
-  return (
-    <div className="bg-gray-50 p-4 rounded shadow-sm">
-      <div className="border-2 rounded grid place-items-center py-14 border-dotted border-gray-200">
-        <div className="mb-3">
-          <IoChatboxEllipsesOutline size={80} className="text-gray-300" />
-        </div>
-        <Heading>No meeting requests yet</Heading>
-        <P>{`You don't have any meeting requests yet`}</P>
+      <div className="flex items-center justify-between mb-6">
+        <Heading>Your meetings</Heading>
+        <MeetingsFilter />
       </div>
+      <Suspense fallback={<TableLoader />} key={searchParams?.status ?? "all"}>
+        <MeetingsTable filter={searchParams?.status ?? "all"} />
+      </Suspense>
     </div>
   );
 }

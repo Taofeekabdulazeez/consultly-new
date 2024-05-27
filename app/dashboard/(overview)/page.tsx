@@ -1,13 +1,11 @@
-import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
-import { FaCalendarAlt } from "react-icons/fa";
 import dashboardImg from "@/public/img1.png";
 import Image from "next/image";
 import { Heading } from "@/components/ui/Heading";
 import { P } from "@/components/ui/typography";
-import Table from "@/components/MeetingsTable";
+import MeetingsTable from "@/components/MeetingsTable";
 
 export const metadata = {
   title: "Dashboard",
@@ -120,19 +118,7 @@ export default function Page() {
         </div>
       </div>
       <div className="bg-gray-50 flex-1 rounded-md min-h[320px]">
-        {/* <div className="flex justify-center p-2">
-          <div className="my-10 flex flex-1 flex-col align-center justify-center text-center">
-            <div className="flex justify-center align-center text-gray-400 mb-2">
-              <FaCalendarAlt size={60} />
-            </div>
-            <Heading>No meetings today</Heading>
-            <P>Complete your profile and share the availability calendar or </P>
-            <div className="flex justify-center items-center mt-4">
-              <Button size="lg">Schedule a meeting</Button>
-            </div>
-          </div>
-        </div> */}
-        <Table />
+        <MeetingsTable filter="all" />
       </div>
     </div>
   );
