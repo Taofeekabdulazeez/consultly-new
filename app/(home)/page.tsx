@@ -7,6 +7,8 @@ import { TbCreditCard } from "react-icons/tb";
 import { FaVideo } from "react-icons/fa6";
 import { BiWorld } from "react-icons/bi";
 import { BiMessageDetail } from "react-icons/bi";
+import Link from "next/link";
+import Logo from "@/components/Logo";
 
 export default function Home() {
   return (
@@ -14,16 +16,7 @@ export default function Home() {
       <header className="bg-white z-10 fixed top-0 left-0 right-0">
         <div className="header:justify-start header:space-x-10 header:px-16 mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-6 sm:px-6">
           <div className="relative top-[-5px] flex gap-10">
-            <div className=" flex flex-col">
-              <span className="text-2xl font-extrabold text-purple-800">
-                Consultly
-              </span>
-              <div className="flex ml-4">
-                <span className="rounded-full inline-block h-1.5 w-1.5 bg-red-500"></span>
-                <span className="rounded-full inline-block  h-1.5 w-1.5 bg-yellow-500"></span>
-                <span className="rounded-full inline-block  h-1.5 w-1.5 bg-green-500"></span>
-              </div>
-            </div>
+            <Logo />
             <div className="flex flex-1 items-center justify-between">
               <nav className="flex space-x-8  text-sm">
                 <a href="#features">Features</a>
@@ -33,16 +26,19 @@ export default function Home() {
             </div>
           </div>
           <div className=" header:ml-12  items-center gap-8 flex ">
-            <a href="#" className="px-4 py-3  rounded-full hover:bg-gray-300">
+            <Link
+              href="/login"
+              className="px-4 py-3  rounded-full hover:bg-gray-300"
+            >
               Log In
-            </a>
-            <a
-              href="#"
-              className="rounded-full bg-purple-600 px-4 py-3 text-white hover:bg-purple-800"
+            </Link>
+            <Link
+              href="/sign-up"
+              className="rounded-full bg-primary px-4 py-3 text-white hover:bg-purple-800"
             >
               {" "}
               Get Started
-            </a>
+            </Link>
           </div>
         </div>
       </header>
@@ -51,7 +47,7 @@ export default function Home() {
         <div className=" m-auto">
           <h1 className="text-4xl font-extrabold">
             <span className="relative text-4xl">Revolutionize your</span>
-            <span className=" flex flex-col relative text-6xl text-purple-700 mt-3 sm:whitespace-nowrap">
+            <span className=" flex flex-col relative text-6xl text-primary mt-3 sm:whitespace-nowrap">
               <span className="relative">DIGITAL CONSULTATION</span>
             </span>
             <span className="text-4xl mt-2">Process.</span>
