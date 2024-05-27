@@ -9,7 +9,7 @@ export const metadata = {
 export default function Page() {
   return (
     <div className="grid gap-24">
-      <div>
+      {/* <div>
         <Heading type="h1">My name is Abdulazeez Taofeek Taiwo</Heading>
         <Heading type="h2">My name is Abdulazeez Taofeek Taiwo</Heading>
         <Heading type="h3">My name is Abdulazeez Taofeek Taiwo</Heading>
@@ -26,7 +26,7 @@ export default function Page() {
       </div>
       <div>
         <SpinnerPage />
-      </div>
+      </div> */}
     </div>
   );
 }
