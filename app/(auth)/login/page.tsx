@@ -22,7 +22,7 @@ export default function Page() {
         </div>
         <div className="w-[80%] max-w-[500px] mx-auto bg-gray-50 p-6 shadow-sm rounded-md">
           <div className="mb-6 text-center">
-            <Heading type="h3">{`Welcome Back!`}</Heading>
+            <Heading type="h3">{`Welcome!`}</Heading>
             <P size="sm">Login to your account</P>
           </div>
           <div className="grid gap-4 mb-6">

@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { P } from "@/components/ui/typography";
 import googleSVG from "@/public/google.svg";
 import microsoftSVG from "@/public/microsoft.svg";
-import { Label } from "@/components/ui/label";
 import { signInAction } from "@/lib/actions";
 
 export const metadata = {
