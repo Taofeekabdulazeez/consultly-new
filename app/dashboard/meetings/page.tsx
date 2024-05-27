@@ -15,14 +15,15 @@ type Props = {
 };
 
 export default function Page({ searchParams }: Props) {
+  const status = searchParams?.status ?? "all";
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
         <Heading>Your meetings</Heading>
         <MeetingsFilter />
       </div>
-      <Suspense fallback={<TableLoader />} key={searchParams?.status ?? "all"}>
-        <MeetingsTable filter={searchParams?.status ?? "all"} />
+      <Suspense fallback={<TableLoader />} key={status}>
+        <MeetingsTable filter={status} />
       </Suspense>
     </div>
   );
