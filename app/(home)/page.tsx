@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import ComboBox from "../../components/ComboBox";
 import { BiNotepad } from "react-icons/bi";
 import { AiOutlineIdcard } from "react-icons/ai";
 import { FaCalendarAlt } from "react-icons/fa";
@@ -5,18 +7,22 @@ import { TbCreditCard } from "react-icons/tb";
 import { FaVideo } from "react-icons/fa6";
 import { BiWorld } from "react-icons/bi";
 import { BiMessageDetail } from "react-icons/bi";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoMdClose } from "react-icons/io";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "@/components/Logo";
 
 export default function Home() {
+  const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="">
       <header className="bg-white z-10 fixed top-0 left-0 right-0">
         <div className="header:justify-start header:space-x-10 header:px-16 mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-6 sm:px-6">
-          <div className="relative top-[-5px] flex gap-10">
+          <div className="relative top-[-5px] flex gap-10 items-center">
             <Logo />
             <div className="flex flex-1 items-center justify-between">
-              <nav className="space-x-8 text-sm">
+              <nav className="flex space-x-8  text-sm">
                 <a href="#features">Features</a>
                 <a href="#">How It Works</a>
                 <a href="#">Contact</a>
@@ -26,7 +32,7 @@ export default function Home() {
           <div className=" header:ml-12  items-center gap-8 flex ">
             <Link
               href="/login"
-              className="px-4 py-3  rounded-full hover:bg-gray-300"
+              className="px-4 py-3 rounded-full hover:bg-gray-300"
             >
               Log In
             </Link>
@@ -34,10 +40,73 @@ export default function Home() {
               href="/sign-up"
               className="rounded-full bg-primary px-4 py-3 text-white hover:bg-purple-800"
             >
-              {" "}
               Get Started
             </Link>
           </div>
+          <button
+            className="block sm:hidden ml-4"
+            aria-label="Toggle Menu"
+            onClick={() => setShowMenu(!showMenu)}
+          >
+            {showMenu ? (
+              <IoMdClose className="text-2xl" />
+            ) : (
+              <RxHamburgerMenu className="text-2xl" />
+            )}
+          </button>
+        </div>
+
+        <div
+          className={`fixed top-0 left-0 h-full w-full bg-white shadow-lg transform ${
+            showMenu ? "translate-x-0" : "-translate-x-full"
+          } transition-transform duration-300 ease-in-out sm:hidden`}
+        >
+          <div className="flex justify-end p-4">
+            <button
+              className="text-2xl"
+              aria-label="Close Menu"
+              onClick={() => setShowMenu(false)}
+            >
+              <IoMdClose />
+            </button>
+          </div>
+          <nav className="flex flex-col items-center space-y-6 p-6">
+            <a
+              href="#features"
+              className="text-lg font-medium"
+              onClick={() => setShowMenu(false)}
+            >
+              Features
+            </a>
+            <a
+              href="#"
+              className="text-lg font-medium"
+              onClick={() => setShowMenu(false)}
+            >
+              How It Works
+            </a>
+            <a
+              href="#"
+              className="text-lg font-medium"
+              onClick={() => setShowMenu(false)}
+            >
+              Contact
+            </a>
+            <Link
+              href="/login"
+              className=" px-4 py-3 text-center rounded-full bg-gray-200 hover:bg-gray-300"
+              onClick={() => setShowMenu(false)}
+            >
+              Log In
+            </Link>
+            <Link
+              href="/sign-up"
+              className=" px-4 py-3 text-center rounded-full bg-primary text-white hover:bg-purple-800"
+              onClick={() => setShowMenu(false)}
+            >
+              Get Started
+            </Link>
+          </nav>
         </div>
       </header>
 
@@ -51,11 +120,10 @@ export default function Home() {
             <span className="text-4xl mt-2">Process.</span>
           </h1>
           <p className="text-balance mx-auto my-6 max-w-2xl text-slate-700 md:text-lg">
-            Consultly is an all-in-one online consultations management platform
+            Consultify is an all-in-one online consultations management platform
             which provide you with all necessary tools for{" "}
-            <strong>scheduling meetings</strong>,
-            <strong>accepting payments</strong> and{" "}
-            <strong>video calling</strong> your clients.
+            <strong>scheduling meetings</strong>
+            and <strong>video calling</strong> your clients.
           </p>
           <div className="mt-10 flex justify-center gap-x-6 mb-4">
             <a
@@ -86,7 +154,7 @@ export default function Home() {
           </div>
           <div>
             <div className="relative mx-auto mt-8 mx-w-6xl rounded-md bg-gray-100 p-1 sm:p-4">
-              <img src="./dashboard.jpg" alt="dash" />
+              <img src="./dashboard.png" alt="dashboard" />
             </div>
           </div>
         </div>

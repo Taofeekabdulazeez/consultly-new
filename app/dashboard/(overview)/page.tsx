@@ -8,6 +8,8 @@ import { P } from "@/components/ui/typography";
 import MeetingsTable from "@/components/MeetingsTable";
 import { auth } from "@/lib/auth";
 import { getCurrentHpur } from "@/lib/utils";
+import React, { useState, useEffect } from "react";
+
 
 export const metadata = {
   title: "Dashboard",
@@ -15,6 +17,8 @@ export const metadata = {
 
 export default async function Page() {
   const session = await auth();
+  const currentDate = new Date();
+
   return (
     <div className="flex flex-col gap-3 mb-8">
       <div className="flex space-x-3 sm:space-x-6 rounded-md">
@@ -22,10 +26,10 @@ export default async function Page() {
           <div className=" bg-gray-50 flex-1 flex-row justify-between p-4 sm:flex">
             <div>
               <Heading>
-                {getCurrentHpur()}, {session?.user?.name?.split(" ")[0]}!
+                {getCurrentHpur()}, {session?.user?.name?.split(" ")[0]}👋
               </Heading>
               <P size="sm">
-                Its <strong>Thu May 23, 2024</strong> today.
+                It&apos;s <strong>{currentDate.toDateString()}</strong> today.
               </P>
               <div className="max-w-md space-y-1">
                 <P size="sm">
