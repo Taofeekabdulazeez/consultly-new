@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-import ComboBox from "../../components/ComboBox";
 import { BiNotepad } from "react-icons/bi";
 import { AiOutlineIdcard } from "react-icons/ai";
 import { FaCalendarAlt } from "react-icons/fa";
@@ -12,13 +10,13 @@ import Logo from "@/components/Logo";
 
 export default function Home() {
   return (
-    <body>
+    <div className="">
       <header className="bg-white z-10 fixed top-0 left-0 right-0">
         <div className="header:justify-start header:space-x-10 header:px-16 mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-6 sm:px-6">
           <div className="relative top-[-5px] flex gap-10">
             <Logo />
             <div className="flex flex-1 items-center justify-between">
-              <nav className="flex space-x-8  text-sm">
+              <nav className="space-x-8 text-sm">
                 <a href="#features">Features</a>
                 <a href="#">How It Works</a>
                 <a href="#">Contact</a>
@@ -44,7 +42,7 @@ export default function Home() {
       </header>
 
       <div className="min-h-small-viewport flex flex-col  px-8 pt-32 text-center bg-gray-100">
-        <div className=" m-auto">
+        <div className="m-auto">
           <h1 className="text-4xl font-extrabold">
             <span className="relative text-4xl">Revolutionize your</span>
             <span className=" flex flex-col relative text-6xl text-primary mt-3 sm:whitespace-nowrap">
@@ -243,6 +241,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </body>
+    </div>
   );
 }

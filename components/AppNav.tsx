@@ -2,28 +2,19 @@
 
 import {
   CalendarCheck,
-  CalendarHeart,
   CircleDollarSign,
   CircleUser,
   Home,
   List,
-  ListChecks,
-  ListOrdered,
+  Menu,
   MessageSquareText,
   Settings,
+  X,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BsCoin } from "react-icons/bs";
-import { FaRegUser } from "react-icons/fa";
-import { IoIosList } from "react-icons/io";
-import {
-  IoCalendarNumberOutline,
-  IoChatboxEllipsesOutline,
-  IoChatboxOutline,
-  IoHomeOutline,
-  IoSettingsOutline,
-} from "react-icons/io5";
+import { useMobile } from "@/hooks/useMobileNav";
+import { Button } from "./ui/button";
 
 const navLinks = [
   {
@@ -65,17 +56,34 @@ const navLinks = [
 
 export default function AppNav() {
   const pathname = usePathname();
+  const { isNavOpen, toggleNav } = useMobile();
+  console.log(isNavOpen);
+
   return (
-    <nav>
-      <ul className="flex flex-col p-3 gap-2">
+    <nav
+      className={`transition-all fixed bg-gray-50 md:w-auto w-[60vw] right-0 top-0 min-h-screen md:static ${
+        isNavOpen ? "translate-x-full" : ""
+      }`}
+    >
+      <Button
+        onClick={toggleNav}
+        variant="ghost"
+        className={`z-10 fixed top-4 md:hidden bg-gray-50 ${
+          isNavOpen ? "right-[60vw] " : "left-[87vw]"
+        }`}
+      >
+        {isNavOpen ? <Menu /> : <X />}
+      </Button>
+      <ul className="flex flex-col p-3 gap-2 mt-14 md:mt-0">
         {navLinks.map((link) => {
           const { name, href, Icon } = link;
           return (
             <li key={name} className="text-gray-700">
               <Link
                 href={href}
+                onClick={toggleNav}
                 className={`
-                  md:flex md:gap-3 md:items-center md:py-2.5 md:px-3 md:text-sm font-medium hover:bg-gray-75 hover:text-primary relative overflow-hidden rounded-sm
+                  flex gap-3 items-center py-2.5 px-3 md:text-sm font-medium hover:bg-gray-75 hover:text-primary relative overflow-hidden rounded-sm
                      after:content-[''] after:block after:h-full after:absolute after:w-[3px] after:right-0 ${
                        href === pathname
                          ? "bg-gray-100 text-primary after:bg-primary"

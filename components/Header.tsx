@@ -1,8 +1,11 @@
 import { signOutAction } from "@/lib/actions";
 import { auth } from "@/lib/auth";
-import { LogOut, Moon } from "lucide-react";
+import { LogOut, Moon, X } from "lucide-react";
 import Image from "next/image";
 import ButtonTheme from "./ButtonTheme";
+import { Button } from "./ui/button";
+import { MobileProvider } from "@/hooks/useMobileNav";
+import NavToggle from "./NavToggle";
 
 export default async function Header() {
   const session = await auth();
@@ -33,6 +36,7 @@ export default async function Header() {
           <LogOut className="text-primary" />
         </button>
       </form>
+      {/* <NavToggle /> */}
     </header>
   );
 }
