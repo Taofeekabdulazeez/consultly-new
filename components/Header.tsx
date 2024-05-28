@@ -2,6 +2,7 @@ import { signOutAction } from "@/lib/actions";
 import { auth } from "@/lib/auth";
 import { LogOut, Moon } from "lucide-react";
 import Image from "next/image";
+import ButtonTheme from "./ButtonTheme";
 
 export default async function Header() {
   const session = await auth();
@@ -24,9 +25,9 @@ export default async function Header() {
         </div>
         <p className="text-sm font-medium">{session?.user?.name}</p>
       </div>
-      <button className="p-1.5 hover:bg-gray-75">
-        <Moon className="text-primary" />
-      </button>
+
+      <ButtonTheme />
+
       <form action={signOutAction}>
         <button className="p-1.5 hover:bg-gray-75">
           <LogOut className="text-primary" />

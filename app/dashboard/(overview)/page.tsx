@@ -7,6 +7,7 @@ import { Heading } from "@/components/ui/Heading";
 import { P } from "@/components/ui/typography";
 import MeetingsTable from "@/components/MeetingsTable";
 import { auth } from "@/lib/auth";
+import { getCurrentHpur } from "@/lib/utils";
 
 export const metadata = {
   title: "Dashboard",
@@ -21,7 +22,7 @@ export default async function Page() {
           <div className=" bg-gray-50 flex-1 flex-row justify-between p-4 sm:flex">
             <div>
               <Heading>
-                Good evening, {session?.user?.name?.split(" ")[0]}!
+                {getCurrentHpur()}, {session?.user?.name?.split(" ")[0]}!
               </Heading>
               <P size="sm">
                 Its <strong>Thu May 23, 2024</strong> today.
