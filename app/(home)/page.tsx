@@ -120,11 +120,10 @@ export default function Home() {
             <span className="text-4xl mt-2">Process.</span>
           </h1>
           <p className="text-balance mx-auto my-6 max-w-2xl text-slate-700 md:text-lg">
-            Consultify is an all-in-one online consultations management platform
-            which provide you with all necessary tools for{" "}
+            Consultly is an integrated platform for managing online
+            consultations comprehensively, offering all the essential tools for{" "}
             <strong>scheduling meetings</strong>
-             and{" "}
-            <strong>video calling</strong> your clients.
+            and <strong>video calling</strong> your clients.
           </p>
           <div className="mt-10 flex justify-center gap-x-6 mb-4">
             <a
