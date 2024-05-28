@@ -18,7 +18,7 @@ export default function Page({ searchParams }: Props) {
   const status = searchParams?.status ?? "all";
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
         <Heading>Your meetings</Heading>
         <MeetingsFilter />
       </div>

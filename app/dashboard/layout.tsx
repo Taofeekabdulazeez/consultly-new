@@ -18,7 +18,7 @@ export default function Layout({ children }: Props) {
     <div className="grid grid-cols-[auto_1fr] md:grid-cols-[240px_1fr] md:grid-rows-[auto_1fr] md:h-[100dvh]">
       <Header />
       <Aside />
-      <main className="md:col-[auto] col-span-full overflow-y-scroll p-6 bg-gray-100">
+      <main className="md:col-[auto] col-span-full overflow-y-scroll md:p-6 bg-gray-100 pt-24 sm:pt-6">
         {children}
       </main>
     </div>

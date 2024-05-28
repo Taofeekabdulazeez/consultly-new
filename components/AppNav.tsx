@@ -61,18 +61,20 @@ export default function AppNav() {
 
   return (
     <nav
-      className={`transition-all fixed bg-gray-50 md:w-auto w-[60vw] right-0 top-0 min-h-screen md:static ${
-        isNavOpen ? "translate-x-full md:translate-x-0" : ""
+      className={`transition-all fixed bg-gray-50 md:w-auto w-[60vw] right-0 top-0 min-h-screen md:static z-10 before:absolute before:content-[''] before:inset-0 before:h-screen before:w-screen before:bg-[rgba(0,_0,_0,_0.05)] before:-translate-x-full before:z-[8] ${
+        !isNavOpen
+          ? "translate-x-full md:translate-x-0 before:hidden"
+          : "before:block"
       }`}
     >
       <Button
         onClick={toggleNav}
         variant="ghost"
         className={`z-10 fixed top-4 md:hidden bg-gray-50 ${
-          isNavOpen ? "right-[60vw] md:right-auto" : "left-[87vw] md:left-auto"
+          !isNavOpen ? "right-[60vw] md:right-auto" : "left-[87vw] md:left-auto"
         }`}
       >
-        {isNavOpen ? <Menu /> : <X />}
+        {!isNavOpen ? <Menu /> : <X />}
       </Button>
       <ul className="flex flex-col p-3 gap-2 mt-14 md:mt-0">
         {navLinks.map((link) => {

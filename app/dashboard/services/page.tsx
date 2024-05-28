@@ -23,7 +23,7 @@ export const metadata = {
 export default function Page() {
   return (
     <div className="bg-gray-50 rounded p-6">
-      <div className="grid grid-cols-[1fr_auto] gap-48 mb-10">
+      <div className="grid md:grid-cols-[1fr_auto] gap-6 md:gap-48 mb-10">
         <div>
           <Heading>My Services</Heading>
           <P size="sm">
