@@ -62,14 +62,14 @@ export default function AppNav() {
   return (
     <nav
       className={`transition-all fixed bg-gray-50 md:w-auto w-[60vw] right-0 top-0 min-h-screen md:static ${
-        isNavOpen ? "translate-x-full" : ""
+        isNavOpen ? "translate-x-full md:translate-x-0" : ""
       }`}
     >
       <Button
         onClick={toggleNav}
         variant="ghost"
         className={`z-10 fixed top-4 md:hidden bg-gray-50 ${
-          isNavOpen ? "right-[60vw] " : "left-[87vw]"
+          isNavOpen ? "right-[60vw] md:right-auto" : "left-[87vw] md:left-auto"
         }`}
       >
         {isNavOpen ? <Menu /> : <X />}
