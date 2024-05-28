@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import ComboBox from "../../components/ComboBox";
 import { BiNotepad } from "react-icons/bi";
@@ -21,15 +23,13 @@ export default function Home() {
         <div className="header:justify-start header:space-x-10 header:px-16 mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-6 sm:px-6">
           <div className="relative top-[-5px] flex gap-10 items-center">
             <Logo />
-            <div className="flex flex-1 items-center justify-between">
-              <nav className="flex space-x-8  text-sm">
-                <a href="#features">Features</a>
-                <a href="#">How It Works</a>
-                <a href="#">Contact</a>
-              </nav>
-            </div>
           </div>
-          <div className=" header:ml-12  items-center gap-8 flex ">
+          <nav className="hidden sm:flex space-x-8 text-sm">
+            <a href="#features">Features</a>
+            <a href="#">How It Works</a>
+            <a href="#">Contact</a>
+          </nav>
+          <div className="hidden sm:flex sm:gap-8 items-center">
             <Link
               href="/login"
               className="px-4 py-3 rounded-full hover:bg-gray-300"
@@ -111,7 +111,7 @@ export default function Home() {
       </header>
 
       <div className="min-h-small-viewport flex flex-col  px-8 pt-32 text-center bg-gray-100">
-        <div className="m-auto">
+        <div className=" m-auto">
           <h1 className="text-4xl font-extrabold">
             <span className="relative text-4xl">Revolutionize your</span>
             <span className=" flex flex-col relative text-6xl text-primary mt-3 sm:whitespace-nowrap">
@@ -120,8 +120,8 @@ export default function Home() {
             <span className="text-4xl mt-2">Process.</span>
           </h1>
           <p className="text-balance mx-auto my-6 max-w-2xl text-slate-700 md:text-lg">
-            Consultify is an all-in-one online consultations management platform
-            which provide you with all necessary tools for{" "}
+            Consultly is an integrated platform for managing online
+            consultations comprehensively, offering all the essential tools for{" "}
             <strong>scheduling meetings</strong>
             and <strong>video calling</strong> your clients.
           </p>
