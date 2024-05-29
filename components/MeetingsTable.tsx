@@ -17,8 +17,8 @@ export default function MeetingsTable({ filter }: Props) {
   const displayedMeetings = filterMeetings(meetings, filter);
 
   return (
-    <div className="overflow-hidden rounded-lg w-full border border-gray-300 overflow-y-scroll">
-      <table className="p-3 w-full text-left border-collapse">
+    <div className="rounded-lg border min-w-full border-gray-300 overflow-x-scroll">
+      <table className="p-3 text-left border-collapse w-[1000px] md:w-full">
         <thead className="">
           <tr className="bg-gray-75">
             <th className="uppercase text-sm font-semibold p-3 pl-8">Date</th>
