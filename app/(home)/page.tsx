@@ -27,7 +27,7 @@ export default function Home() {
           <nav className="hidden sm:flex space-x-8 text-sm">
             <a href="#features">Features</a>
             <a href="#">How It Works</a>
-            <a href="#">Contact</a>
+            <a href="#contact">Contact</a>
           </nav>
           <div className="hidden sm:flex sm:gap-8 items-center">
             <Link
@@ -112,14 +112,17 @@ export default function Home() {
 
       <div className="min-h-small-viewport flex flex-col  px-8 pt-32 text-center bg-gray-100">
         <div className=" m-auto">
-          <h1 className="text-4xl font-extrabold">
+          <h1 className="text-4xl font-extrabold mx-auto mx-w-2xl tracking-tight sm:text-6xl md:text-7xl">
             <span className="relative text-4xl">Revolutionize your</span>
             <span className=" flex flex-col relative text-6xl text-primary mt-3 sm:whitespace-nowrap">
               <span className="relative">DIGITAL CONSULTATION</span>
             </span>
             <span className="text-4xl mt-2">Process.</span>
           </h1>
-          <p className="text-balance mx-auto my-6 max-w-2xl text-slate-700 md:text-lg">
+          <p
+            className=" mx-auto mt
+          -6 max-w-2xl text-slate-700 md:text-lg"
+          >
             Consultly is an integrated platform for managing online
             consultations comprehensively, offering all the essential tools for{" "}
             <strong>scheduling meetings</strong>
@@ -225,27 +228,7 @@ export default function Home() {
                 </a>
               </div>
             </div>
-            <div className="flex flex-col p-2 sm:flex-row">
-              <div className="self-start rounded-lg p-3 bg-yellow-50">
-                <TbCreditCard className="size-[25px] text-orange-400" />
-              </div>
-              <div className="flex flex-col text-left sm:ml-6">
-                <div className="mt-4 flex-1 space-y-2 sm:mt-0">
-                  <h3 className="font-bold">Online payment solution</h3>
-                  <p>
-                    Accept payments from your clients in easy, fast and secure
-                    way.
-                  </p>
-                </div>
-                <a
-                  href="#"
-                  target="_blank"
-                  className="text-primary mt-2 cursor-pointer underline"
-                >
-                  Learn more
-                </a>
-              </div>
-            </div>
+
             <div className="flex flex-col p-2 sm:flex-row">
               <div className="self-start rounded-lg p-3 bg-indigo-100">
                 <FaVideo className="size-[30px] text-purple-300" />
@@ -305,6 +288,102 @@ export default function Home() {
                   Learn more
                 </a>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="scroll-mt-24 py-16 bg-gray-100" id="contact">
+        <div className="mx-auto max-w-screen-2xl px-4 text-center sm:px-6 lg:px-8">
+          <div className="space-y-8">
+            <h2 className="text-primary text-base font-medium uppercase tracking-wider">
+              Contact us
+            </h2>
+            <h3 className="text-balance font-display mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Get In Touch
+            </h3>
+            <p className="text-balance header:px-16 mx-auto max-w-4xl px-6 text-slate-700 md:text-lg">
+              Still have questions? Send us a message.
+            </p>
+          </div>
+          <div className="w-full">
+            <div className="mx-auto mt-12 max-w-xl">
+              <form className="grid grid-cols-1 gap-y-6 text-left sm:grid-cols-2 sm:gap-x-8">
+                <div>
+                  <label
+                    htmlFor="first-name"
+                    className="block text-sm font-medium"
+                  >
+                    First name
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="first-name"
+                      id="first-name"
+                      className=" block w-full rounded-md border-gray-300 px-4 py-3 shadow-sm focus:outline-primary"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label
+                    htmlFor="last-name"
+                    className="block text-sm font-medium"
+                  >
+                    Last name
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="last-name"
+                      id="last-name"
+                      className=" block w-full rounded-md border-gray-300 px-4 py-3 shadow-sm focus:outline-primary"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div className="sm:col-span-2">
+                  <label htmlFor="email" className="block text-sm font-medium">
+                    Email
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      className="block w-full rounded-md border-gray-300 px-4 py-3 shadow-sm focus:outline-primary"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium"
+                  >
+                    Message
+                  </label>
+                  <div className="mt-1">
+                    <textarea
+                      id="message"
+                      name="message"
+                      className=" block w-full  rounded-md  border-3 border-gray-300 px-4 py-3 shadow-sm focus:outline-primary"
+                      rows={5}
+                    ></textarea>
+                  </div>
+                </div>
+                <div className="flex flex-col items-center justify-center text-center sm:col-span-2">
+                  <button
+                    type="submit"
+                    className="transition-color relative inline-flex items-center justify-center duration-150 ease-in-out border border-transparent shadow-sm bg-primary focus:outline-none  font-medium text-white px-3 py-2 rounded-full px-5 sm:w-auto md:px-12 cursor-pointer hover:bg-purple-700"
+                  >
+                    <span className="inline-flex items-center">
+                      Let&apos;s talk
+                    </span>
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
