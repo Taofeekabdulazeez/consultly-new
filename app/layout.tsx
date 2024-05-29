@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Lato, Montserrat, Open_Sans, Poppins } from "next/font/google";
 import "@/styles/globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} antialiased relative overflow-x-hidden`}
+        className={`${inter.className} antialiased relative overflow-x-hidden`}
       >
         {children}
       </body>
