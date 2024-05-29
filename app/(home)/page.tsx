@@ -26,7 +26,7 @@ export default function Home() {
           </div>
           <nav className="hidden sm:flex space-x-8 text-sm">
             <a href="#features">Features</a>
-            <a href="#">How It Works</a>
+            <a href="#how-it-works">How It Works</a>
             <a href="#contact">Contact</a>
           </nav>
           <div className="hidden sm:flex sm:gap-8 items-center">
@@ -112,16 +112,18 @@ export default function Home() {
 
       <div className="min-h-small-viewport flex flex-col  px-8 pt-32 text-center bg-gray-100">
         <div className=" m-auto">
-          <h1 className="text-4xl font-extrabold mx-auto mx-w-2xl tracking-tight sm:text-6xl md:text-7xl">
-            <span className="relative text-4xl">Revolutionize your</span>
-            <span className=" flex flex-col relative text-6xl text-primary mt-3 sm:whitespace-nowrap">
+          <h1 className=" font-display text-balance text-4xl font-extrabold mx-auto mx-w-2xl tracking-tight sm:text-6xl md:text-7xl">
+            <span className="relative">Revolutionize your</span>
+            <br />
+            <span className=" relative  text-primary  sm:whitespace-nowrap">
               <span className="relative">DIGITAL CONSULTATION</span>
             </span>
-            <span className="text-4xl mt-2">Process.</span>
+            <br />
+            Process.
           </h1>
           <p
             className=" mx-auto mt
-          -6 max-w-2xl text-slate-700 md:text-lg"
+          -8 max-w-2xl text-slate-700 md:text-lg"
           >
             Consultly is an integrated platform for managing online
             consultations comprehensively, offering all the essential tools for{" "}
@@ -162,6 +164,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <section className="scroll-mt-24 py-16 bg-white">
         <div className="mx-auto max-w-4xl text-center sm:px-6 1g:px-8">
           <div className="grid auto-cols-max auto-rows-fr grid-cols-1 gap-4 px-6 sm:grid-cols-2 sm:gap-8">
@@ -293,6 +296,10 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="scroll-mt-24 py-16 bg-gray-100" id="how-it-works">
+
+      </section>
+
       <section className="scroll-mt-24 py-16 bg-gray-100" id="contact">
         <div className="mx-auto max-w-screen-2xl px-4 text-center sm:px-6 lg:px-8">
           <div className="space-y-8">
@@ -374,20 +381,28 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex flex-col items-center justify-center text-center sm:col-span-2">
-                  <button
-                    type="submit"
-                    className="transition-color relative inline-flex items-center justify-center duration-150 ease-in-out border border-transparent shadow-sm bg-primary focus:outline-none  font-medium text-white px-3 py-2 rounded-full px-5 sm:w-auto md:px-12 cursor-pointer hover:bg-purple-700"
-                  >
-                    <span className="inline-flex items-center">
-                      Let&apos;s talk
-                    </span>
-                  </button>
+                  <a href="#">
+                    {" "}
+                    <button
+                      type="submit"
+                      className="transition-color relative inline-flex items-center justify-center duration-150 ease-in-out border border-transparent shadow-sm bg-primary focus:outline-none  font-medium text-white px-3 py-2 rounded-full px-5 sm:w-auto md:px-12 cursor-pointer hover:bg-purple-700"
+                    >
+                      <span className="inline-flex items-center">
+                        Let&apos;s talk
+                      </span>
+                    </button>
+                  </a>
                 </div>
               </form>
             </div>
           </div>
         </div>
       </section>
+
+      <footer>
+
+      </footer>
+
     </div>
   );
 }
