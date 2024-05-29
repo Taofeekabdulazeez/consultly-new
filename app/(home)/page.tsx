@@ -14,9 +14,14 @@ import { IoMdClose } from "react-icons/io";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "@/components/Logo";
+import {FaFacebook} from 'react-icons/fa';
+import {FaTwitter} from 'react-icons/fa';
+import {FaInstagram} from 'react-icons/fa';
+import { MdLanguage, MdKeyboardArrowUp } from "react-icons/md";
 
 export default function Home() {
   const [showMenu, setShowMenu] = useState(false);
+  
   return (
     <div className="">
       <header className="bg-white z-10 fixed top-0 left-0 right-0">
@@ -79,14 +84,14 @@ export default function Home() {
               Features
             </a>
             <a
-              href="#"
+              href="how-it-works"
               className="text-lg font-medium"
               onClick={() => setShowMenu(false)}
             >
               How It Works
             </a>
             <a
-              href="#"
+              href="#contact"
               className="text-lg font-medium"
               onClick={() => setShowMenu(false)}
             >
@@ -109,7 +114,6 @@ export default function Home() {
           </nav>
         </div>
       </header>
-
       <div className="min-h-small-viewport flex flex-col  px-8 pt-32 text-center bg-gray-100">
         <div className=" m-auto">
           <h1 className=" font-display text-balance text-4xl font-extrabold mx-auto mx-w-2xl tracking-tight sm:text-6xl md:text-7xl">
@@ -142,7 +146,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       <section className="scroll-mt-24 py-16 bg-white" id="features">
         <div className="mx-auto max-w-screen-2xl px-4 text-center sm:px-6 lg:px-8">
           <div className="space-y-8">
@@ -164,7 +167,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section className="scroll-mt-24 py-16 bg-white">
         <div className="mx-auto max-w-4xl text-center sm:px-6 1g:px-8">
           <div className="grid auto-cols-max auto-rows-fr grid-cols-1 gap-4 px-6 sm:grid-cols-2 sm:gap-8">
@@ -295,11 +297,10 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <section className="scroll-mt-24 py-16 bg-gray-100" id="how-it-works">
-
-      </section>
-
+      <section
+        className="scroll-mt-24 py-16 bg-gray-100"
+        id="how-it-works"
+      ></section>
       <section className="scroll-mt-24 py-16 bg-gray-100" id="contact">
         <div className="mx-auto max-w-screen-2xl px-4 text-center sm:px-6 lg:px-8">
           <div className="space-y-8">
@@ -399,10 +400,71 @@ export default function Home() {
         </div>
       </section>
 
-      <footer>
-
+      <footer className="bg-white text-black relative">
+        <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
+          <p className="text-center mb-4">Stay connected with us:</p>
+          <div className="flex space-x-4 mb-4">
+            <a href="#" className="text-primary hover:text-gray-400">
+              <FaFacebook size={28} />
+            </a>
+            <a href="#" className="text-primary hover:text-gray-400">
+              <FaTwitter size={28} />
+            </a>
+            <a href="#" className="text-primary hover:text-gray-400">
+              <FaInstagram size={28} />
+            </a>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4 ">
+            <div>
+              <h3 className="text-lg font-bold mb-2">Company</h3>
+              <ul>
+                <li>
+                  <a href="#">About Us</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold mb-2">Support</h3>
+              <ul>
+                <li>
+                  <a href="#">Knowledge Base</a>
+                </li>
+                <li>
+                  <a href="#">Contact Us</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold mb-2">Legal</h3>
+              <ul>
+                <li>
+                  <a href="#">Terms ond Conditions</a>
+                </li>
+                <li>
+                  <a href="#">Privacy Policy</a>
+                </li>
+              </ul>
+            </div>
+           
+            <div className="">
+              <h3 className="text-lg font-bold mb-2">Languages</h3>
+              <select className="text-black border text-md  rounded-lg px-5 py-3">
+                <option value="en">English</option>
+                <option value="en">French</option>
+              </select>
+            </div>
+          </div>
+          <button
+            className="text-gray-300 hover:text-gray-400 px-3 py-2 border-0 bg-primary absolute right-4 bottom-4"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            <MdKeyboardArrowUp size={34} />
+          </button>
+        </div>
+        <p className="text-sm text-center ">
+          &copy; {new Date().getFullYear()} Consultly. All rights reserved.
+        </p>
       </footer>
-
     </div>
   );
 }
