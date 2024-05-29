@@ -19,9 +19,9 @@ export default function MeetingsTable({ filter }: Props) {
   return (
     <div className="overflow-hidden rounded-lg w-full border border-gray-300 overflow-y-scroll">
       <table className="p-3 w-full text-left border-collapse">
-        <thead>
+        <thead className="">
           <tr className="bg-gray-75">
-            <th className="uppercase text-sm font-semibold p-3">Date</th>
+            <th className="uppercase text-sm font-semibold p-3 pl-8">Date</th>
             <th className="uppercase text-sm font-semibold py-3">Guest</th>
             <th className="uppercase text-sm font-semibold py-3">Duration</th>
             <th className="uppercase text-sm font-semibold py-3">

@@ -11,7 +11,7 @@ export default function ButtonFilter({ onClick, children, isActive }: Props) {
     <Button
       onClick={onClick}
       size="xs"
-      className="hover:bg-primary hover:text-gray-100 dark:hover:text-white capitalize"
+      className="hover:bg-primary px-2 py-1 hover:text-gray-100 dark:hover:text-white capitalize"
       variant={isActive ? "default" : "outline"}
     >
       {children}

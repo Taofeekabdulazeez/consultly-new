@@ -18,7 +18,7 @@ export default function MeetingsFilter() {
   const filters = ["all", "confirmed", "in-prgoress", "paid", "pending"];
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 flex-wrap">
       {filters.map((filter) => (
         <ButtonFilter
           key={filter}
