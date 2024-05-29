@@ -114,6 +114,7 @@ export default function Home() {
           </nav>
         </div>
       </header>
+
       <div className="min-h-small-viewport flex flex-col  px-8 pt-32 text-center bg-gray-100">
         <div className=" m-auto">
           <h1 className=" font-display text-balance text-4xl font-extrabold mx-auto mx-w-2xl tracking-tight sm:text-6xl md:text-7xl">
@@ -146,6 +147,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+
       <section className="scroll-mt-24 py-16 bg-white" id="features">
         <div className="mx-auto max-w-screen-2xl px-4 text-center sm:px-6 lg:px-8">
           <div className="space-y-8">
@@ -167,6 +169,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <section className="scroll-mt-24 py-16 bg-white">
         <div className="mx-auto max-w-4xl text-center sm:px-6 1g:px-8">
           <div className="grid auto-cols-max auto-rows-fr grid-cols-1 gap-4 px-6 sm:grid-cols-2 sm:gap-8">
@@ -297,10 +300,11 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section
-        className="scroll-mt-24 py-16 bg-gray-100"
+
+      <section className="scroll-mt-24 py-16 bg-gray-100"
         id="how-it-works"
       ></section>
+
       <section className="scroll-mt-24 py-16 bg-gray-100" id="contact">
         <div className="mx-auto max-w-screen-2xl px-4 text-center sm:px-6 lg:px-8">
           <div className="space-y-8">
