@@ -16,7 +16,7 @@ export default function ButtonTheme() {
   return (
     <button
       onClick={toggleMode}
-      className="p-1.5 hover:bg-gray-75 text-primary"
+      className="p-1.5 order-2 md:-order-1 hover:bg-gray-75 text-primary"
     >
       {isDarkMode ? <Sun /> : <Moon />}
     </button>

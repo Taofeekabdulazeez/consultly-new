@@ -93,9 +93,9 @@
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
-
+/* 
 ::-webkit-scrollbar-track {
   background-color: #eee;
 }
@@ -110,7 +110,7 @@
 
 .dark ::-webkit-scrollbar-thumb {
   background-color: rgb(67, 10, 158);
-}
+} */
 
 .loader {
   width: 18px;
