@@ -19,7 +19,7 @@ export default function Page() {
         <div className="mb-3">
           <Logo />
         </div>
-        <div className="w-[80%] max-w-[500px] mx-auto bg-gray-50 p-6 shadow-sm rounded-md">
+        <div className="w-[90%] max-w-[500px] mx-auto bg-gray-50 p-6 shadow-sm rounded-md">
           <div className="mb-6 text-center">
             <Heading type="h4">{`Let's get started`}</Heading>
             <P size="sm">Sign-up to with Consultly for free </P>
