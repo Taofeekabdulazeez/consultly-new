@@ -15,6 +15,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useMobile } from "@/hooks/useMobileNav";
 import { Button } from "./ui/button";
+import Logo from "./Logo";
 
 const navLinks = [
   {
@@ -57,7 +58,6 @@ const navLinks = [
 export default function AppNav() {
   const pathname = usePathname();
   const { isNavOpen, toggleNav } = useMobile();
-  console.log(isNavOpen);
 
   return (
     <nav
@@ -78,7 +78,10 @@ export default function AppNav() {
       >
         {!isNavOpen ? <Menu size={30} /> : <X size={30} />}
       </Button>
-      <ul className="flex flex-col p-3 gap-2 mt-14 md:mt-0">
+      <div className="absolute left-4 top-5 block md:hidden">
+        <Logo />
+      </div>
+      <ul className="flex flex-col p-3 gap-2 mt-20 md:mt-0">
         {navLinks.map((link) => {
           const { name, href, Icon } = link;
           return (
