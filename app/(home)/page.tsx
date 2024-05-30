@@ -77,6 +77,13 @@ export default function Home() {
           </div>
           <nav className="flex flex-col items-center space-y-6 p-6">
             <a
+              href="#home"
+              className="text-lg font-medium"
+              onClick={() => setShowMenu(false)}
+            >
+              Home
+            </a>
+            <a
               href="#features"
               className="text-lg font-medium"
               onClick={() => setShowMenu(false)}
@@ -97,6 +104,7 @@ export default function Home() {
             >
               Contact
             </a>
+
             <Link
               href="/login"
               className=" px-4 py-3 text-center rounded-full bg-gray-200 hover:bg-gray-300"
@@ -115,7 +123,10 @@ export default function Home() {
         </div>
       </header>
 
-      <div className="min-h-screen flex flex-col justify-center sm:mt-20 items-center px-8 text-center bg-gray-100">
+      <div
+        id="home"
+        className="min-h-screen flex flex-col justify-center sm:mt-20 items-center px-8 text-center bg-gray-100"
+      >
         <div>
           <h1 className="font-display text-4xl font-extrabold mx-auto max-w-2xl tracking-tight sm:text-6xl md:text-7xl">
             <span className="block">Revolutionize your</span>
@@ -257,7 +268,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="scroll-mt-24 py-16 pb-2 sm:pb-8 bg-gray-100" id="how-it-works">
+      <section
+        className="scroll-mt-24 py-16 pb-2 sm:pb-8 bg-gray-100"
+        id="how-it-works"
+      >
         <div className="mx-auto max-w-screen-2xl px-4 text-center sm:px-6 lg:px-8">
           <div className="space-y-8">
             <h2 className="text-primary text-base font-medium uppercase tracking-wider">
