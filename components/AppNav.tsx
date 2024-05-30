@@ -3,6 +3,7 @@
 import {
   CalendarCheck,
   CircleDollarSign,
+  CircleHelp,
   CircleUser,
   Home,
   List,
@@ -52,6 +53,11 @@ const navLinks = [
     name: "Earnings",
     href: "/dashboard/earnings",
     Icon: CircleDollarSign,
+  },
+  {
+    name: "Help",
+    href: "/dashboard/help",
+    Icon: CircleHelp,
   },
 ];
 
