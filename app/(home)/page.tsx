@@ -388,21 +388,9 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-white text-black relative">
-        <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
-          <p className="text-center mb-4">Stay connected with us:</p>
-          <div className="flex space-x-4 mb-4">
-            <a href="#" className="text-primary hover:text-gray-400">
-              <FaFacebook size={28} />
-            </a>
-            <a href="#" className="text-primary hover:text-gray-400">
-              <FaTwitter size={28} />
-            </a>
-            <a href="#" className="text-primary hover:text-gray-400">
-              <FaInstagram size={28} />
-            </a>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4 ">
+      <footer className="bg-white text-black p-10 relative">
+        <div className="max-w-6xl mx-auto py-2 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4 w-full ">
             <div>
               <h3 className="text-lg font-bold mb-2">Company</h3>
               <ul>
@@ -433,7 +421,6 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-
             <div className="">
               <h3 className="text-lg font-bold mb-2">Languages</h3>
               <select className="text-black border text-md  rounded-lg px-5 py-3">
@@ -442,16 +429,12 @@ export default function Home() {
               </select>
             </div>
           </div>
-          <button
-            className="text-gray-300 hover:text-gray-400 px-3 py-2 border-0 bg-primary absolute right-4 bottom-4"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            <MdKeyboardArrowUp size={34} />
-          </button>
+   <p className="text-sm text-center">
+                &copy; {new Date().getFullYear()} Consultify. All rights
+                reserved.
+              </p>
+    
         </div>
-        <p className="text-sm text-center ">
-          &copy; {new Date().getFullYear()} Consultly. All rights reserved.
-        </p>
       </footer>
     </div>
   );
