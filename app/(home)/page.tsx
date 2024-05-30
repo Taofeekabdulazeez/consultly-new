@@ -84,7 +84,7 @@ export default function Home() {
               Features
             </a>
             <a
-              href="how-it-works"
+              href="#how-it-works"
               className="text-lg font-medium"
               onClick={() => setShowMenu(false)}
             >
