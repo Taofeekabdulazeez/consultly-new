@@ -2,7 +2,7 @@ export default function Logo() {
   return (
     <div className="flex flex-col mx-auto w-fit">
       <span className="text-2xl md:text-3xl  font-extrabold text-primary">
-        Consultly
+        Consultify
       </span>
       <div className="flex ml-4">
         <span className="rounded-full inline-block h-1.5 w-1.5 bg-red-500"></span>

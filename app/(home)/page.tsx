@@ -23,7 +23,7 @@ export default function Home() {
   const [showMenu, setShowMenu] = useState(false);
   
   return (
-    <div className="">
+    <div className="mx-auto min-h-full w-full overflow-auto">
       <header className="bg-white z-10 fixed top-0 left-0 right-0">
         <div className="header:justify-start header:space-x-10 header:px-16 mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-6 sm:px-6">
           <div className="relative top-[-5px] flex gap-10 items-center">
@@ -115,31 +115,24 @@ export default function Home() {
         </div>
       </header>
 
-      <div className="min-h-small-viewport flex flex-col  px-8 pt-32 text-center bg-gray-100">
-        <div className=" m-auto">
-          <h1 className=" font-display text-balance text-4xl font-extrabold mx-auto mx-w-2xl tracking-tight sm:text-6xl md:text-7xl">
-            <span className="relative">Revolutionize your</span>
-            <br />
-            <span className=" relative  text-primary  sm:whitespace-nowrap">
-              <span className="relative">DIGITAL CONSULTATION</span>
+      <div className="min-h-screen flex flex-col justify-center sm:mt-20 items-center px-8 text-center bg-gray-100">
+        <div>
+          <h1 className="font-display text-4xl font-extrabold mx-auto max-w-2xl tracking-tight sm:text-6xl md:text-7xl">
+            <span className="block">Revolutionize your</span>
+            <span className="block text-primary sm:whitespace-nowrap">
+              Digital Consultation
             </span>
-            <br />
-            Process.
+            <span className="block">Process.</span>
           </h1>
-          <p
-            className=" mx-auto mt
-          -8 max-w-2xl text-slate-700 md:text-lg"
-          >
-            Consultly is an integrated platform for managing online
+          <p className="mx-auto mt-8 max-w-2xl text-slate-700 md:text-lg">
+            Consultify is an integrated platform for managing online
             consultations comprehensively, offering all the essential tools for{" "}
-            <strong>scheduling meetings</strong>
-            and <strong>video calling</strong> your clients.
+            <strong>scheduling meetings</strong> and{" "}
+            <strong>video calling</strong> your clients.
           </p>
           <div className="mt-10 flex justify-center gap-x-6 mb-4">
             <a
-              className=" relative inline-flex items-center justify-center
-               duration-150 ease-in-out border border-primary/70 hover:bg-purple-300
-                font-medium text-primary py-2 rounded-full hover:border-gray-300 px-5 md:px-10"
+              className="relative inline-flex items-center justify-center duration-150 ease-in-out border border-primary/70 hover:bg-purple-300 font-medium text-primary py-2 rounded-full hover:border-gray-300 px-5 md:px-10"
               href="#"
             >
               Learn more
@@ -148,8 +141,8 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="scroll-mt-24 py-16 bg-white" id="features">
-        <div className="mx-auto max-w-screen-2xl px-4 text-center sm:px-6 lg:px-8">
+      <section className="scroll-mt-24 py-16 bg-white w-full" id="features">
+        <div className="mx-auto max-w-screen-2xl text-center px-4  sm:px-6 lg:px-8">
           <div className="space-y-8">
             <h2 className="text-primary text-base font-medium uppercase tracking-wider">
               Features
@@ -167,132 +160,95 @@ export default function Home() {
               <img src="./dashboard.png" alt="dashboard" />
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="scroll-mt-24 py-16 bg-white">
-        <div className="mx-auto max-w-4xl text-center sm:px-6 1g:px-8">
-          <div className="grid auto-cols-max auto-rows-fr grid-cols-1 gap-4 px-6 sm:grid-cols-2 sm:gap-8">
-            <div className="flex flex-col p-2 sm:flex-row">
+          <h2 className="text-primary text-base font-medium uppercase tracking-wider mt-10 text-center">
+            Key Features
+          </h2>
+          <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+            <div className="flex flex-col p-4 bg-gray-100 rounded-md">
               <div className="self-start rounded-lg p-3 bg-purple-100">
-                <BiNotepad className="size-[25px] text-indigo-300" />
+                <BiNotepad className="text-2xl text-indigo-300" />
               </div>
-              <div className="flex flex-col text-left sm:ml-6">
-                <div className="mt-4 flex-1 space-y-2 sm:mt-0">
-                  <h3 className="font-bold">Scheduling form</h3>
-                  <p>
-                    Complete the simple form to send your client an invitation
-                    by email.
-                  </p>
-                </div>
-                <a
-                  href="#"
-                  target="_blank"
-                  className="text-primary mt-2 cursor-pointer underline"
-                >
+              <div className="flex flex-col mt-4">
+                <h3 className="font-bold">Scheduling form</h3>
+                <p className="mt-2">
+                  Complete the simple form to send your client an invitation by
+                  email.
+                </p>
+                <a href="#" className="text-primary mt-2 underline">
                   Learn more
                 </a>
               </div>
             </div>
-            <div className="flex flex-col p-2 sm:flex-row">
+            <div className="flex flex-col p-4 bg-gray-100 rounded-md">
               <div className="self-start rounded-lg p-3 bg-blue-50">
-                <AiOutlineIdcard className="size-[25px] text-blue-300" />
+                <AiOutlineIdcard className="text-2xl text-blue-300" />
               </div>
-              <div className="flex flex-col text-left sm:ml-6">
-                <div className="mt-4 flex-1 space-y-2 sm:mt-0">
-                  <h3 className="font-bold">Public profile</h3>
-                  <p>
-                    Create your Consultly profile and share it anywhere on the
-                    web.
-                  </p>
-                </div>
-                <a
-                  href="#"
-                  target="_blank"
-                  className="text-primary mt-2 cursor-pointer underline"
-                >
+              <div className="flex flex-col mt-4">
+                <h3 className="font-bold">Public profile</h3>
+                <p className="mt-2">
+                  Create your Consultly profile and share it anywhere on the
+                  web.
+                </p>
+                <a href="#" className="text-primary mt-2 underline">
                   See the demo
                 </a>
               </div>
             </div>
-            <div className="flex flex-col p-2 sm:flex-row">
+            <div className="flex flex-col p-4 bg-gray-100 rounded-md">
               <div className="self-start rounded-lg p-3 bg-pink-100">
-                <FaCalendarAlt className="size-[25px] text-pink-400" />
+                <FaCalendarAlt className="text-2xl text-pink-400" />
               </div>
-              <div className="flex flex-col text-left sm:ml-6">
-                <div className="mt-4 flex-1 space-y-2 sm:mt-0">
-                  <h3 className="font-bold">Availability calendar</h3>
-                  <p>
-                    Share the calendar with available time slots to automate
-                    scheduling meetings and accepting payments.
-                  </p>
-                </div>
-                <a
-                  href="#"
-                  target="_blank"
-                  className="text-primary mt-2 cursor-pointer underline"
-                >
+              <div className="flex flex-col mt-4">
+                <h3 className="font-bold">Availability calendar</h3>
+                <p className="mt-2">
+                  Share the calendar with available time slots to automate
+                  scheduling meetings and accepting payments.
+                </p>
+                <a href="#" className="text-primary mt-2 underline">
                   Learn more
                 </a>
               </div>
             </div>
-
-            <div className="flex flex-col p-2 sm:flex-row">
+            <div className="flex flex-col p-4 bg-gray-100 rounded-md">
               <div className="self-start rounded-lg p-3 bg-indigo-100">
-                <FaVideo className="size-[30px] text-purple-300" />
+                <FaVideo className="text-2xl text-purple-300" />
               </div>
-              <div className="flex flex-col text-left sm:ml-6">
-                <div className="mt-4 flex-1 space-y-2 sm:mt-0">
-                  <h3 className="font-bold">Video conferencing platform</h3>
-                  <p>
-                    Use our browser built-in video solution to connect with
-                    clients without the need for external applications.
-                  </p>
-                </div>
-                <a
-                  href="#"
-                  target="_blank"
-                  className="text-primary mt-2 cursor-pointer underline"
-                >
+              <div className="flex flex-col mt-4">
+                <h3 className="font-bold">Video conferencing platform</h3>
+                <p className="mt-2">
+                  Use our browser built-in video solution to connect with
+                  clients without the need for external applications.
+                </p>
+                <a href="#" className="text-primary mt-2 underline">
                   Learn more
                 </a>
               </div>
             </div>
-            <div className="flex flex-col p-2 sm:flex-row">
+            <div className="flex flex-col p-4 bg-gray-100 rounded-md">
               <div className="self-start rounded-lg p-3 bg-indigo-200">
-                <BiWorld className="size-[25px] text-blue-400" />
+                <BiWorld className="text-2xl text-blue-400" />
               </div>
-              <div className="flex flex-col text-left sm:ml-6">
-                <div className="mt-4 flex-1 space-y-2 sm:mt-0">
-                  <h3 className="font-bold">Time zone support</h3>
-                  <p>Always be on time with our time zone converter.</p>
-                </div>
-                <a
-                  href="#"
-                  target="_blank"
-                  className="text-primary mt-2 cursor-pointer underline"
-                >
+              <div className="flex flex-col mt-4">
+                <h3 className="font-bold">Time zone support</h3>
+                <p className="mt-2">
+                  Always be on time with our time zone converter.
+                </p>
+                <a href="#" className="text-primary mt-2 underline">
                   Learn more
                 </a>
               </div>
             </div>
-            <div className="flex flex-col p-2 sm:flex-row">
+            <div className="flex flex-col p-4 bg-gray-100 rounded-md">
               <div className="self-start rounded-lg p-3 bg-pink-50">
-                <BiMessageDetail className="size-[25px] text-pink-400" />
+                <BiMessageDetail className="text-2xl text-pink-400" />
               </div>
-              <div className="flex flex-col text-left sm:ml-6">
-                <div className="mt-4 flex-1 space-y-2 sm:mt-0">
-                  <h3 className="font-bold">Meeting requests</h3>
-                  <p>
-                    No more chaos in your social media inboxes. Receive meeting
-                    requests in one place.
-                  </p>
-                </div>
-                <a
-                  href="#"
-                  target="_blank"
-                  className="text-primary mt-2 cursor-pointer underline"
-                >
+              <div className="flex flex-col mt-4">
+                <h3 className="font-bold">Meeting requests</h3>
+                <p className="mt-2">
+                  No more chaos in your social media inboxes. Receive meeting
+                  requests in one place.
+                </p>
+                <a href="#" className="text-primary mt-2 underline">
                   Learn more
                 </a>
               </div>
@@ -301,9 +257,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="scroll-mt-24 py-16 bg-gray-100"
-        id="how-it-works"
-      ></section>
+      <section className="scroll-mt-24 py-16 pb-2 sm:pb-8 bg-gray-100" id="how-it-works">
+        <div className="mx-auto max-w-screen-2xl px-4 text-center sm:px-6 lg:px-8">
+          <div className="space-y-8">
+            <h2 className="text-primary text-base font-medium uppercase tracking-wider">
+              How it works
+            </h2>
+            <h3 className="text-balance font-display mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Arrange a consultation in 3 simple steps
+            </h3>
+            <p className="text-balance header:px-16 mx-auto max-w-4xl px-6 text-slate-700 md:text-lg">
+              Our goal is to shorten and simplify the process of holding digital
+              consultations as much as possible so that you do not have to waste
+              your valuable time.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section className="scroll-mt-24 py-16 bg-gray-100" id="contact">
         <div className="mx-auto max-w-screen-2xl px-4 text-center sm:px-6 lg:px-8">
@@ -449,7 +419,7 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-           
+
             <div className="">
               <h3 className="text-lg font-bold mb-2">Languages</h3>
               <select className="text-black border text-md  rounded-lg px-5 py-3">

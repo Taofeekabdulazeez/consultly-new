@@ -6,7 +6,7 @@ type Props = {
   params: {
     username: string;
   };
-};
+}; 
 
 export default function Page({ params }: Props) {
   const { username } = params;

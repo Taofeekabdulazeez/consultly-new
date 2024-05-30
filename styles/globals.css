@@ -49,6 +49,7 @@
     --color-gray-900: 0 0% 0%;
   }
 
+  
   .dark {
     /* --background: 224 71.4% 4.1%; */
     --background: var(--color-gray-75);
@@ -100,6 +101,7 @@
   }
   body {
     @apply bg-background text-foreground;
+  
   }
 }
 
@@ -153,4 +155,8 @@
   100% {
     box-shadow: -48px 0, -18px 0, 18px 0, 48px -16px;
   }
+}
+
+html{
+  scroll-behavior: smooth;
 }
