@@ -5,15 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function captitalize(text: string) {
-  // const result = text.split("").at(0);
-
-  // console.log(result, text);
-
-  return;
-}
-
-export function getCurrentHpur() {
+export function getCurrentHour() {
   const currentHour = new Date().getHours();
 
   if (currentHour < 12) return "Good Morning";
@@ -21,4 +13,8 @@ export function getCurrentHpur() {
   if (currentHour < 18) return "Good afternoon";
 
   return "Good evening";
+}
+
+export function getTodaysDate() {
+  return new Date().toDateString();
 }

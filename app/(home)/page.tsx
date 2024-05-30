@@ -14,14 +14,14 @@ import { IoMdClose } from "react-icons/io";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "@/components/Logo";
-import {FaFacebook} from 'react-icons/fa';
-import {FaTwitter} from 'react-icons/fa';
-import {FaInstagram} from 'react-icons/fa';
+import { FaFacebook } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 import { MdLanguage, MdKeyboardArrowUp } from "react-icons/md";
 
 export default function Home() {
   const [showMenu, setShowMenu] = useState(false);
-  
+
   return (
     <div className="mx-auto min-h-full w-full overflow-auto">
       <header className="bg-white z-10 fixed top-0 left-0 right-0">
@@ -374,7 +374,7 @@ export default function Home() {
                     {" "}
                     <button
                       type="submit"
-                      className="transition-color relative inline-flex items-center justify-center duration-150 ease-in-out border border-transparent shadow-sm bg-primary focus:outline-none  font-medium text-white px-3 py-2 rounded-full px-5 sm:w-auto md:px-12 cursor-pointer hover:bg-purple-700"
+                      className="transition-color relative inline-flex items-center justify-center duration-150 ease-in-out border border-transparent shadow-sm bg-primary focus:outline-none  font-medium text-white px-3 py-2 rounded-full sm:w-auto md:px-12 cursor-pointer hover:bg-purple-700"
                     >
                       <span className="inline-flex items-center">
                         Let&apos;s talk

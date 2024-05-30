@@ -8,12 +8,30 @@ import CustomSelect from "@/components/CustomSelect";
 import { countryOptions } from "@/static_data/data";
 import { Heading } from "@/components/ui/Heading";
 import { P } from "@/components/ui/typography";
+import { getCurrentUser } from "@/lib/actions";
 
 export const metadata = {
   title: "Profile",
 };
 
-export default function Page() {
+export default async function Page() {
+  const {
+    email,
+    username,
+    firstName,
+    lastName,
+    language,
+    country,
+    city,
+    profession,
+    website_url,
+    linkedIn_url,
+    about,
+    twitter_url,
+    facebook_url,
+    instagram_url,
+  } = await getCurrentUser();
+
   return (
     <div className="bg-gray-50 p-6 rounded-md">
       <Heading>Profile</Heading>
@@ -28,7 +46,7 @@ export default function Page() {
       <div className="grid gap-4 md:grid-cols-[1fr_auto] mb-10">
         <div className="grid grid-cols-[auto_1fr] border rounded-md">
           <Input disabled type="text" value={`consultly.com/consult/`} />
-          <Input disabled type="text" value={`taofeek-abdulazeez`} />
+          <Input disabled type="text" defaultValue={username} />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <Button variant="outline">
@@ -45,7 +63,7 @@ export default function Page() {
       <Label htmlFor="avatar">Avatar</Label>
       <div className="flex items-center gap-3 mb-10">
         <div className="h-16 w-16 rounded-full border flex items-center justify-center">
-          <Heading type="h4">{`TA`}</Heading>
+          <Heading type="h4">{firstName.slice(0, 2).toUpperCase()}</Heading>
         </div>
         <label className="focus:ring-primary relative inline-flex cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-gray-50 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2">
           <P size="sm">Change avatar</P>
@@ -60,12 +78,12 @@ export default function Page() {
       <div className="grid gap-6">
         <div>
           <Label htmlFor="firstName">First name</Label>
-          <Input disabled type="text" value={`Taofeek`} />
+          <Input type="text" defaultValue={firstName} />
         </div>
 
         <div>
           <Label htmlFor="lastName">Last name</Label>
-          <Input disabled type="text" value={`Abdulazeez`} />
+          <Input type="text" defaultValue={lastName} />
         </div>
 
         <div>
@@ -76,7 +94,7 @@ export default function Page() {
             <Label htmlFor="profession">Your profession</Label>
           </div>
 
-          <Input value={""} />
+          <Input type="text" defaultValue={profession} />
         </div>
 
         {/* country */}
@@ -88,7 +106,7 @@ export default function Page() {
 
           <div>
             <Label htmlFor="city">City</Label>
-            <Input type="text" value={``} />
+            <Input type="text" defaultValue={city} />
           </div>
         </div>
 
@@ -101,31 +119,31 @@ export default function Page() {
 
         <div>
           <Label htmlFor="city">Website</Label>
-          <input type="text" value={``} />
+          <Input type="text" defaultValue={website_url} />
         </div>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
             <Label htmlFor="city">Linkedin</Label>
-            <Input type="text" value={``} />
+            <Input type="text" defaultValue={linkedIn_url} />
           </div>
           <div>
             <Label htmlFor="city">Twitter</Label>
-            <Input type="text" value={``} />
+            <Input type="text" defaultValue={twitter_url} />
           </div>
           <div>
             <Label htmlFor="city">Facebook</Label>
-            <Input type="text" value={``} />
+            <Input type="text" defaultValue={facebook_url} />
           </div>
           <div>
             <Label htmlFor="city">Instagram</Label>
-            <Input type="text" value={``} />
+            <Input type="text" defaultValue={instagram_url} />
           </div>
         </div>
         <div>
           <Label htmlFor="city">About</Label>
           <Textarea
             rows={6}
-            value={``}
+            defaultValue={about}
             placeholder="A few words about you and your professional experience?"
           ></Textarea>
         </div>

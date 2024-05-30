@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
+import { createUser, getExistingUser } from "./actions";
 
 const authConfig = {
   providers: [
@@ -8,11 +9,29 @@ const authConfig = {
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
     }),
   ],
+
   callbacks: {
-    authorized({ auth, request }: any) {
+    authorized: ({ auth, request }: any) => {
       return !!auth?.user;
     },
+
+    signIn: async ({ user }: any) => {
+      try {
+        const existingUser = await getExistingUser(user.email);
+
+        if (!existingUser) await createUser({ email: user.email });
+        return true;
+      } catch {
+        return false;
+      }
+    },
+
+    session: async ({ session }: any) => {
+      const user = await getExistingUser(session.user.email);
+      session.user.userId = user.id;
+    },
   },
+
   pages: {
     signIn: "/login",
     signOut: "/sign-out",
@@ -24,4 +43,4 @@ export const {
   signIn,
   signOut,
   handlers: { GET, POST },
-} = NextAuth(authConfig);
+} = NextAuth(authConfig as any);

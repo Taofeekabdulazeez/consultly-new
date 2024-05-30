@@ -1,17 +1,10 @@
 import { Calendar } from "@/components/ui/calendar";
-import { FaAngleLeft } from "react-icons/fa";
-import { FaAngleRight } from "react-icons/fa";
-import dashboardImg from "@/public/img1.png";
-import Image from "next/image";
 import { Heading } from "@/components/ui/Heading";
 import { P } from "@/components/ui/typography";
 import MeetingsTable from "@/components/MeetingsTable";
 import { auth } from "@/lib/auth";
-import { getCurrentHpur } from "@/lib/utils";
-import React, { useState, useEffect } from "react";
-import { Info, MoveRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import StripeBanner from "@/components/StripeBanner";
+import { getCurrentHour, getTodaysDate } from "@/lib/utils";
 
 export const metadata = {
   title: "Dashboard",
@@ -19,7 +12,6 @@ export const metadata = {
 
 export default async function Page() {
   const session = await auth();
-  const currentDate = new Date();
 
   return (
     <div>
@@ -27,10 +19,10 @@ export default async function Page() {
       <div className="grid md:grid-cols-[1fr_auto] md:gap-6 md:grid-rows-2 mb-10">
         <div className="bg-gray-50 p-4 rounded-md">
           <Heading>
-            {getCurrentHpur()}, {session?.user?.name?.split(" ")[0]}👋
+            {getCurrentHour()}, {session?.user?.name?.split(" ")[0]}👋
           </Heading>
           <P size="sm">
-            It&apos;s <strong>{currentDate.toDateString()}</strong> today.
+            It&apos;s <strong>{getTodaysDate()}</strong> today.
           </P>
           <div className="max-w-md space-y-1">
             <P size="sm">

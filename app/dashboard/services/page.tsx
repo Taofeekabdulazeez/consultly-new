@@ -1,4 +1,5 @@
-import { DropdownMenuRadioGroupDemo } from "@/components/ActionMenu";
+import Fetching from "@/components/Fetching";
+import ServiceList from "@/components/ServiceList";
 import { Heading } from "@/components/ui/Heading";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -14,13 +15,17 @@ import {
 } from "@/components/ui/sheet";
 import { Textarea } from "@/components/ui/textarea";
 import { P } from "@/components/ui/typography";
+import { getUserServices } from "@/lib/actions";
 import { Info } from "lucide-react";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Services",
 };
 
-export default function Page() {
+export default async function Page() {
+  const services = await getUserServices();
+  console.log(services);
   return (
     <div className="bg-gray-50 rounded p-6">
       <div className="grid md:grid-cols-[1fr_auto] gap-6 md:gap-48 mb-10">
@@ -95,40 +100,9 @@ export default function Page() {
           </Sheet>
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-3">
-        <div className="px-6 py-4 border border-gray-200 grid grid-cols-[1fr_auto_auto] gap-3 justify-between items-center rounded-md">
-          <div>
-            <Heading type="h6">Mentorship</Heading>
-            <P size="sm">
-              This has to do with providing a guidance fro aspiring young
-              individuals
-            </P>
-          </div>
-          <div className="flex flex-col">
-            <P size="sm">Free</P>
-            <span className="text-gray-600 text-sm">/ 30m</span>
-          </div>
-          <div>
-            <DropdownMenuRadioGroupDemo />
-          </div>
-        </div>
-        <div className="px-6 py-4 border border-gray-200 grid grid-cols-[1fr_auto_auto] gap-3 justify-between items-center rounded-md">
-          <div>
-            <Heading type="h6">IT Consultancy</Heading>
-            <P size="sm">
-              This has to do with anything around CTO-as-a-Service, IT
-              consultancy service
-            </P>
-          </div>
-          <div className="flex flex-col">
-            <P size="sm">Free</P>
-            <span className="text-gray-600 text-sm">/ 30m</span>
-          </div>
-          <div>
-            <DropdownMenuRadioGroupDemo />
-          </div>
-        </div>
-      </div>
+      <Suspense fallback={<Fetching name="services" />}>
+        <ServiceList />
+      </Suspense>
     </div>
   );
 }

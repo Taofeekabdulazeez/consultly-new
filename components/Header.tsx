@@ -5,7 +5,7 @@ import ProfileMenu from "./ProfileMenu";
 
 export default async function Header() {
   const session = await auth();
-  console.log(session);
+
   return (
     <header className="z-10 p-4 flex justify-between items-center gap-3 bg-gray-50 fixed sm:static w-full">
       <div className="hidden md:block">
