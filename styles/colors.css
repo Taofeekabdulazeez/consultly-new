@@ -401,3 +401,7 @@
   --bg-layer-1: var(--color-gray-75);
   --bg-layer-2: var(--color-gray-100);
 }
+
+p {
+  display: block;
+}
