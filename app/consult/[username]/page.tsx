@@ -3,6 +3,8 @@ import { FiCalendar } from "react-icons/fi";
 import { IoLocationSharp } from "react-icons/io5";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { getCurrentDateTime } from "@/lib/utils";
+import StepIndicator from "@/components/ui/stepindicator";
+
 
 export const metadata = {
   title: "Consult",
@@ -16,17 +18,14 @@ type Props = {
 
 export default function Page({ params }: Props) {
   const { username } = params;
+   const steps = ["Service", "Availability", "Details", "Payment", "Confirmation"];
+   const currentStep = 0;
   return (
     <div className="flex min-h-screen w-full flex-col overflow-auto">
       <header className="z-10 bg-white shadow-md">
-        <nav
-          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
-          aria-label="Top"
-        >
-          <div className="flex w-full  py-6 sm:justify-between">
-            <Logo />
-          </div>
-        </nav>
+        <div className="py-6 ">
+          <Logo />
+        </div>
       </header>
       <main className="flex-1 bg-gray-100 min-h: min-content">
         <div className="mx-auto max-w-4xl sm:px-6 sm:py-12 lg:px-8">
@@ -77,12 +76,8 @@ export default function Page({ params }: Props) {
                 <div className="hidden md:block">
                   <p className="text-sm">Starting at</p>
                   <div className="mt-2 flex flex-row items-center justify-center space-x-1.5">
-                    <h4 className="text-3xl font-bold ">
-                      PLN&nbsp;0.00
-                    </h4>
-                    <p className="whitespace-nowrap text-sm ">
-                      / 30m
-                    </p>
+                    <h4 className="text-3xl font-bold ">PLN&nbsp;0.00</h4>
+                    <p className="whitespace-nowrap text-sm ">/ 30m</p>
                   </div>
                 </div>
               </div>
@@ -95,6 +90,40 @@ export default function Page({ params }: Props) {
                 </div>
               </div>
               <div className="border-t pb-4"></div>
+              <section className="mt-5">
+                <h1 className="text-center text-xl text-primary">
+                  Book Appointment
+                </h1>
+                <div className="container mx-auto p-4">
+                  
+                  <StepIndicator currentStep={currentStep} steps={steps} />
+                </div>
+                <h3 className="mt-5 text-md">Select your service</h3>
+                <select
+                  name="services"
+                  id="services"
+                  className="focus:border-primary focus:ring-primary block rounded-md border-gray-300 px-5 w-full bg-gray-100 text-md focus:outline-none md:py-1"
+                >
+                  <option value="">Consultancy</option>
+                  <option value="">Training</option>
+                  <option value="">Follow -Up</option>
+                  <option value="">Consultancy</option>
+                </select>
+              </section>
+              <div className="flex justify-between align-center mt-10">
+                <button
+                  type="submit"
+                  className="transition-color relative inline-flex items-center justify-center duration-150 ease-in-out border border-transparent shadow-sm bg-gray-200 focus:outline-none  font-medium text-black px-3 py-2 rounded-full sm:w-auto md:px-12 cursor-pointer hover:bg-gray-500"
+                >
+                  <span className="inline-flex items-center">Cancel</span>
+                </button>
+                <button
+                  type="submit"
+                  className="transition-color relative inline-flex items-center justify-center duration-150 ease-in-out border border-transparent shadow-sm bg-primary focus:outline-none  font-medium text-white px-3 py-2 rounded-full sm:w-auto md:px-12 cursor-pointer hover:bg-blue-500"
+                >
+                  <span className="inline-flex items-center">Next</span>
+                </button>
+              </div>
             </section>
           </div>
         </div>

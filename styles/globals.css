@@ -160,3 +160,10 @@
 html{
   scroll-behavior: smooth;
 }
+
+.step-line {
+  border-top: 2px solid #d1d5db;
+}
+.step-line-active {
+  border-top: 2px solid #3b82f6;
+}
