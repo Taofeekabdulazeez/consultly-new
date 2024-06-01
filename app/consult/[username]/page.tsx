@@ -90,7 +90,7 @@ export default function Page({ params }: Props) {
                 </div>
               </div>
               <div className="border-t pb-4"></div>
-              <section className="mt-5">
+              <section className="mt-5 min-w-screen">
                 <h1 className="text-center text-xl text-primary">
                   Book Appointment
                 </h1>
