@@ -26,11 +26,11 @@ export async function getExistingUser(email: string): Promise<User> {
 }
 
 export async function getCurrentUser(): Promise<User> {
-  const session = (await auth()) as any;
+  const session = await auth();
   const { data: user, error } = await supabase
     .from("users")
     .select("*")
-    .eq("id", session?.user?.userId)
+    .eq("id", session?.user?.id)
     .single();
 
   if (error) throw new Error("Error getting current user");
@@ -39,12 +39,12 @@ export async function getCurrentUser(): Promise<User> {
 }
 
 export async function getUserServices(): Promise<Service[]> {
-  const session = (await auth()) as any;
+  const session = await auth();
 
   const { data: services, error } = await supabase
     .from("services")
     .select("*")
-    .eq("userId", session?.user?.userId);
+    .eq("userId", session?.user?.id);
 
   if (error) throw new Error("Error getting user services");
 

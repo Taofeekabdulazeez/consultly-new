@@ -28,7 +28,7 @@ const authConfig = {
 
     session: async ({ session }: any) => {
       const user = await getExistingUser(session.user.email);
-      session.user.userId = user.id;
+      session.user.id = user.id;
     },
   },
 

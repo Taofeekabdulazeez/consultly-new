@@ -18,6 +18,7 @@ export function getCurrentHour() {
 export function getTodaysDate() {
   return new Date().toDateString();
 }
+
 export const getCurrentDateTime = (): string => {
   const now = new Date();
   const year = now.getFullYear();

@@ -1,15 +1,21 @@
+import { auth } from "../auth";
 import { supabase } from "../supabase";
 
-export async function createUser(user: any) {
-  await supabase.from("users").insert([user]).select();
-}
+class UserAction {
+  // session;
 
-export async function getUser(email: string) {
-  const { data: user, error } = await supabase
-    .from("users")
-    .select("*")
-    .eq("email", email)
-    .single();
+  constructor() {}
 
-  return user;
+  async getCurrentUser(): Promise<User> {
+    const session = await auth();
+    const { data: user, error } = await supabase
+      .from("users")
+      .select("*")
+      .eq("id", session?.user?.id)
+      .single();
+
+    if (error) throw new Error("Error getting current user");
+
+    return user;
+  }
 }
