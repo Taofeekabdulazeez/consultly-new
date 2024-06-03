@@ -1,19 +1,18 @@
 type MeetingFilter = "all" | "confirmed" | "in-progress" | "pending" | "paid";
 
 type Meeting = {
-  meetingId: string;
-  duration: string;
+  id: string;
   status: string;
-  guest: string;
-  email: string;
   time: string;
+  duration: number;
   date: string;
-  price: string;
-  meetingType: string;
+  guest: Guest;
+  service: Service;
 };
 
 type User = {
   id: string;
+  created_at: string;
   email: string;
   username: string;
   firstName: string;
@@ -37,5 +36,13 @@ type Service = {
   startDate: string;
   endDate: string;
   price: number;
+  userId: string;
+};
+
+type Guest = {
+  id: string;
+  email: string;
+  fullName: string;
+  note: string;
   userId: string;
 };

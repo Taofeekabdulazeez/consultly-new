@@ -30,3 +30,46 @@ export const getCurrentDateTime = (): string => {
 
   return `${year}/${month}/${day} ${hours}:${minutes}`;
 };
+
+export function formatDateString(dateString: string) {
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const monthsOfYear = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  // Parse the input date string
+  const dateParts = dateString.split("-");
+  const year = parseInt(dateParts[0], 10);
+  const month = parseInt(dateParts[1], 10) - 1; // Months are zero-indexed
+  const day = parseInt(dateParts[2], 10);
+
+  // Create a Date object
+  const date = new Date(year, month, day);
+
+  // Get the day of the week, month name, and day of the month
+  const dayOfWeek = daysOfWeek[date.getDay()];
+  const monthName = monthsOfYear[month];
+  const dayOfMonth = date.getDate();
+
+  // Format the date string
+  return `${monthName} ${dayOfMonth}, ${year}`;
+}

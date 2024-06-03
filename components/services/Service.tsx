@@ -1,6 +1,6 @@
-import { DropdownMenuRadioGroupDemo } from "./ActionMenu";
-import { Heading } from "./ui/Heading";
-import { P } from "./ui/typography";
+import ServiceActionMenu from "./ServiceActionMenu";
+import { Heading } from "../ui/Heading";
+import { P } from "../ui/typography";
 
 type Props = {
   id: string;
@@ -21,7 +21,7 @@ export default function Service({ id, title, description, price }: Props) {
         <span className="text-gray-600 text-sm">/ 30m</span>
       </div>
       <div>
-        <DropdownMenuRadioGroupDemo />
+        <ServiceActionMenu serviceId={id} />
       </div>
     </div>
   );

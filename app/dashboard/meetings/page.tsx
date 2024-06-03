@@ -1,6 +1,6 @@
-import MeetingsFilter from "@/components/MeetingsFilter";
-import MeetingsTable from "@/components/MeetingsTable";
 import TableLoader from "@/components/TableLoader";
+import MeetingsFilter from "@/components/meetings/MeetingsFilter";
+import MeetingsTable from "@/components/meetings/MeetingsTable";
 import { Heading } from "@/components/ui/Heading";
 import { Suspense } from "react";
 

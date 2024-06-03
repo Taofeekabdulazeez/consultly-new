@@ -50,3 +50,72 @@ export async function getUserServices(): Promise<Service[]> {
 
   return services;
 }
+
+export async function getUserMeetings(): Promise<Meeting[] | null | any[]> {
+  const session = await auth();
+  const { data: meetings, error } = await supabase
+    .from("meetings")
+    .select("id, status, time, duration, date, guest(*), service(*)")
+    .eq("userId", session?.user?.id);
+
+  return meetings;
+}
+
+export async function updateProfile(formData: FormData) {
+  const session = await auth();
+
+  const rawData = {
+    firstName: formData.get("firstName"),
+    lastName: formData.get("lastName"),
+    country: formData.get("country"),
+    city: formData.get("city"),
+    linkedIn_url: formData.get("linkedIn_url"),
+    twitter_url: formData.get("twitter_url"),
+    facebook_url: formData.get("facebook_url"),
+    instagram_url: formData.get("instagram_url"),
+    username: formData.get("username"),
+    profession: formData.get("profession"),
+    language: formData.get("language"),
+    about: formData.get("about"),
+  };
+
+  const { data } = await supabase
+    .from("users")
+    .update(rawData)
+    .eq("id", session?.user?.id)
+    .select()
+    .single();
+
+  console.log(data);
+}
+
+export async function addService(formData: FormData) {
+  const session = await auth();
+
+  const rawData = {
+    title: formData.get("title"),
+    description: formData.get("description"),
+    price: Number(formData.get("price")),
+    duration: formData.get("duration"),
+    userId: session?.user?.id,
+  };
+
+  await supabase.from("services").insert([rawData]);
+}
+
+export async function deleteService(id: string) {
+  const session = await auth();
+
+  await supabase.from("services").delete().eq("id", id);
+}
+
+export async function updateService(id: string, formData: FormData) {
+  const rawData = {
+    title: formData.get("title"),
+    description: formData.get("description"),
+    price: Number(formData.get("price")),
+    duration: formData.get("duration"),
+  };
+
+  await supabase.from("services").update(rawData).eq("id", id);
+}

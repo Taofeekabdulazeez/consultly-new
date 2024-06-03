@@ -1,7 +1,7 @@
 import { Calendar } from "@/components/ui/calendar";
 import StripeBanner from "@/components/StripeBanner";
-import MeetingsTable from "@/components/MeetingsTable";
 import { WelcomeScreen } from "@/components/WelcomeScreen";
+import MeetingsTable from "@/components/meetings/MeetingsTable";
 
 export const metadata = {
   title: "Dashboard",
@@ -18,7 +18,7 @@ export default async function Page() {
         </div>
         <div className="bg-gray-50 rounded-md"></div>
       </div>
-      <div className="bg-gray-50 flex-1 rounded-md min-h-[320px]">
+      <div className="bg-gray-50 flex-1 rounded-md">
         <MeetingsTable filter="all" />
       </div>
     </>

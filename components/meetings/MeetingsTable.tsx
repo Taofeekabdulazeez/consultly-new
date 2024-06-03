@@ -1,18 +1,19 @@
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import { P } from "./ui/typography";
-import { Button } from "./ui/button";
-import { meetingsData } from "@/static_data/data";
-import NoMeetings from "./NoMeetings";
+import { getUserMeetings } from "@/lib/actions";
+import { formatDateString } from "@/lib/utils";
+import NoMeetings from "../NoMeetings";
+import { P } from "../ui/typography";
 import StatusTag from "./StatusTag";
+import { Button } from "../ui/button";
 
 type Props = {
   filter: MeetingFilter;
 };
 
-export default function MeetingsTable({ filter }: Props) {
-  const meetings = meetingsData;
+export default async function MeetingsTable({ filter }: Props) {
+  const meetings = await getUserMeetings();
 
-  if (!meetings.length) return <NoMeetings />;
+  if (!meetings) return <NoMeetings />;
 
   const displayedMeetings = filterMeetings(meetings, filter);
 
@@ -21,7 +22,7 @@ export default function MeetingsTable({ filter }: Props) {
       <table className="p-3 text-left border-collapse w-[1000px] md:w-full">
         <thead className="">
           <tr className="bg-gray-75">
-            <th className="uppercase text-sm font-semibold p-3 pl-8">Date</th>
+            <th className="uppercase text-sm font-semibold p-3">Date</th>
             <th className="uppercase text-sm font-semibold py-3">Guest</th>
             <th className="uppercase text-sm font-semibold py-3">Duration</th>
             <th className="uppercase text-sm font-semibold py-3">
@@ -34,12 +35,12 @@ export default function MeetingsTable({ filter }: Props) {
         <tbody className="bg-gray-50 border-collapse">
           {displayedMeetings?.map((meeting) => {
             return (
-              <tr key={meeting.meetingId}>
+              <tr key={meeting.id}>
                 <td className="p-2 flex items-center gap-4">
-                  <span className="inline-block w-5 h-5 rounded-full bg-yellow-400"></span>
+                  {/* <span className="inline-block w-2 h-2 rounded-full bg-yellow-400"></span> */}
                   <span className="flex flex-col">
                     <P size="sm" className="leading-none">
-                      {meeting.date}
+                      {formatDateString(meeting.date)}
                     </P>
                     <P size="xs" className="text-gray-500">
                       {meeting.time}
@@ -48,26 +49,28 @@ export default function MeetingsTable({ filter }: Props) {
                 </td>
                 <td>
                   <P size="sm" className="leading-none">
-                    {meeting.guest}
+                    {meeting.guest.fullName}
                   </P>
                   <P size="xs" className="">
-                    {meeting.email}
+                    {meeting.guest.email}
                   </P>
                 </td>
                 <td>
-                  <P size="sm">{meeting.duration}</P>
+                  <P size="sm">{meeting.duration}mins</P>
                 </td>
                 <td className="">
-                  <P size="sm">{meeting.meetingType}</P>
+                  <P size="sm">{meeting.service.title}</P>
                 </td>
                 <td>
                   <StatusTag status={meeting.status} />
                 </td>
-                <td className="flex items-center gap-2">
-                  <Button size="sm">Join</Button>
-                  <button className="cursor-pointer">
-                    <HiOutlineDotsVertical size={24} />
-                  </button>
+                <td>
+                  <span className="flex items-center gap-1">
+                    <Button size="sm">Join</Button>
+                    <button className="cursor-pointer">
+                      <HiOutlineDotsVertical size={24} />
+                    </button>
+                  </span>
                 </td>
               </tr>
             );

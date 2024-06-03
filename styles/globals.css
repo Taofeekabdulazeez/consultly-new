@@ -49,7 +49,6 @@
     --color-gray-900: 0 0% 0%;
   }
 
-  
   .dark {
     /* --background: 224 71.4% 4.1%; */
     --background: var(--color-gray-75);
@@ -101,7 +100,6 @@
   }
   body {
     @apply bg-background text-foreground;
-  
   }
 }
 
@@ -157,7 +155,7 @@
   }
 }
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
@@ -166,4 +164,24 @@ html{
 }
 .step-line-active {
   border-top: 2px solid #3b82f6;
+}
+
+.btn-loader {
+  width: 16px;
+  height: 16px;
+  border: 3px dotted #fff;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 2s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
