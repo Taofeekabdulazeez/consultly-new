@@ -15,7 +15,7 @@ export default function MeetingsFilter() {
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  const filters = ["all", "confirmed", "in-prgoress", "paid", "pending"];
+  const filters = ["all", "confirmed", "in-progress", "paid", "pending"];
 
   return (
     <div className="flex gap-2 flex-wrap justify-center">

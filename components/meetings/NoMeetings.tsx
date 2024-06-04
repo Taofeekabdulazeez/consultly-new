@@ -1,7 +1,7 @@
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
-import { Heading } from "./ui/Heading";
-import { P } from "./ui/typography";
-import { Button } from "./ui/button";
+import { Heading } from "../ui/Heading";
+import { Button } from "../ui/button";
+import { P } from "../ui/typography";
 
 export default function NoMeetings() {
   return (

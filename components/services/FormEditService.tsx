@@ -1,3 +1,5 @@
+"use client";
+
 import { updateService } from "@/lib/actions";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
@@ -6,24 +8,33 @@ import { Checkbox } from "../ui/checkbox";
 import { Info } from "lucide-react";
 import { Button } from "../ui/button";
 import ButtonSubmit from "../ButtonSubmit";
+import { useService } from "./ServiceContext";
 
 export default function FormEditService() {
+  const { price, title, description, id, duration } = useService();
+
   return (
-    <form action={updateService.bind(null, "")} className="grid gap-6">
+    <form action={updateService.bind(null, id)} className="grid gap-6">
       <div>
         <Label htmlFor="title">Title</Label>
-        <Input name="title" type="text" placeholder="IT consultation" />
+        <Input
+          defaultValue={title}
+          name="title"
+          type="text"
+          placeholder="IT consultation"
+        />
       </div>
       <div>
         <Label htmlFor="description">Decription</Label>
         <Textarea
+          defaultValue={description}
           name="description"
           placeholder="E.g, Hourly IT consultaion, furing which we will discuss your duetary preferences and goals to achive to create a menu perfectly suited to your needs"
         />
       </div>
       <div>
         <Label htmlFor="price">Price</Label>
-        <Input name="price" type="number" placeholder="" />
+        <Input defaultValue={price} name="price" type="number" placeholder="" />
         <div className="flex gap-2 items-center mt-2 mb-3">
           <Checkbox id="terms" />
           <span className="text-sm text-gray-700">
@@ -49,6 +60,7 @@ export default function FormEditService() {
       <div>
         <Label htmlFor="duration">Duration</Label>
         <Input
+          defaultValue={duration}
           name="duration"
           type="number"
           placeholder="Duration in minutes"

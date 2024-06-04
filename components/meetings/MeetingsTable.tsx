@@ -1,10 +1,10 @@
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { getUserMeetings } from "@/lib/actions";
 import { formatDateString } from "@/lib/utils";
-import NoMeetings from "../NoMeetings";
 import { P } from "../ui/typography";
 import StatusTag from "./StatusTag";
 import { Button } from "../ui/button";
+import NoMeetings from "./NoMeetings";
 
 type Props = {
   filter: MeetingFilter;

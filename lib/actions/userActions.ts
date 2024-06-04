@@ -3,7 +3,6 @@ import { supabase } from "../supabase";
 
 class UserAction {
   // session;
-
   constructor() {}
 
   async getCurrentUser(): Promise<User> {

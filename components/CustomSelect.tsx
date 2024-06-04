@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Select,
   SelectContent,
@@ -5,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useState } from "react";
 
 type Props = {
   options: string[];
@@ -12,8 +15,10 @@ type Props = {
 };
 
 export default function CustomSelect({ options, className }: Props) {
+  const [value, setValue] = useState(options[0]);
+  console.log(value);
   return (
-    <Select>
+    <Select onValueChange={setValue}>
       <SelectTrigger className={`w-full ${className}`}>
         <SelectValue placeholder={options[0]} />
       </SelectTrigger>

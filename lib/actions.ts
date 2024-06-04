@@ -110,6 +110,7 @@ export async function deleteService(id: string) {
 }
 
 export async function updateService(id: string, formData: FormData) {
+  console.log(id, formData);
   const rawData = {
     title: formData.get("title"),
     description: formData.get("description"),
@@ -118,4 +119,15 @@ export async function updateService(id: string, formData: FormData) {
   };
 
   await supabase.from("services").update(rawData).eq("id", id);
+}
+
+export async function setAvailabilty(formData: FormData) {
+  const serviceId = formData.get("id");
+
+  const rawData = {
+    startDate: formData.get("startDate"),
+    endDate: formData.get("endDate"),
+  };
+
+  await supabase.from("services").update(rawData).eq("id", serviceId);
 }

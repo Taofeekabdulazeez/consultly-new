@@ -1,23 +1,16 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import ComboBox from "../../components/ComboBox";
 import { BiNotepad } from "react-icons/bi";
 import { AiOutlineIdcard } from "react-icons/ai";
 import { FaCalendarAlt } from "react-icons/fa";
-import { TbCreditCard } from "react-icons/tb";
 import { FaVideo } from "react-icons/fa6";
 import { BiWorld } from "react-icons/bi";
 import { BiMessageDetail } from "react-icons/bi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Logo from "@/components/Logo";
-import { FaFacebook } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { MdLanguage, MdKeyboardArrowUp } from "react-icons/md";
 
 export default function Home() {
   const [showMenu, setShowMenu] = useState(false);
@@ -429,11 +422,9 @@ export default function Home() {
               </select>
             </div>
           </div>
-   <p className="text-sm text-center">
-                &copy; {new Date().getFullYear()} Consultify. All rights
-                reserved.
-              </p>
-    
+          <p className="text-sm text-center">
+            &copy; {new Date().getFullYear()} Consultify. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>

@@ -37,6 +37,7 @@ type Service = {
   endDate: string;
   price: number;
   userId: string;
+  duration: number;
 };
 
 type Guest = {

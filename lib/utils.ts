@@ -73,3 +73,7 @@ export function formatDateString(dateString: string) {
   // Format the date string
   return `${monthName} ${dayOfMonth}, ${year}`;
 }
+
+export function formatISODate(date: Date) {
+  return new Date(date).toISOString().slice(0, 10);
+}
