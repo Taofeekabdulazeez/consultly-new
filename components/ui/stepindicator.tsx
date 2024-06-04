@@ -13,12 +13,12 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({
 }) => {
   return (
     <div className="flex flex-col items-center w-full">
-      <div className="flex items-center justify-between w-full mb-4">
+      <div className="flex  justify-between w-full mb-4">
         {steps.map((step, index) => (
           <div key={index} className="flex-1 flex flex-col ">
             <span
               className={`text-sm font-medium ${
-                index <= currentStep ? "text-blue-600" : "text-gray-600"
+                index <= currentStep ? "text-primary" : "text-gray-600"
               }`}
             >
               {step}
@@ -26,15 +26,15 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({
           </div>
         ))}
       </div>
-      <div className="flex items-center justify-between w-full">
+      <div className="flex  justify-between w-full">
         {steps.map((step, index) => (
           <div key={index} className="flex-1 flex items-center">
             <div
               className={`flex items-center justify-center w-3 h-3 rounded-full ${
-                index <= currentStep ? "bg-blue-500" : "bg-gray-300"
+                index <= currentStep ? "bg-primary" : "bg-gray-300"
               }`}
             >
-              {/* Removed the numbers from the circles */}
+
             </div>
             {index < steps.length - 1 && (
               <div
