@@ -2,6 +2,7 @@ import { Calendar } from "@/components/ui/calendar";
 import StripeBanner from "@/components/StripeBanner";
 import { WelcomeScreen } from "@/components/WelcomeScreen";
 import MeetingsTable from "@/components/meetings/MeetingsTable";
+import userAction from "@/lib/actions/userAction";
 
 export const metadata = {
   title: "Dashboard",

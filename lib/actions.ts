@@ -92,11 +92,19 @@ export async function updateProfile(formData: FormData) {
 export async function addService(formData: FormData) {
   const session = await auth();
 
+  // const rawData = {
+  //   title: formData.get("title"),
+  //   description: formData.get("description"),
+  //   price: Number(formData.get("price")),
+  //   duration: formData.get("duration"),
+  //   userId: session?.user?.id,
+  // };
+
   const rawData = {
-    title: formData.get("title"),
-    description: formData.get("description"),
-    price: Number(formData.get("price")),
-    duration: formData.get("duration"),
+    title: "Test",
+    description: "Test description",
+    price: 10,
+    duration: 20,
     userId: session?.user?.id,
   };
 

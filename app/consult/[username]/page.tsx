@@ -5,11 +5,8 @@ import Logo from "@/components/Logo";
 import AppointmentDatePicker from "@/components/ui/appointment-picker";
 import { FiCalendar } from "react-icons/fi";
 import { IoLocationSharp } from "react-icons/io5";
-import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { getCurrentDateTime } from "@/lib/utils";
 import StepIndicator from "@/components/ui/stepindicator";
-
-
 
 type Props = {
   params: {
@@ -67,7 +64,7 @@ export default function Page({ params }: Props) {
                         <div className="flex h-full w-full items-center justify-center rounded-md border border-gray-200 text-2xl font-medium text-black">
                           AI
                         </div>
-                       
+
                         <div className="absolute bottom-0 left-0 right-0"></div>
                       </span>
                       <div className="flex-1 space-y-2">
@@ -147,10 +144,9 @@ export default function Page({ params }: Props) {
         );
       case 1:
         return (
-        // availabilitu section
+          // availabilitu section
           <section className="mx-auto max-w-4xl sm:px-6 sm:py-6 sm:px-12 lg:px-8">
             <div className="flex flex-row p-5 sm:p-8 bg-white shadow sm:rounded-2xl">
-        
               <div className="flex-1">
                 <div className="mt-5 w-full item-center">
                   <h1 className="text-center text-xl text-primary">
@@ -185,10 +181,9 @@ export default function Page({ params }: Props) {
         );
       case 2:
         return (
-        // details section
+          // details section
           <section className="mx-auto max-w-4xl sm:px-6 sm:py-6 sm:px-12 lg:px-8">
             <div className="flex flex-row p-5 sm:p-8 bg-white shadow sm:rounded-2xl">
-              
               <div className="flex-1">
                 <div className="mt-5 w-full item-center">
                   <h1 className="text-center text-xl text-primary">
@@ -291,7 +286,7 @@ export default function Page({ params }: Props) {
         );
       case 3:
         return (
-        // payment section
+          // payment section
           <section className="mx-auto max-w-4xl sm:px-6 sm:py-6 sm:px-12 lg:px-8">
             <div className="flex flex-row p-5 sm:p-8 bg-white shadow sm:rounded-2xl">
               {/* Add your content for the Payment section here */}
@@ -326,7 +321,7 @@ export default function Page({ params }: Props) {
         );
       case 4:
         return (
-        // confirmation section
+          // confirmation section
           <section className="mx-auto max-w-4xl sm:px-6 sm:py-6 sm:px-12 lg:px-8">
             <div className="flex flex-row p-5 sm:p-8 bg-white shadow sm:rounded-2xl">
               {/* Add your content for the Confirmation section here */}
@@ -462,9 +457,3 @@ export default function Page({ params }: Props) {
     </div>
   );
 }
-
-
-
-
-
-
