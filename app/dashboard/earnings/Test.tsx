@@ -1,26 +1,36 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { toast } from "sonner";
 
 export default function Test() {
   const status = useFormStatus();
-  const [isLoading, setIsLoading] = useState();
+  const firstMount = useRef(true);
 
-  useEffect(() => {
-    if (status.pending) {
-      toast("loading");
-    } else {
-      toast.dismiss();
-      toast("success");
+  useLayoutEffect(() => {
+    if (firstMount.current) {
+      firstMount.current = false;
+      return;
     }
-  }, [status]);
 
-  console.log(status);
+    console.log("didItmount =>", firstMount.current);
+
+    // if (status.pending) {
+    //   toast.loading("loading", { id: "1" });
+    // } else {
+    //   toast.success("edited", { id: "1" });
+    // }
+  });
 
   const handleClick = () => {
-    // if (status.pending) toast.loading("Loading");
+    // if (status.pending) {
+    //   toast.loading("loading", { id: "1" });
+    // } else {
+    //   toast.success("edited", { id: "1" });
+    // }
   };
-  return <Button>{status.pending ? "loading" : "Test"}</Button>;
+  return (
+    <Button onClick={handleClick}>{status.pending ? "loading" : "Test"}</Button>
+  );
 }
