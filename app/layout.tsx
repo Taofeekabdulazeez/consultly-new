@@ -38,7 +38,7 @@ export default function RootLayout({
         className={`${inter.className} antialiased relative overflow-x-hidden`}
       >
         {children}
-        <Toaster position="top-right" visibleToasts={1} />/
+        <Toaster position="top-right" visibleToasts={1} />
       </body>
     </html>
   );

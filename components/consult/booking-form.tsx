@@ -10,7 +10,7 @@ export default function BookingForm() {
   const { step } = useConsultState();
 
   return (
-    <div className="bg-gray-50 p-6 rounded-md my-5 shadow-sm min-h-[40vh]">
+    <div className="bg-gray-50 p-6 rounded-md my-5 shadow-sm">
       {step === 1 && <ServiceScreen />}
       {step === 2 && <AvailabiltyScreen />}
       {step === 3 && <DetailsScreen />}

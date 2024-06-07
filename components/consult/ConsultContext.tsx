@@ -1,6 +1,12 @@
 "use client";
 
-import { ReactNode, createContext, useContext, useReducer } from "react";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useReducer,
+  useState,
+} from "react";
 
 type Action = {
   type: "prev" | "next";
@@ -43,9 +49,25 @@ function ConsultProvider({
   user: any;
 }) {
   const [{ step, status }, dispatch] = useReducer(reducer, initialState);
+  const [selectedService, setSelectedService] = useState(user.services[0]);
+
+  const handleSelectService = (value: string) => {
+    setSelectedService(() =>
+      user.services.find((service: any) => service.title === value)
+    );
+  };
 
   return (
-    <ConsultContext.Provider value={{ step, dispatch, status, user }}>
+    <ConsultContext.Provider
+      value={{
+        step,
+        dispatch,
+        status,
+        user,
+        selectedService,
+        handleSelectService,
+      }}
+    >
       {children}
     </ConsultContext.Provider>
   );

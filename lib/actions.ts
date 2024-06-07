@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./supabase";
 
@@ -140,7 +141,7 @@ export async function setAvailabilty(formData: FormData) {
   await supabase.from("services").update(rawData).eq("id", serviceId);
 }
 
-export async function getConsultation(username: string) {
+export async function getConsultation(username: string = "taofeek") {
   const { data: user } = await supabase
     .from("users")
     .select("id, firstName, lastName, email, country")
@@ -149,8 +150,14 @@ export async function getConsultation(username: string) {
 
   const { data: services } = await supabase
     .from("services")
-    .select("title, description, startDate, endDate, price, duration")
+    .select(
+      "id, title, description, startDate, endDate, price, duration, availability"
+    )
     .eq("userId", user?.id);
+
+  console.log(services);
+
+  revalidatePath("/consultv2");
 
   return { ...user, services };
 }

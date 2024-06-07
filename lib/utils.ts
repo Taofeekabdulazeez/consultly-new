@@ -77,3 +77,65 @@ export function formatDateString(dateString: string) {
 export function formatISODate(date: Date) {
   return new Date(date).toISOString().slice(0, 10);
 }
+
+export function generateTimeSlots(
+  startTime: string,
+  endTime: string,
+  slotDuration: number
+): string[] {
+  // Helper function to convert HH:MM string to minutes since start of the day
+  function timeToMinutes(time: string): number {
+    const [hours, minutes] = time.split(":").map(Number);
+    return hours * 60 + minutes;
+  }
+
+  // Helper function to convert minutes since start of the day to 12-hour HH:MM AM/PM string
+  function minutesTo12HourTime(minutes: number): string {
+    let hours = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    const period = hours >= 12 ? "PM" : "AM";
+
+    hours = hours % 12;
+    hours = hours === 0 ? 12 : hours; // Convert 0 to 12 for 12 AM/PM
+
+    const formattedHours = String(hours).padStart(2, "0");
+    const formattedMinutes = String(mins).padStart(2, "0");
+
+    return `${formattedHours}:${formattedMinutes} ${period}`;
+  }
+
+  const startMinutes = timeToMinutes(startTime);
+  const endMinutes = timeToMinutes(endTime);
+  const slots: string[] = [];
+
+  for (
+    let current = startMinutes;
+    current + slotDuration <= endMinutes;
+    current += slotDuration
+  ) {
+    const slotStart = minutesTo12HourTime(current);
+    const slotEnd = minutesTo12HourTime(current + slotDuration);
+    slots.push(`${slotStart} - ${slotEnd}`);
+  }
+
+  return slots;
+}
+
+export function convert24HourTo12Hour(time24: string): string {
+  // Split the input time string into hours and minutes
+  const [hour, minute] = time24.split(":").map(Number);
+
+  // Determine the period (AM/PM)
+  const period = hour >= 12 ? "PM" : "AM";
+
+  // Convert hours to 12-hour format
+  let hour12 = hour % 12;
+  hour12 = hour12 === 0 ? 12 : hour12; // Convert 0 to 12 for 12 AM/PM
+
+  // Format hours and minutes to ensure they are always two digits
+  const formattedHour = String(hour12).padStart(2, "0");
+  const formattedMinute = String(minute).padStart(2, "0");
+
+  // Return the formatted 12-hour time string with AM/PM
+  return `${formattedHour}:${formattedMinute} ${period}`;
+}

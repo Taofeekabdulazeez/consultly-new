@@ -48,13 +48,7 @@ export function Heading({ children, className, size, type }: Heading_Props) {
       );
     case "h4":
       return (
-        <h4
-          className={clsx(
-            "scroll-m-20 text-xl font-medium tracking-tight",
-            globalStyles,
-            className
-          )}
-        >
+        <h4 className={clsx("scroll-m-20 text-xl", globalStyles, className)}>
           {children}
         </h4>
       );

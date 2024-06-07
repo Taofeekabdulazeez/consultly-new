@@ -12,7 +12,7 @@ export default function Steps() {
             <li key={step} className="flex items-center bg-gray-50 gap-2 p-2">
               <span
                 className={`size-6 rounded-full text-center text-[10px]/6 font-bold ${
-                  currentStep === index + 1
+                  currentStep > index
                     ? "bg-primary text-white"
                     : "bg-gray-100 text-gray-800"
                 }`}
