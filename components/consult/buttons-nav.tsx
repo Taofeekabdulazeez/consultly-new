@@ -1,10 +1,10 @@
 "use client";
 
 import { Button } from "../ui/button";
-import { useConsult } from "./ConsultContext";
+import { useConsultState } from "./ConsultContext";
 
 export default function ButtonsNav() {
-  const { dispatch } = useConsult();
+  const { dispatch } = useConsultState();
   return (
     <div className="flex justify-between">
       <Button onClick={() => dispatch({ type: "prev" })} variant="outline">

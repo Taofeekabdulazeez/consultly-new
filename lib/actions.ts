@@ -1,6 +1,5 @@
 "use server";
 
-import { toast } from "sonner";
 import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./supabase";
 
@@ -97,7 +96,7 @@ export async function addService(formData: FormData) {
   //   title: formData.get("title"),
   //   description: formData.get("description"),
   //   price: Number(formData.get("price")),
-  //   duration: formData.get("duration"),
+  //   duration: Number(formData.get("duration")),
   //   userId: session?.user?.id,
   // };
 
@@ -124,7 +123,7 @@ export async function updateService(id: string, formData: FormData) {
     title: formData.get("title"),
     description: formData.get("description"),
     price: Number(formData.get("price")),
-    duration: formData.get("duration"),
+    duration: Number(formData.get("duration")),
   };
 
   await supabase.from("services").update(rawData).eq("id", id);
@@ -139,4 +138,19 @@ export async function setAvailabilty(formData: FormData) {
   };
 
   await supabase.from("services").update(rawData).eq("id", serviceId);
+}
+
+export async function getConsultation(username: string) {
+  const { data: user } = await supabase
+    .from("users")
+    .select("id, firstName, lastName, email, country")
+    .eq("username", username)
+    .single();
+
+  const { data: services } = await supabase
+    .from("services")
+    .select("title, description, startDate, endDate, price, duration")
+    .eq("userId", user?.id);
+
+  return { ...user, services };
 }

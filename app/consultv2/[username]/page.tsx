@@ -1,10 +1,13 @@
-"use client";
-
 import { ConsultProvider } from "../../../components/consult/ConsultContext";
 import Steps from "@/components/consult/steps";
 
 import ButtonsNav from "@/components/consult/buttons-nav";
 import BookingForm from "@/components/consult/booking-form";
+import {
+  getConsultation,
+  getCurrentUser,
+  getUserServices,
+} from "@/lib/actions";
 
 type Props = {
   params: {
@@ -12,11 +15,13 @@ type Props = {
   };
 };
 
-export default function Page({ params }: Props) {
+export default async function Page({ params }: Props) {
   const { username } = params;
 
+  const user = await getConsultation(username);
+
   return (
-    <ConsultProvider>
+    <ConsultProvider user={user}>
       <Steps />
       <BookingForm />
       <ButtonsNav />
