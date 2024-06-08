@@ -10,6 +10,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { MdDelete } from "react-icons/md";
+import ButtonSubmit from "./ButtonSubmit";
 
 type Props = {
   onDeleteResource?: (id: string) => void;
@@ -38,15 +39,25 @@ export default function ConfirmDelete({
             {resourceName} and remove your data from our servers.
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction
+        <form action={async () => onDeleteResource?.(resourceId)}>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            {/* <AlertDialogAction
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             onClick={() => onDeleteResource?.(resourceId)}
-          >
-            Delete
-          </AlertDialogAction>
-        </AlertDialogFooter>
+            asChild
+            >
+            </AlertDialogAction> */}
+            <ButtonSubmit
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              text="Delete"
+              pendingText="Deleting"
+              toastPendingMessage={`Deleting ${resourceName}`}
+              toastSucessMessage={`${resourceName} successfully deleted!`}
+              showPendingToast={false}
+            />
+          </AlertDialogFooter>
+        </form>
       </AlertDialogContent>
     </AlertDialog>
   );

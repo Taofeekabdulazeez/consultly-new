@@ -80,6 +80,8 @@ export async function updateProfile(formData: FormData) {
     about: formData.get("about"),
   };
 
+  console.log(rawData);
+
   const { data } = await supabase
     .from("users")
     .update(rawData)
@@ -88,38 +90,35 @@ export async function updateProfile(formData: FormData) {
     .single();
 
   console.log(data);
+
+  revalidatePath("/dashboard/profile");
 }
 
 export async function addService(formData: FormData) {
   const session = await auth();
 
-  // const rawData = {
-  //   title: formData.get("title"),
-  //   description: formData.get("description"),
-  //   price: Number(formData.get("price")),
-  //   duration: Number(formData.get("duration")),
-  //   userId: session?.user?.id,
-  // };
-
   const rawData = {
-    title: "Test",
-    description: "Test description",
-    price: 10,
-    duration: 20,
+    title: formData.get("title"),
+    description: formData.get("description"),
+    price: Number(formData.get("price")),
+    duration: Number(formData.get("duration")),
     userId: session?.user?.id,
   };
 
   await supabase.from("services").insert([rawData]);
+
+  revalidatePath("dashboard/services");
 }
 
 export async function deleteService(id: string) {
   const session = await auth();
 
   await supabase.from("services").delete().eq("id", id);
+
+  revalidatePath("/dashboard/services");
 }
 
 export async function updateService(id: string, formData: FormData) {
-  console.log(id, formData);
   const rawData = {
     title: formData.get("title"),
     description: formData.get("description"),
@@ -128,6 +127,8 @@ export async function updateService(id: string, formData: FormData) {
   };
 
   await supabase.from("services").update(rawData).eq("id", id);
+
+  revalidatePath("/dashboard/services");
 }
 
 export async function setAvailabilty(formData: FormData) {
@@ -139,6 +140,8 @@ export async function setAvailabilty(formData: FormData) {
   };
 
   await supabase.from("services").update(rawData).eq("id", serviceId);
+
+  revalidatePath("/dashboard/calender");
 }
 
 export async function getConsultation(username: string = "taofeek") {
@@ -154,8 +157,6 @@ export async function getConsultation(username: string = "taofeek") {
       "id, title, description, startDate, endDate, price, duration, availability"
     )
     .eq("userId", user?.id);
-
-  console.log(services);
 
   revalidatePath("/consultv2");
 

@@ -71,7 +71,12 @@ export default function FormEditService() {
         <Button variant="outline" type="reset">
           Cancel
         </Button>
-        <ButtonSubmit text="Edit" pendingText="Editing" />
+        <ButtonSubmit
+          text="Edit"
+          pendingText="Editing"
+          toastPendingMessage="Updating service"
+          toastSucessMessage="Service succesfully updated!"
+        />
       </div>
     </form>
   );

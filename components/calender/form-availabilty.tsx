@@ -46,7 +46,12 @@ export default async function FormAvailability() {
 
       <div className="flex justify-end gap-3">
         <Button variant="outline">Cancel</Button>
-        <ButtonSubmit text="Set availability" pendingText="setting" />
+        <ButtonSubmit
+          text="Set availability"
+          pendingText="setting"
+          toastPendingMessage="Setting your availabilty"
+          toastSucessMessage="Availability successfully updated!"
+        />
       </div>
     </form>
   );

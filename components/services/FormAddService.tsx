@@ -59,7 +59,12 @@ export default function FormAddService() {
         <Button variant="outline" type="reset">
           Cancel
         </Button>
-        <ButtonSubmit text="Add" pendingText="Adding" />
+        <ButtonSubmit
+          text="Add"
+          pendingText="Adding"
+          toastPendingMessage="Adding service"
+          toastSucessMessage="Service successfully added!"
+        />
       </div>
     </form>
   );

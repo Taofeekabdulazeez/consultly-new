@@ -48,6 +48,7 @@ function ConsultProvider({
   children: ReactNode;
   user: any;
 }) {
+  console.log(user);
   const [{ step, status }, dispatch] = useReducer(reducer, initialState);
   const [selectedService, setSelectedService] = useState(user.services[0]);
 

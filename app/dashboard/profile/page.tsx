@@ -47,7 +47,14 @@ export default async function Page() {
       <div className="grid gap-4 md:grid-cols-[1fr_auto] mb-10">
         <div className="grid grid-cols-[auto_1fr] border rounded-md">
           <Input disabled type="text" value={`consultly.com/consult/`} />
-          <Input name="username" disabled type="text" defaultValue={username} />
+          <Input value={username} type="text" disabled />
+          <Input
+            defaultValue={username}
+            value={username}
+            name="username"
+            type="text"
+            className="hidden"
+          />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <Button variant="outline">
@@ -166,7 +173,12 @@ export default async function Page() {
           ></Textarea>
         </div>
         <div className="flex justify-end">
-          <ButtonSubmit />
+          <ButtonSubmit
+            text="Save"
+            pendingText="Saving"
+            toastPendingMessage="Updating your Profile"
+            toastSucessMessage="Profile successfully updated!"
+          />
         </div>
       </div>
     </form>
