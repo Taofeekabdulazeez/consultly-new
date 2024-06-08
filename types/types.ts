@@ -40,6 +40,11 @@ type Service = {
   duration: number;
 };
 
+type ServiceSummary = Pick<
+  Service,
+  "id" | "title" | "description" | "duration"
+>;
+
 type Guest = {
   id: string;
   email: string;

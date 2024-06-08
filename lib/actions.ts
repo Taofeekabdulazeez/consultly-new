@@ -70,6 +70,7 @@ export async function updateProfile(formData: FormData) {
     lastName: formData.get("lastName"),
     country: formData.get("country"),
     city: formData.get("city"),
+    website_url: formData.get("website_url"),
     linkedIn_url: formData.get("linkedIn_url"),
     twitter_url: formData.get("twitter_url"),
     facebook_url: formData.get("facebook_url"),

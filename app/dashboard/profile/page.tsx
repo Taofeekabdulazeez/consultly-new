@@ -131,7 +131,7 @@ export default async function Page() {
 
         <div>
           <Label htmlFor="city">Website</Label>
-          <Input type="text" defaultValue={website_url} />
+          <Input name="website_url" type="text" defaultValue={website_url} />
         </div>
         <div className="grid md:grid-cols-2 gap-6">
           <div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Lato, Montserrat, Open_Sans, Poppins } from "next/font/google";
 import "@/styles/globals.css";
 import { Toaster } from "sonner";
+import { CircleCheck } from "lucide-react";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 const poppins = Poppins({
@@ -38,7 +39,18 @@ export default function RootLayout({
         className={`${inter.className} antialiased relative overflow-x-hidden`}
       >
         {children}
-        <Toaster position="top-right" visibleToasts={1} />
+        <Toaster
+          position="top-right"
+          visibleToasts={1}
+          icons={{
+            success: (
+              <CircleCheck size={22} className="fill-green-500 text-gray-75" />
+            ),
+          }}
+          toastOptions={{
+            className: "bg-gray-75 text-gray-800",
+          }}
+        />
       </body>
     </html>
   );
