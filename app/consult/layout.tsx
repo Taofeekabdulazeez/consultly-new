@@ -7,7 +7,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <section>
       <header className="z-10 bg-gray-50 shadow-md">
-        <div className="py-4 ">
+        <div className="py-4">
           <Logo />
         </div>
       </header>
