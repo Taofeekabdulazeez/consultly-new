@@ -99,9 +99,13 @@ export default function AppNav() {
                   flex gap-3 items-center py-2.5 px-3 md:text-sm font-medium hover:bg-gray-75 hover:text-primary relative overflow-hidden rounded-sm
                      after:content-[''] after:block after:h-full after:absolute after:w-[3px] after:right-0 ${
                        href === pathname
-                         ? "bg-gray-100 text-primary after:bg-primary"
+                         ? "bg-blue-50 dark:bg-blue-950 text-primary after:bg-primary"
                          : ""
-                     }`}
+                     } ${
+                  href === "/dashboard/meetings"
+                    ? "before:absolute before:content-['2'] before:inline-flex before:items-center before:justify-center before:h-4 before:bg-green-200 dark:before:bg-green-700 before:aspect-square before:rounded-full before:text-gray-700 before:right-3 before:text-xs before:top-1/2 before:-translate-y-1/2"
+                    : ""
+                }`}
               >
                 <Icon size={20} strokeWidth={1.75} />
                 {name}

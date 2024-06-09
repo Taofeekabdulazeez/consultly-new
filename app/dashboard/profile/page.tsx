@@ -1,6 +1,5 @@
 import { GoCopy } from "react-icons/go";
 import { RiExternalLinkLine } from "react-icons/ri";
-import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,6 +9,9 @@ import { Heading } from "@/components/ui/Heading";
 import { P } from "@/components/ui/typography";
 import { getCurrentUser, updateProfile } from "@/lib/actions";
 import ButtonSubmit from "@/components/ButtonSubmit";
+import ButtonCopy from "@/components/button-copy";
+import ButtonURL from "@/components/button-url";
+import Link from "next/link";
 
 export const metadata = {
   title: "Profile",
@@ -57,14 +59,17 @@ export default async function Page() {
           />
         </div>
         <div className="grid grid-cols-2 gap-3">
-          <Button variant="outline">
+          <ButtonCopy textToCopy={`localhost:3000/consultv2/${username}`}>
             <GoCopy />
             <P size="sm">Copy Link</P>
-          </Button>
-          <Button variant="outline">
+          </ButtonCopy>
+          <Link
+            className="inline-flex items-center gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground px-2 rounded"
+            href={`/consultv2/${username}`}
+          >
             <RiExternalLinkLine />
             <P size="sm">View profile</P>
-          </Button>
+          </Link>
         </div>
       </div>
 

@@ -1,4 +1,3 @@
-import Fetching from "@/components/Fetching";
 import AddService from "@/components/services/AddService";
 import ServiceList from "@/components/services/ServiceList";
 import ServiceLoader from "@/components/services/service-loader";

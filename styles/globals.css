@@ -187,78 +187,42 @@ html {
   }
 }
 
-.table-container {
-  overflow: hidden;
-  border-radius: 13px;
-  width: 100%;
-  border-radius: 21px;
+.page-loader {
+  display: flex;
+  align-items: center; /* Align dots at the bottom */
+  justify-content: space-between;
+  width: 80px; /* Adjust width to change the distance between dots */
 }
 
-.table-head {
-  padding: 2rem;
-  position: relative;
+.dot {
+  border-radius: 50%;
+  animation: scale 1s infinite;
 }
 
-.table-head::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-image: linear-gradient(
-      90deg,
-      transparent,
-      hsl(var(--color-gray-100)) 50%,
-      transparent 100%
-    ),
-    linear-gradient(hsl(var(--color-gray-200)) 50px, transparent 0);
-  background-repeat: no-repeat;
-  background-position: -200px 0, center 0;
-  animation: animloader 1s linear infinite;
+.dot:nth-child(1) {
+  width: 10px;
+  height: 10px;
+  animation-delay: 0s;
 }
 
-.table {
-  width: 100%;
+.dot:nth-child(2) {
+  width: 14px;
+  height: 14px;
+  animation-delay: 0.2s;
 }
 
-.table-body {
-  background-color: hsl(var(--color-gray-100));
-  border-collapse: collapse;
+.dot:nth-child(3) {
+  width: 18px;
+  height: 18px;
+  animation-delay: 0.5s;
 }
 
-.table-data {
-  padding: 2rem;
-  position: relative;
-}
-
-.th {
-  padding: 2.4rem;
-}
-
-.table-data::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-
-  background: linear-gradient(
-      0.25turn,
-      transparent,
-      hsl(var(--color-gray-100)),
-      transparent
-    ),
-    linear-gradient(hsl(var(--color-gray-200)), hsl(var(--color-gray-200))),
-    radial-gradient(
-      38px circle at 19px 19px,
-      hsl(var(--color-gray-200)) 50%,
-      transparent 51%
-    ),
-    linear-gradient(hsl(var(--color-gray-200)), hsl(var(--color-gray-200)));
-  background-color: hsl(var(--color-gray-100));
-  background-repeat: no-repeat;
-  background-position: -185px 0, center 0;
-  animation: animloader 1s linear infinite;
+@keyframes scale {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
 }

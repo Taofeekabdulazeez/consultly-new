@@ -11,7 +11,7 @@ export const metadata = {
 export default async function Page() {
   return (
     <>
-      <StripeBanner />
+      {/* <StripeBanner /> */}
       <div className="grid md:grid-cols-[1fr_auto] md:gap-6 md:grid-rows-2 mb-10">
         <WelcomeScreen />
         <div className="bg-gray-50 hidden md:block md:row-span-2 rounded-md">

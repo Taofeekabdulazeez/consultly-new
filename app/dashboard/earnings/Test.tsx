@@ -1,20 +1,40 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useFormStatus } from "react-dom";
-import { toast } from "sonner";
-import { useDidUpdateEffect } from "./useDidUpdateEffect";
+import ButtonCopy from "@/components/button-copy";
+import { useRef, useState } from "react";
 
 export default function Test() {
-  const status = useFormStatus();
+  const [copySuccess, setCopySuccess] = useState("");
+  const textAreaRef = useRef<any>(null);
 
-  useDidUpdateEffect(() => {
-    if (status.pending) {
-      toast.loading("loading", { id: "1" });
-    } else {
-      toast.success("edited", { id: "1" });
-    }
-  }, [status.pending]);
-
-  return <Button>{status.pending ? "loading" : "Test"}</Button>;
+  return (
+    <div>
+      <div>
+        {
+          /* Logical shortcut for only displaying the 
+          button if the copy command exists */
+          document.queryCommandSupported("copy") && (
+            <div>
+              <button
+                onClick={(e) => {
+                  textAreaRef.current.select();
+                  document.execCommand("copy");
+                  // This is just personal preference.
+                  // I prefer to not show the whole text area selected.
+                  e.target.focus();
+                  setCopySuccess("Copied!");
+                }}
+              >
+                Copy
+              </button>
+              {copySuccess}
+            </div>
+          )
+        }
+        <form>
+          <textarea ref={textAreaRef} value="Some text to copy" />
+        </form>
+      </div>
+      <ButtonCopy />
+    </div>
+  );
 }
