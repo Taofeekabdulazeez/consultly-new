@@ -59,13 +59,14 @@ export default async function Page() {
           />
         </div>
         <div className="grid grid-cols-2 gap-3">
-          <ButtonCopy textToCopy={`localhost:3000/consultv2/${username}`}>
+          <ButtonCopy textToCopy={`localhost:3000/consult/${username}`}>
             <GoCopy />
             <P size="sm">Copy Link</P>
           </ButtonCopy>
           <Link
             className="inline-flex items-center gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground px-2 rounded"
-            href={`/consultv2/${username}`}
+            href={`/consult/${username}`}
+            target="_blank"
           >
             <RiExternalLinkLine />
             <P size="sm">View profile</P>
