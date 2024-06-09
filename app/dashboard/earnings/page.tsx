@@ -1,5 +1,4 @@
 import ButtonCopy from "@/components/button-copy";
-import Test from "./Test";
 
 export const metadata = {
   title: "Earnings",
