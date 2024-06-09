@@ -22,14 +22,12 @@ export default async function MeetingsTable({ filter }: Props) {
       <table className="p-3 text-left border-collapse w-[1000px] md:w-full">
         <thead className="">
           <tr className="bg-gray-75">
-            <th className="uppercase text-sm font-semibold p-3">Date</th>
-            <th className="uppercase text-sm font-semibold py-3">Guest</th>
-            <th className="uppercase text-sm font-semibold py-3">Duration</th>
-            <th className="uppercase text-sm font-semibold py-3">
-              Meeting type
-            </th>
-            <th className="uppercase text-sm font-semibold py-3">status</th>
-            <th className="uppercase text-sm font-semibold py-3"></th>
+            <th className="uppercase text-sm font-medium p-3">Date</th>
+            <th className="uppercase text-sm font-medium py-3">Guest</th>
+            <th className="uppercase text-sm font-medium py-3">Duration</th>
+            <th className="uppercase text-sm font-medium py-3">Meeting type</th>
+            <th className="uppercase text-sm font-medium py-3">status</th>
+            <th className="uppercase text-sm font-medium py-3"></th>
           </tr>
         </thead>
         <tbody className="bg-gray-50 border-collapse">

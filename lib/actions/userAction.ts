@@ -11,7 +11,7 @@ class UserAction extends ServerAction {
     this.setSession();
   }
 
-  private async setSession() {
+  protected async setSession() {
     this.session = await auth();
   }
 

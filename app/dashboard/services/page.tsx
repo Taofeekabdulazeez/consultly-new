@@ -1,6 +1,7 @@
 import Fetching from "@/components/Fetching";
 import AddService from "@/components/services/AddService";
 import ServiceList from "@/components/services/ServiceList";
+import ServiceLoader from "@/components/services/service-loader";
 import { Heading } from "@/components/ui/Heading";
 import { P } from "@/components/ui/typography";
 import { Suspense } from "react";
@@ -25,7 +26,7 @@ export default async function Page() {
         </div>
         <AddService />
       </div>
-      <Suspense fallback={<Fetching name="services" />}>
+      <Suspense fallback={<ServiceLoader />}>
         <ServiceList />
       </Suspense>
     </div>

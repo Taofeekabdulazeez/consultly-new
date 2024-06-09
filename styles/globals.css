@@ -59,7 +59,8 @@
     --popover: var(--color-gray-50);
     --popover-foreground: 210 20% 98%;
     /* --primary: 263.4 70% 50.4%; */
-    --primary: 238 65% 57%;
+    --primary: 211 88% 60%;
+    /* --primary: 238 65% 57%; */
     /* --primary: 267 95% 77%; */
     --primary-foreground: 210 20% 98%;
     --secondary: 215 27.9% 16.9%;
@@ -106,8 +107,8 @@
 ::-webkit-scrollbar {
   width: 6px;
 }
-/* 
-::-webkit-scrollbar-track {
+
+/* ::-webkit-scrollbar-track {
   background-color: #eee;
 }
 
@@ -116,10 +117,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(67, 10, 158);
-}
+  background-color: var(--color-gray-100);
+} */
 
-.dark ::-webkit-scrollbar-thumb {
+/* .dark ::-webkit-scrollbar-thumb {
   background-color: rgb(67, 10, 158);
 } */
 
@@ -137,7 +138,7 @@
 }
 
 .dark .loader {
-  --primary: 238 65% 57%;
+  --primary: 211 88% 60%;
 }
 
 @keyframes animloader {
