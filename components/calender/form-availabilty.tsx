@@ -4,8 +4,11 @@ import { Button } from "../ui/button";
 import { getUserServices, setAvailabilty } from "@/lib/actions";
 import SelectService from "../services/select-service";
 import ButtonSubmit from "../ButtonSubmit";
-import { StartDatePicker } from "./start-date-picker";
-import { EndDatePicker } from "./end-date-picker";
+import InputDate from "../input-date";
+import { getCurrentDateFormatted } from "@/lib/utils";
+import InputTime from "../input-time";
+
+const today = getCurrentDateFormatted();
 
 export default async function FormAvailability() {
   const services = await getUserServices();
@@ -35,12 +38,24 @@ export default async function FormAvailability() {
       <div className="grid md:grid-cols-2 gap-6 mb-14">
         <div>
           <Label>From</Label>
-          <StartDatePicker label="start date" />
+          <InputDate name="startDate" min={today} defaultValue={today} />
         </div>
 
         <div>
           <Label>To</Label>
-          <EndDatePicker label="end date" />
+          <InputDate name="endDate" showDefaultValue={false} />
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6 mb-14">
+        <div>
+          <Label>From</Label>
+          <InputTime name="startTime" />
+        </div>
+
+        <div>
+          <Label>To</Label>
+          <InputTime name="endTime" />
         </div>
       </div>
 

@@ -1,4 +1,5 @@
 import ButtonCopy from "@/components/button-copy";
+import TestForm from "./TestForm";
 
 export const metadata = {
   title: "Earnings",
@@ -7,8 +8,7 @@ export const metadata = {
 export default function Page() {
   return (
     <div>
-      <ButtonCopy />
-      <span className="load"></span>
+      <TestForm />
     </div>
   );
 }

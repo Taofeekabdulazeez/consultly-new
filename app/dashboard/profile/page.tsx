@@ -117,7 +117,7 @@ export default async function Page() {
         <div className="grid md:grid-cols-2 gap-6 ">
           <div>
             <Label htmlFor="country">Country</Label>
-            <input name="country" type="text" hidden />
+            <input name="country" type="text" hidden value={country} />
             <CustomSelect options={countryOptions} />
           </div>
 

@@ -138,7 +138,10 @@ export async function setAvailabilty(formData: FormData) {
   const rawData = {
     startDate: formData.get("startDate"),
     endDate: formData.get("endDate"),
+    availability: [`${formData.get("startTime")}-${formData.get("endTime")}`],
   };
+
+  console.log(serviceId, rawData);
 
   await supabase.from("services").update(rawData).eq("id", serviceId);
 

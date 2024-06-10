@@ -5,12 +5,19 @@ import { P } from "../ui/typography";
 import { useConsultState, useConsultUser } from "./ConsultContext";
 import TimeSlots from "./time-slots";
 import { Heading } from "../ui/Heading";
+import BookingCalender from "./booking-calender";
+import InputDate from "../input-date";
+import InputTime from "../input-time";
 
 export default function AvailabiltyScreen() {
   const user = useConsultUser();
   const { selectedService } = useConsultState();
-  const availability = selectedService.availability;
+  const [availability] = selectedService.availability;
   const duration = selectedService.duration;
+  const startTime = availability.split("-")[0];
+  const endTime = availability.split("-")[0];
+
+  console.log(startTime, endTime);
 
   return (
     <div>
@@ -25,12 +32,25 @@ export default function AvailabiltyScreen() {
           the time slot and select a meeting time to proceed with booking.
         </P>
       </div>
-      <div className="grid grid-cols-[auto_1fr] gap-6">
-        <Calendar className="bg-gray-75" />
+      {/* <div className="grid grid-cols-[auto_1fr] gap-6">
+        <BookingCalender />
         <div className="flex flex-col gap-4 mt-3">
           {availability.map((slot: any) => (
             <TimeSlots key={slot} slot={slot} duration={duration} />
           ))}
+        </div>
+      </div> */}
+      <div className="grid sm:grid-cols-2 gap-6">
+        <div>
+          <Label>Select a Date</Label>
+          <InputDate
+            min={selectedService.startDate}
+            max={selectedService.endDate}
+          />
+        </div>
+        <div>
+          <Label>Select a Time</Label>
+          <InputTime min={startTime} max={endTime} />
         </div>
       </div>
     </div>

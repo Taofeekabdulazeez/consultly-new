@@ -139,3 +139,13 @@ export function convert24HourTo12Hour(time24: string): string {
   // Return the formatted 12-hour time string with AM/PM
   return `${formattedHour}:${formattedMinute} ${period}`;
 }
+
+export function getCurrentDateFormatted() {
+  const date = new Date();
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-based, so add 1
+  const day = String(date.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
