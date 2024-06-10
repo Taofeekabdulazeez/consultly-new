@@ -10,6 +10,8 @@ const authConfig = {
     }),
   ],
 
+  secret: process.env.NEXTAUTH_SECRET,
+
   cookies: {
     pkceCodeVerifier: {
       name: "next-auth.pkce.code_verifier",
