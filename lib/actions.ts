@@ -166,3 +166,25 @@ export async function getConsultation(username: string = "taofeek") {
 
   return { ...user, services };
 }
+
+type Data = {
+  firstName?: string;
+  time: string;
+  date: string;
+  seatNumber: number;
+};
+
+export async function insertData(formData: Data) {
+  console.log(insertData);
+  await supabase.from("test").insert([formData]);
+}
+
+export async function updateData(formData: Data) {
+  await supabase.from("test").update(formData).eq("id", "1").select();
+}
+
+export async function getData() {
+  const { data: test, error } = await supabase.from("test").select("*");
+
+  return test;
+}

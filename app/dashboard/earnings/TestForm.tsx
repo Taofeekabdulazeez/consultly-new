@@ -1,4 +1,6 @@
 "use client";
+import ButtonSubmit from "@/components/ButtonSubmit";
+import { insertData } from "@/lib/actions";
 import { useForm } from "react-hook-form";
 
 type Data = {
@@ -17,10 +19,13 @@ export default function TestForm({ data }: Props) {
   const { register, handleSubmit, formState } = useForm<Data>({
     defaultValues: data,
   });
-  const { errors } = formState;
+  const { errors, isSubmitting } = formState;
 
-  const onSubmit = (data: Data) => {
+  const onSubmit = async (data: Data) => {
+    const { firstName, seatNumber, date, time } = data;
     console.log(data);
+
+    await insertData({ firstName, seatNumber, date, time });
   };
 
   return (
@@ -52,8 +57,8 @@ export default function TestForm({ data }: Props) {
           <input type="number" {...register("seatNumber", {})} />
         </div>
         <div>
-          <label>Date: </label>
-          {/* <input type="time" {...register("time", {})} /> */}
+          <label>Time: </label>
+          <input type="time" {...register("time", {})} />
         </div>
         <div>
           <label>Date: </label>
@@ -78,9 +83,9 @@ export default function TestForm({ data }: Props) {
           )}
         </div>
       </div>
-      <button className="bg-gray-800 text-white px-3 py-1.5 rounded">
-        Submit
-      </button>
+      <ButtonSubmit
+        isPending={isSubmitting && Object.keys(errors).length === 0}
+      />
     </form>
   );
 }

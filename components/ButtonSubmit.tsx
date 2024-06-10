@@ -15,6 +15,7 @@ type Props = {
   toastErrorMessage?: string;
   showPendingToast?: boolean;
   className?: string;
+  isPending?: boolean;
 };
 
 export default function ButtonSubmit({
@@ -25,8 +26,11 @@ export default function ButtonSubmit({
   showPendingToast = true,
   toastPendingMessage = "Updating..",
   toastSucessMessage = "Done!",
+  isPending = false,
 }: Props) {
-  const { pending } = useFormStatus();
+  const { pending: loading } = useFormStatus();
+
+  const pending = isPending || loading;
 
   useDidUpdateEffect(() => {
     pending
