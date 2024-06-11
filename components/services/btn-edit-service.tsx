@@ -8,8 +8,11 @@ import {
 } from "@/components/ui/sheet";
 import { MdEdit } from "react-icons/md";
 import FormEditService from "./FormEditService";
+import { useService } from "./ServiceContext";
+import FormService from "./form-service";
 
-export default function EditService() {
+export default function ButtonEditService() {
+  const service = useService();
   return (
     <Sheet>
       <SheetTrigger className="w-full flex items-center gap-3 px-6 py-1.5 text-gray-600 font-medium hover:text-gray-900 hover:bg-gray-50">
@@ -17,10 +20,11 @@ export default function EditService() {
       </SheetTrigger>
       <SheetContent className="min-w-full sm:min-w-[500px]">
         <SheetHeader className="mb-6">
-          <SheetTitle className="text-lg">Add a new service</SheetTitle>
+          <SheetTitle className="text-lg">Edit Service</SheetTitle>
           <SheetDescription>Provide details of the service</SheetDescription>
         </SheetHeader>
-        <FormEditService />
+        {/* <FormEditService /> */}
+        <FormService data={service} />
       </SheetContent>
     </Sheet>
   );

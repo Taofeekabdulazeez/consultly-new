@@ -1,17 +1,22 @@
-import ButtonCopy from "@/components/button-copy";
+import ButtonAddService from "@/components/services/btn-add-service";
 import TestForm from "./TestForm";
-import { time } from "console";
 
 export const metadata = {
   title: "Earnings",
 };
 
-const value = { firstName: "Taofeek", seatNumber: 9, time: "", date: "" };
+const value = {
+  firstName: "Taofeek",
+  lastName: "",
+  seatNumber: 9,
+  time: "",
+  date: "",
+};
 
 export default function Page() {
   return (
     <div>
-      <TestForm data={value} />
+      <TestForm data={value} /> <ButtonAddService />
     </div>
   );
 }

@@ -1,91 +1,67 @@
 "use client";
 import ButtonSubmit from "@/components/ButtonSubmit";
+import CustomSelect from "@/components/CustomSelect";
+import { Button } from "@/components/ui/button";
 import { insertData } from "@/lib/actions";
+import { UserSchema } from "@/schemas/userSchema";
 import { useForm } from "react-hook-form";
-
-type Data = {
-  firstName: string;
-  lastName?: string;
-  seatNumber: number;
-  date: string;
-  time: string;
-};
+import { toast } from "sonner";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import FormInput from "@/components/form/form-input";
 
 type Props = {
-  data: Data;
+  data: z.infer<typeof UserSchema>;
 };
 
 export default function TestForm({ data }: Props) {
-  const { register, handleSubmit, formState } = useForm<Data>({
+  const form = useForm<z.infer<typeof UserSchema>>({
+    resolver: zodResolver(UserSchema),
     defaultValues: data,
   });
+  const { register, handleSubmit, formState, control } = form;
   const { errors, isSubmitting } = formState;
 
-  const onSubmit = async (data: Data) => {
+  const onSubmit = async (data: z.infer<typeof UserSchema>) => {
+    toast.loading("saving", { id: "1" });
     const { firstName, seatNumber, date, time } = data;
     console.log(data);
 
     await insertData({ firstName, seatNumber, date, time });
+
+    toast.success("saved", { id: "1" });
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col gap-4">
-        <div>
-          <label>firstName: </label>
-          <input
-            type="text"
-            {...register("firstName", {
-              required: { value: true, message: "Please input your firstName" },
-            })}
+    <Form {...form}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-col gap-4 max-w-[600px]">
+          <FormInput name="firstName" control={control} label="First Name" />
+          <FormInput name="lastName" control={control} label="Last Name" />
+          <FormInput
+            type="number"
+            name="seatNumber"
+            control={control}
+            label="Seat Number"
           />
+          <FormInput type="time" name="time" control={control} />
+
+          <FormInput type="date" name="date" control={control} />
+
+          <div></div>
         </div>
-        <div>
-          <label>LastName: </label>
-          <input
-            type="text"
-            {...register("lastName", {
-              required: { value: true, message: "Please input your lastName" },
-            })}
-          />
-          {errors.lastName && (
-            <span className="text-red-800">{errors.lastName.message}</span>
-          )}
-        </div>
-        <div>
-          <label>seat number: </label>
-          <input type="number" {...register("seatNumber", {})} />
-        </div>
-        <div>
-          <label>Time: </label>
-          <input type="time" {...register("time", {})} />
-        </div>
-        <div>
-          <label>Date: </label>
-          <input
-            type="Date"
-            {...register("date", {
-              value: "2024-06-10",
-              required: {
-                value: true,
-                message: "select a time",
-              },
-              validate: (date: string) => {
-                const x = new Date(date);
-                const y = new Date("2024-06-10");
-                if (+x === +y) return true;
-                else return "error!";
-              },
-            })}
-          />
-          {errors?.date && (
-            <span className="text-red-800">{errors.date.message}</span>
-          )}
-        </div>
-      </div>
-      <ButtonSubmit
-        isPending={isSubmitting && Object.keys(errors).length === 0}
-      />
-    </form>
+        <Button>{isSubmitting ? "saving" : "save"}</Button>
+      </form>
+    </Form>
   );
 }

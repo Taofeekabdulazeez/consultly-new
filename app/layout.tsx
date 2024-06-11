@@ -53,6 +53,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${ubuntu.className} antialiased relative overflow-x-hidden`}
+        suppressHydrationWarning={true}
       >
         {children}
         <Toaster

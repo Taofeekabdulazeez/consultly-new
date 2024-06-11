@@ -8,14 +8,16 @@ import {
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import ConfirmDelete from "../ConfirmDelete";
 import { deleteService } from "@/lib/actions";
-import EditService from "./EditService";
+import EditService from "./btn-edit-service";
 import ViewService from "./ViewService";
+import { useService } from "./ServiceContext";
 
 type Props = {
   serviceId: string;
 };
 
 export default function ServiceActionMenu({ serviceId }: Props) {
+  const service = useService();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="outline-none text-gray-500 hover:text-gray-900 p-2">

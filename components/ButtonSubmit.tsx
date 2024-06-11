@@ -14,8 +14,11 @@ type Props = {
   toastSucessMessage?: string;
   toastErrorMessage?: string;
   showPendingToast?: boolean;
+  showSuccessToast?: boolean;
   className?: string;
   isPending?: boolean;
+  disabled?: boolean;
+  type?: "submit" | "button";
 };
 
 export default function ButtonSubmit({
@@ -24,9 +27,11 @@ export default function ButtonSubmit({
   pendingText = "saving",
   toastId = "1",
   showPendingToast = true,
+  showSuccessToast = true,
   toastPendingMessage = "Updating..",
   toastSucessMessage = "Done!",
   isPending = false,
+  disabled = false,
 }: Props) {
   const { pending: loading } = useFormStatus();
 
@@ -35,11 +40,11 @@ export default function ButtonSubmit({
   useDidUpdateEffect(() => {
     pending
       ? showPendingToast && toast.loading(toastPendingMessage, { id: toastId })
-      : toast.success(toastSucessMessage, { id: toastId });
+      : showSuccessToast && toast.success(toastSucessMessage, { id: toastId });
   }, [pending]);
 
   return (
-    <Button disabled={pending} type="submit" className={className}>
+    <Button disabled={pending || disabled} type="submit" className={className}>
       {pending ? (
         <>
           <ButtonSpinner /> {pendingText}

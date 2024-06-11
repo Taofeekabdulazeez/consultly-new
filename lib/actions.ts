@@ -188,3 +188,7 @@ export async function getData() {
 
   return test;
 }
+
+export async function addServ(service: any) {
+  await supabase.from("services").insert([service]);
+}
