@@ -2,6 +2,8 @@ import { getUserServices } from "@/lib/actions";
 import Service from "./Service";
 import { ServiceProvider } from "./ServiceContext";
 
+export const revalidate = 0;
+
 export default async function ServiceList() {
   const services = await getUserServices();
   return (

@@ -191,4 +191,12 @@ export async function getData() {
 
 export async function addServ(service: any) {
   await supabase.from("services").insert([service]);
+  revalidatePath("/dashboard/services");
+}
+
+export async function updateServ(data: any, id: string) {
+  console.log(id);
+  await supabase.from("services").update(data).eq("id", id);
+
+  revalidatePath("/dashboard/services");
 }

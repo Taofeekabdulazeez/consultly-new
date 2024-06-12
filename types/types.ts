@@ -38,6 +38,7 @@ type Service = {
   price: number;
   userId: string;
   duration: number;
+  availability: string[];
 };
 
 type ServiceSummary = Pick<

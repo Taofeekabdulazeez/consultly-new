@@ -12,7 +12,8 @@ import { useService } from "./ServiceContext";
 import FormService from "./form-service";
 
 export default function ButtonEditService() {
-  const service = useService();
+  const { id, userId, availability, ...service } = useService();
+  console.log(service);
   return (
     <Sheet>
       <SheetTrigger className="w-full flex items-center gap-3 px-6 py-1.5 text-gray-600 font-medium hover:text-gray-900 hover:bg-gray-50">
@@ -24,7 +25,7 @@ export default function ButtonEditService() {
           <SheetDescription>Provide details of the service</SheetDescription>
         </SheetHeader>
         {/* <FormEditService /> */}
-        <FormService data={service} />
+        <FormService id={id} data={service} />
       </SheetContent>
     </Sheet>
   );

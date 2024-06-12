@@ -1,28 +1,54 @@
 "use client";
 
+import { useForm } from "react-hook-form";
 import FormInput from "../form/form-input";
-import { ServiceSchemaType } from "@/schemas/userSchema";
+import { ServiceSchema, ServiceSchemaType } from "@/schemas/userSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import FormTextarea from "../form/form-textarea";
 import { Checkbox } from "../ui/checkbox";
 import { Info } from "lucide-react";
 import { Button } from "../ui/button";
 import { Form } from "../ui/form";
-import { useServiceForm } from "./use-service-form";
+import { addServ, updateServ, updateService } from "@/lib/actions";
+import { FormDatePicker } from "../form/form-date-picker";
+import { toast } from "sonner";
 
 type Props = {
   data?: ServiceSchemaType;
   id?: string;
 };
 
-export default function FormService({ data, id }: Props) {
-  const { form, control, isSubmitting, submitHandler } = useServiceForm({
-    data,
-    serviceId: id,
+export default function FormService({
+  data = {} as ServiceSchemaType,
+  id,
+}: Props) {
+  const isEditSession = Boolean(Object.entries(data).length);
+
+  const form = useForm<ServiceSchemaType>({
+    resolver: zodResolver(ServiceSchema),
+    defaultValues: isEditSession ? data : undefined,
   });
+
+  const { control, handleSubmit, formState } = form;
+  const { isSubmitting } = formState;
+
+  const onSubmit = async (data: ServiceSchemaType) => {
+    toast.loading("Adding service", { id: "1" });
+    console.log(data);
+
+    if (isEditSession) await updateServ(data, String(id));
+    else await addServ(data);
+
+    toast.success("Successfully added!", { id: "1" });
+  };
+
+  const onError = (error: any) => {
+    console.log("error => ", error);
+  };
 
   return (
     <Form {...form}>
-      <form onSubmit={submitHandler} className="grid gap-6">
+      <form onSubmit={handleSubmit(onSubmit, onError)} className="grid gap-6">
         <FormInput
           name="title"
           placeholder="IT Consultation"

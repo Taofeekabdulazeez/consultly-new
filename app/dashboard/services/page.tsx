@@ -1,5 +1,6 @@
 import AddService from "@/components/services/AddService";
 import ServiceList from "@/components/services/ServiceList";
+import ButtonAddService from "@/components/services/btn-add-service";
 import ServiceLoader from "@/components/services/service-loader";
 import { Heading } from "@/components/ui/Heading";
 import { P } from "@/components/ui/typography";
@@ -23,7 +24,7 @@ export default async function Page() {
           in the desired order.`}
           </P>
         </div>
-        <AddService />
+        <ButtonAddService />
       </div>
       <Suspense fallback={<ServiceLoader />}>
         <ServiceList />
