@@ -1,8 +1,7 @@
 import { Calendar } from "@/components/ui/calendar";
-import StripeBanner from "@/components/StripeBanner";
-import { WelcomeScreen } from "@/components/WelcomeScreen";
 import MeetingsTable from "@/components/meetings/MeetingsTable";
 import userAction from "@/lib/actions/userAction";
+import { WelcomeScreen } from "@/components/dashboard/WelcomeScreen";
 
 export const metadata = {
   title: "Dashboard",

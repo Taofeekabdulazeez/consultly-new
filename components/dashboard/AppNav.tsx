@@ -15,8 +15,8 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useMobile } from "@/hooks/useMobileNav";
-import { Button } from "./ui/button";
-import Logo from "./Logo";
+import { Button } from "../ui/button";
+import Logo from "../common/logo";
 
 const navLinks = [
   {

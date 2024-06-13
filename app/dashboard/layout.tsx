@@ -1,5 +1,5 @@
-import Aside from "@/components/Aside";
-import Header from "@/components/Header";
+import Aside from "@/components/dashboard/Aside";
+import Header from "@/components/dashboard/Header";
 import { ReactNode } from "react";
 
 export const metadata = {

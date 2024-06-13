@@ -1,12 +1,12 @@
-import CustomSelect from "@/components/CustomSelect";
+import CustomSelect from "@/components/common/CustomSelect";
 import { Label } from "@/components/ui/label";
 import { Button } from "../ui/button";
 import { getUserServices, setAvailabilty } from "@/lib/actions";
 import SelectService from "../services/select-service";
-import ButtonSubmit from "../ButtonSubmit";
-import InputDate from "../input-date";
+import ButtonSubmit from "../common/button-submit";
+import InputDate from "../common/input-date";
 import { getCurrentDateFormatted } from "@/lib/utils";
-import InputTime from "../input-time";
+import InputTime from "../common/input-time";
 
 const today = getCurrentDateFormatted();
 

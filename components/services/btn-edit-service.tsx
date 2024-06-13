@@ -7,8 +7,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { MdEdit } from "react-icons/md";
-import FormEditService from "./FormEditService";
-import { useService } from "./ServiceContext";
+import { useService } from "./service-contex";
 import FormService from "./form-service";
 
 export default function ButtonEditService() {
@@ -24,7 +23,6 @@ export default function ButtonEditService() {
           <SheetTitle className="text-lg">Edit Service</SheetTitle>
           <SheetDescription>Provide details of the service</SheetDescription>
         </SheetHeader>
-        {/* <FormEditService /> */}
         <FormService id={id} data={service} />
       </SheetContent>
     </Sheet>

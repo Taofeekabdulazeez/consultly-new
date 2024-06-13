@@ -28,7 +28,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { signOutAction } from "@/lib/actions";
-import ButtonTheme from "./ButtonTheme";
+import ButtonTheme from "../common/button-theme";
 
 export default function ProfileMenu({
   name,

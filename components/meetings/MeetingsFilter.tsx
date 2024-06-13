@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import ButtonFilter from "../ButtonFilter";
+import ButtonFilter from "../common/button-filter";
 
 export default function MeetingsFilter() {
   const searchParams = useSearchParams();

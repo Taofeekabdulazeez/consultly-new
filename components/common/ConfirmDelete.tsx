@@ -10,7 +10,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { MdDelete } from "react-icons/md";
-import ButtonSubmit from "./ButtonSubmit";
+import ButtonSubmit from "./button-submit";
 
 type Props = {
   onDeleteResource?: (id: string) => void;

@@ -1,9 +1,9 @@
 "use client";
 
-import ServiceActionMenu from "./ServiceActionMenu";
+import ServiceActionMenu from "./service-action-menu";
 import { Heading } from "../ui/Heading";
 import { P } from "../ui/typography";
-import { useService } from "./ServiceContext";
+import { useService } from "./service-contex";
 
 type Props = {
   id: string;

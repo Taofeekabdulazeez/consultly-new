@@ -1,7 +1,7 @@
 "use client";
 import { useFormStatus } from "react-dom";
-import { Button } from "./ui/button";
-import ButtonSpinner from "./ui/ButtonSpinner";
+import { Button } from "../ui/button";
+import ButtonSpinner from "../ui/ButtonSpinner";
 import { useDidUpdateEffect } from "@/app/dashboard/earnings/useDidUpdateEffect";
 import { toast } from "sonner";
 

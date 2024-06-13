@@ -1,5 +1,5 @@
 import ButtonAddService from "@/components/services/btn-add-service";
-import TestForm from "./TestForm";
+// import TestForm from "./TestForm";
 
 export const metadata = {
   title: "Earnings",
@@ -14,9 +14,5 @@ const value = {
 };
 
 export default function Page() {
-  return (
-    <div>
-      <TestForm data={value} /> <ButtonAddService />
-    </div>
-  );
+  return <div>{/* <TestForm data={value} /> <ButtonAddService /> */}</div>;
 }

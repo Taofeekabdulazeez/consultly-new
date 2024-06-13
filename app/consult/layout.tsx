@@ -1,4 +1,4 @@
-import Logo from "@/components/Logo";
+import Logo from "@/components/common/logo";
 import { ReactNode } from "react";
 
 export const revalidate = 0; // revalidate at most every hour

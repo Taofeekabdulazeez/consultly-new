@@ -1,5 +1,5 @@
 import { addServ, updateServ } from "@/lib/actions";
-import { ServiceSchema, ServiceSchemaType } from "@/schemas/userSchema";
+import { ServiceSchema, ServiceSchemaType } from "@/schemas/serviceSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -7,8 +7,6 @@ import { toast } from "sonner";
 type args = {
   data?: ServiceSchemaType;
   serviceId?: string;
-  // updateFn: (data: ServiceSchemaType, id: string) => Promise<void>;
-  // insertFn: (data: ServiceSchemaType) => Promise<void>;
 };
 
 export function useServiceForm({
@@ -26,13 +24,17 @@ export function useServiceForm({
   const { isSubmitting } = formState;
 
   const onSubmit = async (data: ServiceSchemaType) => {
-    toast.loading("Adding service", { id: "1" });
+    isEditSession
+      ? toast.loading("Updating service", { id: "1" })
+      : toast.loading("Adding service", { id: "1" });
     console.log(data);
 
     if (isEditSession) await updateServ(data, String(serviceId));
     else await addServ(data);
 
-    toast.success("Successfully added!", { id: "1" });
+    isEditSession
+      ? toast.success("Service successfully edited!", { id: "1" })
+      : toast.success("Service successfully added!", { id: "1" });
   };
 
   const onError = (error: any) => {

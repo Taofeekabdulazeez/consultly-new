@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Logo from "@/components/Logo";
+import Logo from "@/components/common/logo";
 import { Heading } from "@/components/ui/Heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

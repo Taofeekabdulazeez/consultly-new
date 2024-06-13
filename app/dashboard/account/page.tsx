@@ -1,5 +1,5 @@
-import CustomSelect from "@/components/CustomSelect";
-import Table from "@/components/Table";
+import CustomSelect from "@/components/common/CustomSelect";
+import Table from "@/components/common/table";
 import { Heading } from "@/components/ui/Heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

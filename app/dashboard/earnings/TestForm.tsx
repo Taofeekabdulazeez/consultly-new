@@ -1,6 +1,6 @@
 "use client";
-import ButtonSubmit from "@/components/ButtonSubmit";
-import CustomSelect from "@/components/CustomSelect";
+import ButtonSubmit from "@/components/common/ButtonSubmit";
+import CustomSelect from "@/components/common/CustomSelect";
 import { Button } from "@/components/ui/button";
 import { insertData } from "@/lib/actions";
 import { UserSchema } from "@/schemas/userSchema";

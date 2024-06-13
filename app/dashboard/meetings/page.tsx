@@ -1,4 +1,4 @@
-import TableLoader from "@/components/TableLoader";
+import TableLoader from "@/components/common/table-loader";
 import MeetingsFilter from "@/components/meetings/MeetingsFilter";
 import MeetingsTable from "@/components/meetings/MeetingsTable";
 import { Heading } from "@/components/ui/Heading";

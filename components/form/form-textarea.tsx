@@ -7,6 +7,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Textarea } from "../ui/textarea";
+import { useFormControl } from "./context-form";
 
 type Props = {
   control: any;
@@ -23,6 +24,8 @@ export default function FormTextarea({
   description,
   placeholder,
 }: Props) {
+  const form = useFormControl();
+
   return (
     <FormField
       control={control}

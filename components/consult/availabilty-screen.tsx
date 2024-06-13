@@ -6,8 +6,8 @@ import { useConsultState, useConsultUser } from "./ConsultContext";
 import TimeSlots from "./time-slots";
 import { Heading } from "../ui/Heading";
 import BookingCalender from "./booking-calender";
-import InputDate from "../input-date";
-import InputTime from "../input-time";
+import InputDate from "../common/input-date";
+import InputTime from "../common/input-time";
 
 export default function AvailabiltyScreen() {
   const user = useConsultUser();

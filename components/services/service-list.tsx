@@ -1,6 +1,6 @@
 import { getUserServices } from "@/lib/actions";
-import Service from "./Service";
-import { ServiceProvider } from "./ServiceContext";
+import { ServiceProvider } from "./service-contex";
+import Service from "./service";
 
 export const revalidate = 0;
 

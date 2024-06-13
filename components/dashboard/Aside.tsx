@@ -2,7 +2,7 @@
 
 import { MobileProvider } from "@/hooks/useMobileNav";
 import AppNav from "./AppNav";
-import Logo from "./Logo";
+import Logo from "../common/logo";
 
 export default function Aside() {
   return (

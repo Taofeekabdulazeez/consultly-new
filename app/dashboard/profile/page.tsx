@@ -3,15 +3,15 @@ import { RiExternalLinkLine } from "react-icons/ri";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import CustomSelect from "@/components/CustomSelect";
+import CustomSelect from "@/components/common/CustomSelect";
 import { countryOptions } from "@/static_data/data";
 import { Heading } from "@/components/ui/Heading";
 import { P } from "@/components/ui/typography";
 import { getCurrentUser, updateProfile } from "@/lib/actions";
-import ButtonSubmit from "@/components/ButtonSubmit";
-import ButtonCopy from "@/components/button-copy";
-import ButtonURL from "@/components/button-url";
+import ButtonCopy from "@/components/common/button-copy";
+import ButtonURL from "@/components/common/button-url";
 import Link from "next/link";
+import ButtonSubmit from "@/components/common/button-submit";
 
 export const metadata = {
   title: "Profile",

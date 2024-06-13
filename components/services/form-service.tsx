@@ -1,7 +1,7 @@
 "use client";
 
 import FormInput from "../form/form-input";
-import { ServiceSchemaType } from "@/schemas/userSchema";
+import { ServiceSchemaType } from "@/schemas/serviceSchema";
 import FormTextarea from "../form/form-textarea";
 import { Checkbox } from "../ui/checkbox";
 import { Info } from "lucide-react";

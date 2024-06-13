@@ -1,3 +1,4 @@
+import { Input } from "../ui/input";
 import {
   FormControl,
   FormDescription,
@@ -6,7 +7,6 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import { Input } from "../ui/input";
 
 type Props = {
   control: any;
@@ -25,6 +25,8 @@ export default function FormInput({
   type = "text",
   placeholder,
 }: Props) {
+  // const form = useFormControl();
+
   return (
     <FormField
       control={control}

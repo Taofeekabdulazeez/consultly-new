@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Input } from "./ui/input";
+import { Input } from "../ui/input";
 
 type Props = {
   name?: string;
@@ -10,7 +10,6 @@ type Props = {
   showDefaultValue?: boolean;
   defaultValue?: string;
 };
-
 
 export default function InputDate({
   name,

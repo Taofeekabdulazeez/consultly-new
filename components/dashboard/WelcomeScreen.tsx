@@ -1,10 +1,10 @@
 import { auth } from "@/lib/auth";
 import { getCurrentHour, getTodaysDate } from "@/lib/utils";
-import { Heading } from "./ui/Heading";
-import { P } from "./ui/typography";
 import Image from "next/image";
 
 import expert from "@/public/expert.png";
+import { Heading } from "../ui/Heading";
+import { P } from "../ui/typography";
 
 export async function WelcomeScreen() {
   const session = await auth();

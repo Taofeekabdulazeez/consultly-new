@@ -1,6 +1,6 @@
 import { auth } from "@/lib/auth";
-import ButtonTheme from "./ButtonTheme";
-import Logo from "./Logo";
+import Logo from "../common/logo";
+import ButtonTheme from "../common/button-theme";
 import ProfileMenu from "./ProfileMenu";
 
 export default async function Header() {

@@ -10,7 +10,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 import React, { useState } from "react";
 import Link from "next/link";
-import Logo from "@/components/Logo";
+import Logo from "@/components/common/logo";
 
 export default function Home() {
   const [showMenu, setShowMenu] = useState(false);

@@ -2,7 +2,7 @@
 
 import { MobileProvider, useMobile } from "@/hooks/useMobileNav";
 import { Menu, X } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 export default function NavToggle() {
   return (
