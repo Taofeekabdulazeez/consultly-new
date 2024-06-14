@@ -6,7 +6,7 @@ import { P } from "@/components/ui/typography";
 import { Suspense } from "react";
 
 export const metadata = {
-  title: "Services",
+  title: "My Services",
 };
 
 export const revalidate = 0;
@@ -17,12 +17,10 @@ export default async function Page() {
       <div className="grid md:grid-cols-[1fr_auto] gap-6 md:gap-48 mb-10">
         <div>
           <Heading>My Services</Heading>
-          <P size="sm">
-            {`Add the types of consultations you provide, e.g., "English lesson" or
+          <P size="sm" className="font-normal">
+            {`Add the types of consultations you provide, e.g.,
           "Medical consultation". It will enable your clients to book a
-          consultation through your Public Profile. You can arrange the order in
-          which they appear on your Public Profile by dragging and dropping them
-          in the desired order.`}
+          consultation through your Public Profile.`}
           </P>
         </div>
         <ButtonAddService />

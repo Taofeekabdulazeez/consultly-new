@@ -8,7 +8,7 @@ import { P } from "@/components/ui/typography";
 import { countryOptions } from "@/static_data/data";
 
 export const metadata = {
-  title: "Account",
+  title: "My Account",
 };
 
 export default function Page() {

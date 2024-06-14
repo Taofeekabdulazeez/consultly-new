@@ -4,6 +4,10 @@ import ServiceActionMenu from "./service-action-menu";
 import { Heading } from "../ui/Heading";
 import { P } from "../ui/typography";
 import { useService } from "./service-contex";
+import { Checkbox } from "../ui/checkbox";
+import ButtonCopy from "../common/button-copy";
+import { Button } from "../ui/button";
+import { Forward } from "lucide-react";
 
 type Props = {
   id: string;
@@ -12,20 +16,40 @@ type Props = {
   price?: number;
 };
 
-export default function Service() {
+export default function Service({ color }: { color?: string }) {
   const { id, title, description, price, duration } = useService();
+  console.log(color);
   return (
-    <div className="px-6 py-4 border border-gray-200 grid grid-cols-[1fr_auto_auto] gap-3 justify-between items-center rounded-md">
-      <div>
-        <Heading type="h6">{title}</Heading>
-        <P size="sm">{description}</P>
-      </div>
-      <div className="flex flex-col">
-        <P size="sm">{price ? price : "Free"}</P>
-        <span className="text-gray-600 text-sm">/ {duration}m</span>
-      </div>
-      <div>
+    <div
+      className={`p-3 border border-gray-200 rounded-sm relative before:block before:absolute before:w-full before:h-1 before:top-0 before:left-0 before:bg-${color}-400 overflow-hidden shadow`}
+    >
+      <div className="flex items-center justify-between">
+        <Checkbox />
         <ServiceActionMenu serviceId={id} />
+      </div>
+      <div className="mb-3">
+        <Heading type="h5">{title}</Heading>
+        <P size="sm" className="mt-0 leading-none">
+          {duration} minutes, Video call
+        </P>
+      </div>
+      <P size="sm" className="italic font-normal min-h-[80px]">
+        {`"${description}"`}
+      </P>
+      <div className="border-t mt-4">
+        <div className="flex items-center justify-between mt-4">
+          <ButtonCopy size="sm" className="font-normal">
+            Copy link
+          </ButtonCopy>
+          <Button
+            variant="outline"
+            size="sm"
+            className="font-normal border-primary"
+          >
+            Share
+            <Forward size={14} />
+          </Button>
+        </div>
       </div>
     </div>
   );

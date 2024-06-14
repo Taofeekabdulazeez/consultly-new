@@ -1,20 +1,18 @@
-import { GoCopy } from "react-icons/go";
 import { RiExternalLinkLine } from "react-icons/ri";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import CustomSelect from "@/components/common/CustomSelect";
 import { countryOptions } from "@/static_data/data";
-import { Heading } from "@/components/ui/Heading";
 import { P } from "@/components/ui/typography";
 import { getCurrentUser, updateProfile } from "@/lib/actions";
 import ButtonCopy from "@/components/common/button-copy";
-import ButtonURL from "@/components/common/button-url";
 import Link from "next/link";
 import ButtonSubmit from "@/components/common/button-submit";
+import ProfilePhoto from "@/components/profile/profile-photo";
 
 export const metadata = {
-  title: "Profile",
+  title: "My Profile",
 };
 
 export default async function Page() {
@@ -37,13 +35,17 @@ export default async function Page() {
 
   return (
     <form action={updateProfile} className="bg-gray-50 p-6 rounded-md">
-      <Heading>Profile</Heading>
-      <P size="sm" className="mb-10">
+      <span className="text-xl font-semibold text-gray-600 inline-block mb-4">
+        Account Details
+      </span>
+      <P size="sm" className="mb-10 font-normal">
         Fill in the fields below to share your profile publicly via a link on
         your social media or website. You can preview your profile by clicking
         the {`"View Public Profile" button`}. Remember to click the {`"Save"`}
         button after filling in the fields or changing the data.
       </P>
+      <h2 className="text-[24px] font-semibold mb-4">Profile</h2>
+      <ProfilePhoto />
 
       <Label htmlFor="username">Username</Label>
       <div className="grid gap-4 md:grid-cols-[1fr_auto] mb-10">
@@ -60,8 +62,7 @@ export default async function Page() {
         </div>
         <div className="grid grid-cols-2 gap-3">
           <ButtonCopy textToCopy={`localhost:3000/consult/${username}`}>
-            <GoCopy />
-            <P size="sm">Copy Link</P>
+            Copy Link
           </ButtonCopy>
           <Link
             className="inline-flex items-center gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground px-2 rounded"
@@ -69,29 +70,12 @@ export default async function Page() {
             target="_blank"
           >
             <RiExternalLinkLine />
-            <P size="sm">View profile</P>
+            <P size="sm">View public profile</P>
           </Link>
         </div>
       </div>
 
-      <Label htmlFor="avatar">Avatar</Label>
-      <div className="flex items-center gap-3 mb-10">
-        <div className="h-16 w-16 rounded-full border flex items-center justify-center">
-          <Heading type="h4">
-            {firstName && firstName.slice(0, 2).toUpperCase()}
-          </Heading>
-        </div>
-        <label className="focus:ring-primary relative inline-flex cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-gray-50 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2">
-          <P size="sm">Change avatar</P>
-          <input
-            className="hidden"
-            accept="image/png, image/jpeg"
-            type="file"
-          />
-        </label>
-      </div>
-
-      <div className="grid gap-6">
+      <div className="grid gap-6 md:w-[60%]">
         <div>
           <Label htmlFor="firstName">First name</Label>
           <Input name="firstName" type="text" defaultValue={firstName} />

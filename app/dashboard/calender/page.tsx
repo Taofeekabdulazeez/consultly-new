@@ -3,7 +3,7 @@ import { Heading } from "@/components/ui/Heading";
 import { P } from "@/components/ui/typography";
 
 export const metadata = {
-  title: "Calender",
+  title: "My Calender",
 };
 
 export default function Page() {

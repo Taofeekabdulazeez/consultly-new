@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 export const metadata = {
   title: {
-    template: "%s / Consultly",
+    template: "%s | Consultly",
     default: "Dashboard",
   },
 };
