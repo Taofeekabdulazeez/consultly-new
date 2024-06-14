@@ -4,27 +4,25 @@ import { Button } from "../ui/button";
 import { getUserServices, setAvailabilty } from "@/lib/actions";
 import SelectService from "../services/select-service";
 import ButtonSubmit from "../common/button-submit";
-import InputDate from "../common/input-date";
 import { getCurrentDateFormatted } from "@/lib/utils";
 import InputTime from "../common/input-time";
+import InputDate from "../common/input-date";
 
 const today = getCurrentDateFormatted();
 
-type Props = {
-  services?: Service[];
-};
+export default async function FormAvailability() {
+  const services = await getUserServices();
 
-export default function FormAvailability({ services }: Props) {
-  const serviceOptions = services?.map((service) => {
+  const serviceOptions = services.map((service) => {
     return { id: service.id, value: service.title };
   });
 
   return (
     <form action={setAvailabilty} className="grid gap-6">
-      {/* <div>
+      <div>
         <Label>Type of service</Label>
         <SelectService options={serviceOptions} />
-      </div> */}
+      </div>
 
       <div>
         <Label>Time zone</Label>

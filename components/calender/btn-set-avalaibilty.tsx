@@ -1,3 +1,4 @@
+// "use client";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -7,9 +8,13 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import FormAvailability from "@/components/calender/form-availabilty";
+import FormAvailability from "@/components/calender/form-availabilty copy";
+// import { useState } from "react";
 
-export default function SetAvailabilty() {
+export default function ButtonSetAvailabilty() {
+  // const [open, setOpen] = useState(false);
+  // const closeSheet = () => setOpen(false);
+
   return (
     <Sheet>
       <SheetTrigger asChild>

@@ -1,4 +1,4 @@
-import SetAvailabilty from "@/components/calender/set-avalaibilty";
+import ButtonSetAvailabilty from "@/components/calender/btn-set-avalaibilty";
 import { Heading } from "@/components/ui/Heading";
 import { P } from "@/components/ui/typography";
 
@@ -16,7 +16,7 @@ export default function Page() {
             {` Set your availability dates and times by clicking the "Set your availability" button on the right. Below you can see the set dates and times broken down by type of service.`}
           </P>
         </div>
-        <SetAvailabilty />
+        <ButtonSetAvailabilty />
       </div>
       <Services />
     </div>

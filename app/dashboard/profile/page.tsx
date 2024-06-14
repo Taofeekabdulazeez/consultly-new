@@ -180,7 +180,7 @@ export default async function Page() {
         </div>
         <div className="flex justify-end">
           <ButtonSubmit
-            text="Save"
+            text="Save changes"
             pendingText="Saving"
             toastPendingMessage="Updating your Profile"
             toastSucessMessage="Profile successfully updated!"

@@ -1,12 +1,6 @@
-import {
-  addServ,
-  addService,
-  revalidateServices,
-  updateService,
-} from "@/lib/actions";
+import { addService, updateService } from "@/lib/actions";
 import { ServiceSchema, ServiceSchemaType } from "@/schemas/serviceSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { usePathname, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -27,9 +21,6 @@ export function useServiceForm({
     resolver: zodResolver(ServiceSchema),
     defaultValues: isEditSession ? data : undefined,
   });
-
-  const router = useRouter();
-  const pathname = usePathname();
 
   const { control, handleSubmit, formState } = form;
   const { isSubmitting } = formState;
