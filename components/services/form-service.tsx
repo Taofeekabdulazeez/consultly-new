@@ -12,12 +12,14 @@ import { useServiceForm } from "./use-service-form";
 type Props = {
   data?: ServiceSchemaType;
   id?: string;
+  closeForm?: () => void;
 };
 
-export default function FormService({ data, id }: Props) {
+export default function FormService({ data, id, closeForm }: Props) {
   const { form, control, isSubmitting, submitHandler } = useServiceForm({
     data,
     serviceId: id,
+    onSubmitted: closeForm,
   });
 
   return (

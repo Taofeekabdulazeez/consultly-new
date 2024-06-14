@@ -19,6 +19,7 @@ type Props = {
   isPending?: boolean;
   disabled?: boolean;
   type?: "submit" | "button";
+  onCompletion?: () => void;
 };
 
 export default function ButtonSubmit({
@@ -28,7 +29,7 @@ export default function ButtonSubmit({
   toastId = "1",
   showPendingToast = true,
   showSuccessToast = true,
-  toastPendingMessage = "Updating..",
+  toastPendingMessage = "Loading..",
   toastSucessMessage = "Done!",
   isPending = false,
   disabled = false,

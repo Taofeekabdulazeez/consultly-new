@@ -95,39 +95,27 @@ export async function updateProfile(formData: FormData) {
   revalidatePath("/dashboard/profile");
 }
 
-export async function addService(formData: FormData) {
+export async function addService(data: any) {
   const session = await auth();
+  console.log("userId =>", session?.user?.id);
 
-  const rawData = {
-    title: formData.get("title"),
-    description: formData.get("description"),
-    price: Number(formData.get("price")),
-    duration: Number(formData.get("duration")),
-    userId: session?.user?.id,
-  };
+  const serviceData = { userId: session?.user?.id, ...data };
 
-  await supabase.from("services").insert([rawData]);
+  await supabase.from("services").insert([serviceData]);
 
   revalidatePath("dashboard/services");
+}
+
+export async function updateService(data: any, id: string) {
+  await supabase.from("services").update(data).eq("id", id);
+
+  revalidatePath("/dashboard/services");
 }
 
 export async function deleteService(id: string) {
   const session = await auth();
 
   await supabase.from("services").delete().eq("id", id);
-
-  revalidatePath("/dashboard/services");
-}
-
-export async function updateService(id: string, formData: FormData) {
-  const rawData = {
-    title: formData.get("title"),
-    description: formData.get("description"),
-    price: Number(formData.get("price")),
-    duration: Number(formData.get("duration")),
-  };
-
-  await supabase.from("services").update(rawData).eq("id", id);
 
   revalidatePath("/dashboard/services");
 }
@@ -191,12 +179,11 @@ export async function getData() {
 
 export async function addServ(service: any) {
   await supabase.from("services").insert([service]);
+
   revalidatePath("/dashboard/services");
 }
 
-export async function updateServ(data: any, id: string) {
-  console.log(id);
-  await supabase.from("services").update(data).eq("id", id);
-
+export async function revalidateServices() {
+  "use server";
   revalidatePath("/dashboard/services");
 }

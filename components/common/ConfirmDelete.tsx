@@ -11,11 +11,13 @@ import {
 } from "@/components/ui/alert-dialog";
 import { MdDelete } from "react-icons/md";
 import ButtonSubmit from "./button-submit";
+import { toast } from "sonner";
 
 type Props = {
   onDeleteResource?: (id: string) => void;
   resourceId: string;
   resourceName?: string;
+  onCompletion?: () => void;
 };
 
 export default function ConfirmDelete({
@@ -55,6 +57,9 @@ export default function ConfirmDelete({
               toastPendingMessage={`Deleting ${resourceName}`}
               toastSucessMessage={`${resourceName} successfully deleted!`}
               showPendingToast={false}
+              onCompletion={() => {
+                toast("deleted!");
+              }}
             />
           </AlertDialogFooter>
         </form>

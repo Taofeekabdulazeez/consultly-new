@@ -1,17 +1,25 @@
-import { addServ, updateServ } from "@/lib/actions";
+import {
+  addServ,
+  addService,
+  revalidateServices,
+  updateService,
+} from "@/lib/actions";
 import { ServiceSchema, ServiceSchemaType } from "@/schemas/serviceSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { usePathname, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 type args = {
   data?: ServiceSchemaType;
   serviceId?: string;
+  onSubmitted?: () => void;
 };
 
 export function useServiceForm({
   data = {} as ServiceSchemaType,
   serviceId,
+  onSubmitted,
 }: args) {
   const isEditSession = Boolean(Object.entries(data).length);
 
@@ -19,6 +27,9 @@ export function useServiceForm({
     resolver: zodResolver(ServiceSchema),
     defaultValues: isEditSession ? data : undefined,
   });
+
+  const router = useRouter();
+  const pathname = usePathname();
 
   const { control, handleSubmit, formState } = form;
   const { isSubmitting } = formState;
@@ -29,12 +40,15 @@ export function useServiceForm({
       : toast.loading("Adding service", { id: "1" });
     console.log(data);
 
-    if (isEditSession) await updateServ(data, String(serviceId));
-    else await addServ(data);
+    if (isEditSession) await updateService(data, String(serviceId));
+    else await addService(data);
 
     isEditSession
       ? toast.success("Service successfully edited!", { id: "1" })
       : toast.success("Service successfully added!", { id: "1" });
+
+    onSubmitted?.();
+    console.log("executed!");
   };
 
   const onError = (error: any) => {

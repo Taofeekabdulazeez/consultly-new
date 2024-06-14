@@ -2,7 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import FormInput from "../form/form-input";
-import { ServiceSchema, ServiceSchemaType } from "@/schemas/userSchema";
+import { ServiceSchema, ServiceSchemaType } from "@/schemas/serviceSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import FormTextarea from "../form/form-textarea";
 import { Checkbox } from "../ui/checkbox";
@@ -12,6 +12,7 @@ import { Form } from "../ui/form";
 import { addServ, updateServ, updateService } from "@/lib/actions";
 import { FormDatePicker } from "../form/form-date-picker";
 import { toast } from "sonner";
+import { SheetClose } from "../ui/sheet";
 
 type Props = {
   data?: ServiceSchemaType;
@@ -126,7 +127,9 @@ export default function FormService({
           <Button variant="outline" type="reset">
             Cancel
           </Button>
-          <Button type="submit">{isSubmitting ? "saving" : "save"}</Button>
+          <SheetClose asChild>
+            <Button type="submit">{isSubmitting ? "saving" : "save"}</Button>
+          </SheetClose>
         </div>
       </form>
     </Form>

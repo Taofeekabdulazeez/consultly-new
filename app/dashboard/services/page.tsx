@@ -9,6 +9,8 @@ export const metadata = {
   title: "Services",
 };
 
+export const revalidate = 0;
+
 export default async function Page() {
   return (
     <div className="bg-gray-50 rounded p-6">
