@@ -35,17 +35,19 @@ export default async function Page() {
 
   return (
     <form action={updateProfile} className="bg-gray-50 p-6 rounded-md">
-      <span className="text-xl font-semibold text-gray-600 inline-block mb-4">
+      <span className="text-lg font-medium text-gray-600 inline-block mb-4">
         Account Details
       </span>
+
+      <h2 className="text-[24px] font-semibold mb-4">Profile</h2>
+      <ProfilePhoto />
+
       <P size="sm" className="mb-10 font-normal">
         Fill in the fields below to share your profile publicly via a link on
         your social media or website. You can preview your profile by clicking
         the {`"View Public Profile" button`}. Remember to click the {`"Save"`}
         button after filling in the fields or changing the data.
       </P>
-      <h2 className="text-[24px] font-semibold mb-4">Profile</h2>
-      <ProfilePhoto />
 
       <Label htmlFor="username">Username</Label>
       <div className="grid gap-4 md:grid-cols-[1fr_auto] mb-10">

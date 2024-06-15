@@ -1,15 +1,17 @@
 import profilePlaceholder from "@/public/profile-placeholder.png";
 import Image from "next/image";
 import { P } from "../ui/typography";
+import { auth } from "@/lib/auth";
 
-export default function ProfilePhoto() {
+export default async function ProfilePhoto() {
+  const session = await auth();
   return (
     <div className="flex gap-10 items-center mb-10">
       <div className="relative h-[6rem] aspect-square">
-        <Image
-          fill
+        <img
+          // fill
           className="absolute rounded-full"
-          src={profilePlaceholder}
+          src={session?.user?.image ? session.user.image : profilePlaceholder}
           alt="profile picture"
         />
       </div>

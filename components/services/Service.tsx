@@ -16,13 +16,17 @@ type Props = {
   price?: number;
 };
 
-export default function Service({ color }: { color?: string }) {
+export default function Service({ color }: { color: string }) {
   const { id, title, description, price, duration } = useService();
   console.log(color);
   return (
     <div
-      className={`p-3 border border-gray-200 rounded-sm relative before:block before:absolute before:w-full before:h-1 before:top-0 before:left-0 before:bg-${color}-400 overflow-hidden shadow`}
+      className={`p-3 border border-gray-200 rounded-sm relative overflow-hidden shadow`}
     >
+      <div
+        style={{ backgroundColor: color || "green" }}
+        className="absolute w-full h-1 top-0 left-0"
+      ></div>
       <div className="flex items-center justify-between">
         <Checkbox />
         <ServiceActionMenu serviceId={id} />

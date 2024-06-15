@@ -37,7 +37,7 @@ export default function ConfirmDelete({
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete this
+            This action cannot be undone. This will permanently delete this{" "}
             {resourceName} and remove your data from our servers.
           </AlertDialogDescription>
         </AlertDialogHeader>

@@ -30,14 +30,14 @@ const navLinks = [
     Icon: MessageSquareText,
   },
   {
-    name: "Avalabilty Calender",
-    href: "/dashboard/calender",
-    Icon: CalendarCheck,
-  },
-  {
     name: "My Services",
     href: "/dashboard/services",
     Icon: List,
+  },
+  {
+    name: "Avalabilty Calender",
+    href: "/dashboard/calender",
+    Icon: CalendarCheck,
   },
   {
     name: "Public Profile",
@@ -67,7 +67,7 @@ export default function AppNav() {
 
   return (
     <nav
-      className={`transition-all fixed bg-gray-50 md:w-auto w-[100vw] right-0 top-0 min-h-screen md:static z-10 before:absolute before:content-[''] before:inset-0 before:h-screen before:w-screen before:bg-[rgba(0,_0,_0,_0.05)] before:-translate-x-full before:z-[8] ${
+      className={`transition-all fixed bg-gray-50 md:w-auto w-[100vw] right-0 top-0 min-h-screen md:static z-10 before:absolute md:before:hidde before:content-[''] before:inset-0 before:h-screen before:w-screen before:bg-[rgba(0,_0,_0,_0.05)] before:-translate-x-full before:z-[8] ${
         !isNavOpen
           ? "translate-x-full md:translate-x-0 before:hidden"
           : "before:block"

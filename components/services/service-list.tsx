@@ -10,9 +10,9 @@ export const revalidate = 0;
 //   .set(1, "bg-blue-400")
 //   .set(2, "bg-green-400")
 //   .set(3, "bg-red-400");
-const colors = ["orange", "blue", "indigo", "blue", "purple", "indigo"];
 
 export default async function ServiceList() {
+  const colors = ["orange", "blue", "red", "purple", "indigo", "green"];
   noStore();
   const services = await getUserServices();
 
