@@ -1,7 +1,8 @@
 import { unstable_noStore as noStore } from "next/cache";
 import { getUserServices } from "@/lib/actions";
-import { ServiceProvider } from "./service-contex";
+import { ServiceProvider } from "./service-context";
 import Service from "./service";
+import { useState } from "react";
 
 export const revalidate = 0;
 
@@ -13,7 +14,6 @@ export const revalidate = 0;
 
 export default async function ServiceList() {
   const colors = ["orange", "blue", "red", "purple", "indigo", "green"];
-  noStore();
   const services = await getUserServices();
 
   return (
@@ -26,3 +26,6 @@ export default async function ServiceList() {
     </div>
   );
 }
+
+// const toggleItem = (arr: any, item: any) =>
+//   arr.includes(item) ? arr.filter((i: any) => i !== item) : [...arr, item];

@@ -7,7 +7,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { MdEdit } from "react-icons/md";
-import { useService } from "./service-contex";
+import { useService } from "./service-context";
 import FormService from "./form-service";
 import { useState } from "react";
 

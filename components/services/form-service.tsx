@@ -83,21 +83,6 @@ export default function FormService({ data, id, closeForm }: Props) {
           <FormDatePicker name="endDate" control={control} label="End date" />
         </div> */}
 
-        <div className="grid grid-cols-2 gap-4">
-          <FormInput
-            type="date"
-            name="startDate"
-            control={control}
-            label="Start date"
-          />
-          <FormInput
-            type="date"
-            name="endDate"
-            control={control}
-            label="End date"
-          />
-        </div>
-
         <div className="flex justify-end gap-3">
           <Button variant="outline" type="reset">
             Cancel

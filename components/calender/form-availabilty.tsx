@@ -49,6 +49,21 @@ export default function FormAvailability({ services }: Props) {
         </div>
       </div>
 
+      {/* <div className="grid grid-cols-2 gap-4">
+        <FormInput
+          type="date"
+          name="startDate"
+          control={control}
+          label="Start date"
+        />
+        <FormInput
+          type="date"
+          name="endDate"
+          control={control}
+          label="End date"
+        />
+      </div> */}
+
       <div className="grid md:grid-cols-2 gap-6 mb-14">
         <div>
           <Label>From</Label>
