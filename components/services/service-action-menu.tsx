@@ -25,7 +25,7 @@ export default function ServiceActionMenu({ serviceId }: Props) {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="flex flex-col gap-1 justify-start">
         <ButtonViewService />
-        <ButtonEditService />
+        <ButtonEditService serviceId={serviceId} />
         <ConfirmDelete
           resourceId={serviceId}
           onDeleteResource={deleteService}

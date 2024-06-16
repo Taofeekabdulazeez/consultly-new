@@ -10,9 +10,15 @@ import { MdEdit } from "react-icons/md";
 import { useService } from "./service-context";
 import FormService from "./form-service";
 import { useState } from "react";
+import { useServices } from "./services-context";
 
-export default function ButtonEditService() {
-  const { id, userId, availability, ...service } = useService();
+export default function ButtonEditService({
+  serviceId,
+}: {
+  serviceId: string;
+}) {
+  const { getService } = useServices();
+  const { id, userId, availability, ...service } = getService(serviceId);
   const [open, setOpen] = useState(false);
 
   const closeSheet = () => setOpen(false);

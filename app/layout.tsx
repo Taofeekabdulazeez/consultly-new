@@ -1,37 +1,9 @@
 import type { Metadata } from "next";
-import {
-  Inter,
-  Lato,
-  Montserrat,
-  Open_Sans,
-  Poppins,
-  Rubik,
-  Ubuntu,
-} from "next/font/google";
+import { Ubuntu } from "next/font/google";
 import "@/styles/globals.css";
 import { Toaster } from "sonner";
 import { CircleCheck } from "lucide-react";
-
-const inter = Inter({ subsets: ["latin"], display: "swap" });
-const poppins = Poppins({
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const openSans = Open_Sans({ subsets: ["latin"] });
-
-const montserrat = Montserrat({ subsets: ["latin"] });
-
-const lato = Lato({
-  weight: ["400", "900", "700"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const rubik = Rubik({ subsets: ["latin"] });
+import { Toaster as ActionToaster } from "@/components/ui/toaster";
 
 const ubuntu = Ubuntu({
   subsets: ["latin"],
@@ -68,6 +40,7 @@ export default function RootLayout({
             className: "bg-gray-75 text-gray-800",
           }}
         />
+        <ActionToaster />
       </body>
     </html>
   );

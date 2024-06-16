@@ -3,22 +3,21 @@
 import ServiceActionMenu from "./service-action-menu";
 import { Heading } from "../ui/Heading";
 import { P } from "../ui/typography";
-import { useService } from "./service-context";
 import { Checkbox } from "../ui/checkbox";
 import ButtonCopy from "../common/button-copy";
-import { Button } from "../ui/button";
 import { Clock, Forward } from "lucide-react";
 import Link from "next/link";
+import { useServices } from "./services-context";
+import ServiceCheckbox from "./service-checkbox";
 
 type Props = {
-  id: string;
-  title?: string;
-  description?: string;
-  price?: number;
+  serviceId: string;
+  color?: string;
 };
 
-export default function Service({ color }: { color: string }) {
-  const { id, title, description, price, duration } = useService();
+export default function Service({ serviceId, color }: Props) {
+  const { getService, toggleServiceSelection } = useServices();
+  const { id, title, description, price, duration } = getService(serviceId);
 
   return (
     <div
@@ -29,7 +28,7 @@ export default function Service({ color }: { color: string }) {
         className="absolute w-full h-1 top-0 left-0"
       ></div>
       <div className="flex items-center justify-between">
-        <Checkbox />
+        <ServiceCheckbox serviceId={id} />
         <ServiceActionMenu serviceId={id} />
       </div>
       <div className="mb-3">
