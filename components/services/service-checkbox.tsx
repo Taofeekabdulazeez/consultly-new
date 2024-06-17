@@ -5,14 +5,14 @@ import { Checkbox } from "../ui/checkbox";
 import { toast } from "sonner";
 
 export default function ServiceCheckbox({ serviceId }: { serviceId: string }) {
-  const { toggleServiceSelection, selectedServices } = useServices();
+  const { toggleServiceSelection, onSelectMode } = useServices();
 
   const handleServiceToggle = () => {
     toggleServiceSelection(serviceId);
 
-    console.log(selectedServices);
+    console.log(onSelectMode);
 
-    selectedServices.length > 1
+    onSelectMode
       ? toast("Event has been created", {
           id: "2",
           position: "bottom-right",

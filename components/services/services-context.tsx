@@ -5,6 +5,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useState,
 } from "react";
 
@@ -12,6 +13,7 @@ interface ContextInterface {
   getService: (id: string) => Service;
   selectedServices: string[];
   toggleServiceSelection: (id: string) => void;
+  onSelectMode: boolean;
 }
 
 const ServicesContext = createContext({} as ContextInterface);
@@ -23,6 +25,7 @@ type ProviderProps = {
 
 function ServicesProvider({ children, services }: ProviderProps) {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [onSelectMode, setOnSelectMode] = useState(false);
 
   const toggleServiceSelection = (serviceId: string) => {
     console.log(selectedServices.includes(serviceId));
@@ -34,12 +37,22 @@ function ServicesProvider({ children, services }: ProviderProps) {
     );
   };
 
+  useEffect(() => {
+    if (selectedServices.length === 0) setOnSelectMode(false);
+    else setOnSelectMode(true);
+  }, [selectedServices]);
+
   const getService = (serviceId: string) =>
     services.find((service) => serviceId === service.id) as Service;
 
   return (
     <ServicesContext.Provider
-      value={{ getService, selectedServices, toggleServiceSelection }}
+      value={{
+        getService,
+        selectedServices,
+        toggleServiceSelection,
+        onSelectMode,
+      }}
     >
       {children}
     </ServicesContext.Provider>
