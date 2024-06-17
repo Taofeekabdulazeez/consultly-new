@@ -16,7 +16,7 @@ type Props = {
 };
 
 export default function Service({ serviceId, color }: Props) {
-  const { getService, toggleServiceSelection } = useServices();
+  const { getService } = useServices();
   const { id, title, description, price, duration } = getService(serviceId);
 
   return (

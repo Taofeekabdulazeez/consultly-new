@@ -27,20 +27,20 @@ function ServicesProvider({ children, services }: ProviderProps) {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [onSelectMode, setOnSelectMode] = useState(false);
 
-  const toggleServiceSelection = (serviceId: string) => {
-    console.log(selectedServices.includes(serviceId));
+  useEffect(() => {
+    if (selectedServices.length === 0) setOnSelectMode(false);
+    else setOnSelectMode(true);
+  }, [selectedServices]);
 
+  const toggleServiceSelection = (serviceId: string) => {
     setSelectedServices((ids) =>
       ids.includes(serviceId)
         ? ids.filter((id) => id !== serviceId)
         : [...ids, serviceId]
     );
-  };
 
-  useEffect(() => {
-    if (selectedServices.length === 0) setOnSelectMode(false);
-    else setOnSelectMode(true);
-  }, [selectedServices]);
+    console.log(selectedServices);
+  };
 
   const getService = (serviceId: string) =>
     services.find((service) => serviceId === service.id) as Service;
