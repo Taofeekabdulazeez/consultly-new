@@ -1,7 +1,6 @@
 "use client";
 
 import Service from "./service";
-import ServiceToastAction from "./service-toast-action";
 import { useServices } from "./services-context";
 
 export default function ServiceCards() {
