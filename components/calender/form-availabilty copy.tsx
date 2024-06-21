@@ -1,7 +1,7 @@
 import CustomSelect from "@/components/common/CustomSelect";
 import { Label } from "@/components/ui/label";
 import { Button } from "../ui/button";
-import { getUserServices, setAvailabilty } from "@/lib/actions";
+import { getAvalaibilty, getUserServices, setAvailabilty } from "@/lib/actions";
 import SelectService from "../services/select-service";
 import ButtonSubmit from "../common/button-submit";
 import { getCurrentDateFormatted } from "@/lib/utils";
@@ -12,6 +12,8 @@ const today = getCurrentDateFormatted();
 
 export default async function FormAvailability() {
   const services = await getUserServices();
+  const availability = await getAvalaibilty("2");
+  console.log(availability);
 
   const serviceOptions = services.map((service) => {
     return { id: service.id, value: service.title };

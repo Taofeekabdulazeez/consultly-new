@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./database/supabase";
+import { availabilities } from "./database/tables/availabilities";
 
 export async function signInAction() {
   await signIn("google", { redirectTo: "/dashboard" });
@@ -155,35 +156,8 @@ export async function getConsultation(username: string = "taofeek") {
   return { ...user, services };
 }
 
-type Data = {
-  firstName?: string;
-  time: string;
-  date: string;
-  seatNumber: number;
-};
+export async function getAvalaibilty(serviceId: string) {
+  const data = await availabilities.getByServiceId(serviceId);
 
-export async function insertData(formData: Data) {
-  console.log(insertData);
-  await supabase.from("test").insert([formData]);
-}
-
-export async function updateData(formData: Data) {
-  await supabase.from("test").update(formData).eq("id", "1").select();
-}
-
-export async function getData() {
-  const { data: test, error } = await supabase.from("test").select("*");
-
-  return test;
-}
-
-export async function addServ(service: any) {
-  await supabase.from("services").insert([service]);
-
-  revalidatePath("/dashboard/services");
-}
-
-export async function revalidateServices() {
-  "use server";
-  revalidatePath("/dashboard/services");
+  return data;
 }

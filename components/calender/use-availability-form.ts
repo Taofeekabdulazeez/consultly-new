@@ -7,10 +7,12 @@ import { useForm } from "react-hook-form";
 
 type args = {
   onSubmitted?: () => void;
+  data: AvailabiltySchemaType;
 };
 
-export function useAvailabilityForm({ onSubmitted }: args) {
+export function useAvailabilityForm({ data, onSubmitted }: args) {
   const form = useForm<AvailabiltySchemaType>({
+    defaultValues: data,
     resolver: zodResolver(AvailabiltySchema),
   });
 

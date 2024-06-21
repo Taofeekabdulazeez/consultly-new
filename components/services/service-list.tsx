@@ -11,7 +11,6 @@ export default async function ServiceList() {
   return (
     <ServicesProvider services={services}>
       <ServiceCards />
-      <ServiceToastAction />
     </ServicesProvider>
   );
 }

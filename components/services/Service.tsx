@@ -37,7 +37,6 @@ export default function Service({ serviceId, color }: Props) {
           <Clock size={14} />
           {duration} minutes, Video call
         </P>
-        /
       </div>
       <P size="sm" className="italic font-normal min-h-[80px]">
         {`"${description}"`}
