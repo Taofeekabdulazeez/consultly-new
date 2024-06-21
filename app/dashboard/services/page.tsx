@@ -1,5 +1,5 @@
 import ButtonAddService from "@/components/services/btn-add-service";
-import ServiceList from "@/components/services/service-list";
+import ServiceList from "@/components/services/service-list copy";
 import ServiceLoader from "@/components/services/service-loader";
 import { Heading } from "@/components/ui/Heading";
 import { P } from "@/components/ui/typography";

@@ -1,59 +1,71 @@
 "use client";
-
 import {
+  Dispatch,
   ReactNode,
   createContext,
-  useCallback,
   useContext,
   useEffect,
-  useState,
+  useReducer,
 } from "react";
 
-interface ContextInterface {
+type ServicesState = {
+  services: Service[];
+  selectedIds: string[];
+  onSelectionMode: boolean;
+};
+
+interface ServiceInterface extends ServicesState {
+  dispatch: Dispatch<ServiceAction>;
   getService: (id: string) => Service;
-  selectedServices: string[];
-  toggleServiceSelection: (id: string) => void;
-  onSelectMode: boolean;
 }
 
-const ServicesContext = createContext({} as ContextInterface);
+type ServiceAction =
+  | { type: "store"; payload: Service[] }
+  | { type: "select"; payload: string };
+
+const ServicesContext = createContext<ServiceInterface>({} as ServiceInterface);
+
+const initialState: ServicesState = {
+  services: [],
+  selectedIds: [],
+  onSelectionMode: false,
+};
 
 type ProviderProps = {
   children: ReactNode;
   services: Service[];
 };
 
+function reducer(state: typeof initialState, action: ServiceAction) {
+  switch (action.type) {
+    case "store":
+      return { ...state, services: action.payload };
+    case "select":
+      return {
+        ...state,
+        selectedIds: state.selectedIds.includes(action.payload)
+          ? state.selectedIds.filter((id) => id !== action.payload)
+          : [...state.selectedIds, action.payload],
+        onSelectionMode: Boolean(state.selectedIds.length),
+      };
+
+    default:
+      throw new Error("Unknown service action!");
+  }
+}
+
 function ServicesProvider({ children, services }: ProviderProps) {
-  const [selectedServices, setSelectedServices] = useState<string[]>([]);
-  const [onSelectMode, setOnSelectMode] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    if (selectedServices.length === 0) setOnSelectMode(false);
-    else setOnSelectMode(true);
-  }, [selectedServices]);
-
-  const toggleServiceSelection = (serviceId: string) => {
-    setSelectedServices((ids) =>
-      ids.includes(serviceId)
-        ? ids.filter((id) => id !== serviceId)
-        : [...ids, serviceId]
-    );
-
-    console.log(selectedServices);
-  };
+    dispatch({ type: "store", payload: services });
+  }, [services]);
 
   const getService = (serviceId: string) =>
-    services.find((service) => serviceId === service.id) as Service;
+    state.services.find((service) => service.id === serviceId) as Service;
 
   return (
-    <ServicesContext.Provider
-      value={{
-        getService,
-        selectedServices,
-        toggleServiceSelection,
-        onSelectMode,
-      }}
-    >
+    <ServicesContext.Provider value={{ ...state, dispatch, getService }}>
       {children}
     </ServicesContext.Provider>
   );

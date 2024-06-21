@@ -1,0 +1,18 @@
+"use client";
+
+import Service from "./service";
+import ServiceToastAction from "./service-toast-action";
+import { useServices } from "./services-context";
+
+export default function ServiceCards() {
+  const { services } = useServices();
+  const colors = ["orange", "blue", "red", "purple", "indigo", "green"];
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      {services.map((service, i) => (
+        <Service serviceId={service.id} key={service.id} color={colors[i]} />
+      ))}
+    </div>
+  );
+}

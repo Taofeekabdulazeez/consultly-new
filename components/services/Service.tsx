@@ -16,13 +16,15 @@ type Props = {
 };
 
 export default function Service({ serviceId, color }: Props) {
-  const { getService } = useServices();
+  const { getService, selectedIds } = useServices();
+
   const { id, title, description, price, duration } = getService(serviceId);
 
   return (
     <div
       className={`p-3 border border-gray-200 rounded-sm relative overflow-hidden shadow cursor-pointer`}
     >
+      <p>{selectedIds.length}</p>
       <div
         style={{ backgroundColor: color || "green" }}
         className="absolute w-full h-1 top-0 left-0"

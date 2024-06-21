@@ -7,10 +7,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { MdEdit } from "react-icons/md";
-import { useService } from "./service-context";
+import { useServices } from "./services-context";
 import FormService from "./form-service";
 import { useState } from "react";
-import { useServices } from "./services-context";
 
 export default function ButtonEditService({
   serviceId,
