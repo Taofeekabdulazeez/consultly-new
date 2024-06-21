@@ -3,7 +3,6 @@
 import ServiceActionMenu from "./service-action-menu";
 import { Heading } from "../ui/Heading";
 import { P } from "../ui/typography";
-import { Checkbox } from "../ui/checkbox";
 import ButtonCopy from "../common/button-copy";
 import { Clock, Forward } from "lucide-react";
 import Link from "next/link";
@@ -16,7 +15,7 @@ type Props = {
 };
 
 export default function Service({ serviceId, color }: Props) {
-  const { getService, selectedIds } = useServices();
+  const { getService } = useServices();
 
   const { id, title, description, price, duration } = getService(serviceId);
 
@@ -24,7 +23,6 @@ export default function Service({ serviceId, color }: Props) {
     <div
       className={`p-3 border border-gray-200 rounded-sm relative overflow-hidden shadow cursor-pointer`}
     >
-      <p>{selectedIds.length}</p>
       <div
         style={{ backgroundColor: color || "green" }}
         className="absolute w-full h-1 top-0 left-0"
@@ -39,6 +37,7 @@ export default function Service({ serviceId, color }: Props) {
           <Clock size={14} />
           {duration} minutes, Video call
         </P>
+        /
       </div>
       <P size="sm" className="italic font-normal min-h-[80px]">
         {`"${description}"`}
