@@ -4,14 +4,17 @@ import { Minus, Plus, X } from "lucide-react";
 import ButtonCopy from "../common/button-copy";
 import { Checkbox } from "../ui/checkbox";
 import { Input } from "../ui/input";
+import InputTime from "../common/input-time";
+import { P } from "../ui/typography";
 
 type Props = {
   control: any;
   day: string;
   register: any;
+  value: any;
 };
 
-export default function FormWeekDay({ control, day, register }: Props) {
+export default function FormWeekDay({ control, day, register, value }: Props) {
   const { fields, append, remove } = useFieldArray({
     control,
     name: day,
@@ -20,7 +23,13 @@ export default function FormWeekDay({ control, day, register }: Props) {
   return (
     <div className="grid grid-cols-[4rem_1fr_auto_auto_auto] gap-4">
       <div className="mt-3 flex gap-2">
-        <Checkbox />
+        <Checkbox
+          checked={value.length !== 0}
+          onClick={() => {
+            console.log(value);
+            remove();
+          }}
+        />
         <span className="-mt-0.5 uppercase text-sm text-gray-700 font-medium">
           {day}
         </span>
@@ -33,13 +42,13 @@ export default function FormWeekDay({ control, day, register }: Props) {
           >
             <Input
               type="time"
-              key={field.id}
-              {...register(`${day}.${index}.startTime` as const)}
+              // key={field.id}
+              {...register(`${day}.${index}.startTime` as const, {})}
             />
-            <Minus size={18} />
+            <Minus size={18} className="text-gray-500" />
             <Input
               type="time"
-              key={field.id}
+              // key={field.id}
               {...register(`${day}.${index}.endTime` as const)}
             />
             <Button size="xs" variant="outline" onClick={() => remove(index)}>
@@ -47,6 +56,13 @@ export default function FormWeekDay({ control, day, register }: Props) {
             </Button>
           </div>
         ))}
+        {value.length === 0 && (
+          <div className="mt-2.5">
+            <span className="block text-sm text-gray-500 font-medium ml-2">
+              Unavailable
+            </span>
+          </div>
+        )}
       </div>
 
       <div className="flex gap-2 mt-2">

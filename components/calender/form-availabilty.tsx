@@ -48,7 +48,13 @@ type Props = {
 
 export default function FormAvailability({ data = availability }: Props) {
   const form = useForm<typeof availability>({ defaultValues: data });
-  const { control, handleSubmit, register } = form;
+  const {
+    control,
+    handleSubmit,
+    register,
+    formState: { errors },
+    getValues,
+  } = form;
 
   const onSubmit = async (data: typeof availability) => {
     console.log(data);
@@ -67,11 +73,12 @@ export default function FormAvailability({ data = availability }: Props) {
             day={day}
             control={control}
             register={register}
+            value={getValues(day)}
           />
         ))}
       </div>
-      <div className="flex justify-end">
-        <Button>submit</Button>
+      <div className="flex justify-end mr-3">
+        <Button size="sm">Save</Button>
       </div>
     </form>
   );

@@ -63,3 +63,13 @@ type Session = {
   };
   expires: string;
 };
+
+type Availability = {
+  mon: { startTime: string; endTime: string }[];
+  tue: { startTime: string; endTime: string }[];
+  wed: { startTime: string; endTime: string }[];
+  thu: { startTime: string; endTime: string }[];
+  fri: { startTime: string; endTime: string }[];
+  sat: { startTime: string; endTime: string }[];
+  sun: { startTime: string; endTime: string }[];
+};
