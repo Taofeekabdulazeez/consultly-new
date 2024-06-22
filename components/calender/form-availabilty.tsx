@@ -3,6 +3,9 @@ import { Button } from "../ui/button";
 import FormWeekDay from "./form-weekday";
 import TimeSlot from "../consult/time-slots";
 import { useForm } from "react-hook-form";
+import { getAvalaibilty } from "@/lib/actions";
+import { useEffect } from "react";
+import { useAvailability } from "./use-availability";
 
 // const availability = {
 //   mon: ["07:00-13:00"],
@@ -23,11 +26,12 @@ import { useForm } from "react-hook-form";
 //   .set(5, "sat")
 //   .set(6, "sun");
 
-type weekdays = "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun";
+type weekdays = "sun" | "mon" | "tue" | "wed" | "thu" | "fri" | "sat";
 
-const days: weekdays[] = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const days: weekdays[] = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
 const availability = {
+  sun: [],
   mon: [{ startTime: "07:00", endTime: "13:00" }],
   tue: [
     { startTime: "07:00", endTime: "13:00" },
@@ -36,22 +40,33 @@ const availability = {
   wed: [{ startTime: "07:00", endTime: "13:00" }],
   thu: [{ startTime: "07:00", endTime: "13:00" }],
   fri: [{ startTime: "07:00", endTime: "13:00" }],
-  sat: [{ startTime: "07:00", endTime: "13:00" }],
-  sun: [{ startTime: "07:00", endTime: "13:00" }],
+  sat: [],
+  // sat: [{ startTime: "07:00", endTime: "13:00" }],
+  // sun: [{ startTime: "07:00", endTime: "13:00" }],
 };
 
 const today = getCurrentDateFormatted();
 
 type Props = {
   data?: typeof availability;
+  closeForm?: () => void;
+  serviceId: string;
 };
 
-export default function FormAvailability({ data = availability }: Props) {
+export default function FormAvailability({
+  data = availability,
+  closeForm,
+  serviceId,
+}: Props) {
+  const res = useAvailability(serviceId);
+  console.log(res.availability);
+
   const form = useForm<typeof availability>({ defaultValues: data });
   const {
     control,
     handleSubmit,
     register,
+    reset,
     formState: { errors },
     getValues,
   } = form;
@@ -74,6 +89,7 @@ export default function FormAvailability({ data = availability }: Props) {
             control={control}
             register={register}
             value={getValues(day)}
+            reset={reset}
           />
         ))}
       </div>

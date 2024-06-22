@@ -7,7 +7,7 @@ class Availabilities extends DatabaseTable {
 
   public async getByServiceId(serviceId: string) {
     const { data, error } = await this.table
-      .select("mon, tue, wed, thu, fri, sat, sun")
+      .select("sun, mon, tue, wed, thu, fri, sat")
       .eq("serviceId", serviceId)
       .single();
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -10,14 +11,18 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import FormAvailability from "@/components/calender/form-availabilty";
-// import { useState } from "react";
+import { getAvalaibilty } from "@/lib/actions";
 
-export default function ButtonSetAvailabilty() {
-  // const [open, setOpen] = useState(false);
-  // const closeSheet = () => setOpen(false);
+type Props = {
+  id: string;
+};
+
+export default function ButtonSetAvailabilty({ id }: Props) {
+  const [open, setOpen] = useState(false);
+  const closeSheet = () => setOpen(false);
 
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button>Set your availability</Button>
       </SheetTrigger>
@@ -26,7 +31,7 @@ export default function ButtonSetAvailabilty() {
           <SheetTitle className="text-lg">Weekly hours</SheetTitle>
           <SheetDescription></SheetDescription>
         </SheetHeader>
-        <FormAvailability />
+        <FormAvailability serviceId={id} closeForm={closeSheet} />
       </SheetContent>
     </Sheet>
   );

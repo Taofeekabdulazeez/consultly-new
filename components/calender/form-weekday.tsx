@@ -12,9 +12,16 @@ type Props = {
   day: string;
   register: any;
   value: any;
+  reset: any;
 };
 
-export default function FormWeekDay({ control, day, register, value }: Props) {
+export default function FormWeekDay({
+  control,
+  day,
+  register,
+  value,
+  reset,
+}: Props) {
   const { fields, append, remove } = useFieldArray({
     control,
     name: day,
@@ -26,8 +33,8 @@ export default function FormWeekDay({ control, day, register, value }: Props) {
         <Checkbox
           checked={value.length !== 0}
           onClick={() => {
-            console.log(value);
-            remove();
+            if (value.length === 0) reset();
+            else remove();
           }}
         />
         <span className="-mt-0.5 uppercase text-sm text-gray-700 font-medium">
@@ -42,13 +49,11 @@ export default function FormWeekDay({ control, day, register, value }: Props) {
           >
             <Input
               type="time"
-              // key={field.id}
               {...register(`${day}.${index}.startTime` as const, {})}
             />
             <Minus size={18} className="text-gray-500" />
             <Input
               type="time"
-              // key={field.id}
               {...register(`${day}.${index}.endTime` as const)}
             />
             <Button size="xs" variant="outline" onClick={() => remove(index)}>
@@ -58,7 +63,7 @@ export default function FormWeekDay({ control, day, register, value }: Props) {
         ))}
         {value.length === 0 && (
           <div className="mt-2.5">
-            <span className="block text-sm text-gray-500 font-medium ml-2">
+            <span className="block text-sm text-gray-500 ml-2">
               Unavailable
             </span>
           </div>
