@@ -11,7 +11,7 @@ class Availabilities extends DatabaseTable {
       .eq("serviceId", serviceId)
       .single();
 
-    if (error) throw new Error("Could not get availability");
+    if (error) throw new Error("Could not get availabilty");
 
     return data;
   }

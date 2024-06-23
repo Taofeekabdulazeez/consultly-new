@@ -96,13 +96,32 @@ export async function updateProfile(formData: FormData) {
   revalidatePath("/dashboard/profile");
 }
 
-export async function addService(data: any) {
+export async function addService(formData: any) {
   const session = await auth();
   console.log("userId =>", session?.user?.id);
 
-  const serviceData = { userId: session?.user?.id, ...data };
+  const serviceData = { userId: session?.user?.id, ...formData };
 
-  await supabase.from("services").insert([serviceData]);
+  const { data: newService } = await supabase
+    .from("services")
+    .insert([serviceData])
+    .select()
+    .single();
+
+  if (newService) {
+    const defaultAvailabilty = {
+      mon: ["07:00-17:00"],
+      tue: ["07:00-17:00"],
+      wed: ["07:00-17:00"],
+      thu: ["07:00-17:00"],
+      fri: ["07:00-17:00"],
+      sat: [],
+      sun: [],
+    };
+    await supabase
+      .from("availabilities")
+      .insert([{ serviceId: newService?.id, ...defaultAvailabilty }]);
+  }
 
   revalidatePath("dashboard/services");
 }
