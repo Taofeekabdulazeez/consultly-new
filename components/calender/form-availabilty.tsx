@@ -1,67 +1,22 @@
 import { getCurrentDateFormatted } from "@/lib/utils";
 import { Button } from "../ui/button";
 import FormWeekDay from "./form-weekday";
-import TimeSlot from "../consult/time-slots";
 import { useForm } from "react-hook-form";
-import { getAvalaibilty } from "@/lib/actions";
-import { useEffect } from "react";
-import { useAvailability } from "./use-availability";
-
-// const availability = {
-//   mon: ["07:00-13:00"],
-//   tue: ["07:00-13:00", "15:00-19:00"],
-//   wed: ["07:00-13:00"],
-//   thu: ["07:00-13:00"],
-//   fri: ["07:00-13:00"],
-//   sat: ["07:00-13:00"],
-//   sun: ["07:00-13:00"],
-// };
-
-// const days = new Map()
-//   .set(0, "mon")
-//   .set(1, "tue")
-//   .set(2, "wed")
-//   .set(3, "thu")
-//   .set(4, "fri")
-//   .set(5, "sat")
-//   .set(6, "sun");
+import { useAvailability } from "./availability-context";
+import { reverseTransformAvailability } from "@/schemas/availabilitySchema";
 
 type weekdays = "sun" | "mon" | "tue" | "wed" | "thu" | "fri" | "sat";
 
 const days: weekdays[] = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
-const availability = {
-  sun: [],
-  mon: [{ startTime: "07:00", endTime: "13:00" }],
-  tue: [
-    { startTime: "07:00", endTime: "13:00" },
-    { startTime: "15:00", endTime: "19:00" },
-  ],
-  wed: [{ startTime: "07:00", endTime: "13:00" }],
-  thu: [{ startTime: "07:00", endTime: "13:00" }],
-  fri: [{ startTime: "07:00", endTime: "13:00" }],
-  sat: [],
-  // sat: [{ startTime: "07:00", endTime: "13:00" }],
-  // sun: [{ startTime: "07:00", endTime: "13:00" }],
-};
-
-const today = getCurrentDateFormatted();
-
 type Props = {
-  data?: typeof availability;
   closeForm?: () => void;
-  serviceId: string;
 };
 
-export default function FormAvailability({
-  data = availability,
-  closeForm,
-  serviceId,
-}: Props) {
-  const res = useAvailability(serviceId);
-  console.log(res.availability);
+export default function FormAvailability({ closeForm }: Props) {
+  const { availaibility, serviceId } = useAvailability();
 
-  const form = useForm<typeof availability>({ defaultValues: data });
+  const form = useForm<Availability>({ defaultValues: availaibility });
   const {
     control,
     handleSubmit,
@@ -71,8 +26,10 @@ export default function FormAvailability({
     getValues,
   } = form;
 
-  const onSubmit = async (data: typeof availability) => {
+  const onSubmit = async (data: Availability) => {
+    const formData = reverseTransformAvailability(data);
     console.log(data);
+    console.log(formData);
   };
 
   const onError = (error: any) => {

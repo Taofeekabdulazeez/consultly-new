@@ -1,4 +1,4 @@
-import { string, z } from "zod";
+import { z } from "zod";
 
 export const AvailabiltySchema = z.object({
   mon: z.array(z.string()),
@@ -12,33 +12,10 @@ export const AvailabiltySchema = z.object({
 
 export type AvailabiltySchemaType = z.infer<typeof AvailabiltySchema>;
 
-type TimeRangeString = string; // Example: "07:00-13:00"
-type TimeRangeObject = { startTime: string; endTime: string };
-
-export type AvailabilityApi = {
-  sun: TimeRangeString[];
-  mon: TimeRangeString[];
-  tue: TimeRangeString[];
-  wed: TimeRangeString[];
-  thu: TimeRangeString[];
-  fri: TimeRangeString[];
-  sat: TimeRangeString[];
-};
-
-type AvailabilityOutput = {
-  sun: TimeRangeObject[];
-  mon: TimeRangeObject[];
-  tue: TimeRangeObject[];
-  wed: TimeRangeObject[];
-  thu: TimeRangeObject[];
-  fri: TimeRangeObject[];
-  sat: TimeRangeObject[];
-};
-
 export function transformAvailability(
   availability: AvailabilityApi
-): AvailabilityOutput {
-  const transformed: AvailabilityOutput = {
+): Availability {
+  const transformed: Availability = {
     sun: [],
     mon: [],
     tue: [],
@@ -49,7 +26,7 @@ export function transformAvailability(
   };
 
   for (const [day, timeRanges] of Object.entries(availability)) {
-    transformed[day as keyof AvailabilityOutput] = timeRanges.map(
+    transformed[day as keyof Availability] = timeRanges.map(
       (timeRange: string) => {
         const [startTime, endTime] = timeRange.split("-");
         return { startTime, endTime };
@@ -61,7 +38,7 @@ export function transformAvailability(
 }
 
 export function reverseTransformAvailability(
-  availability: AvailabilityOutput
+  availability: Availability
 ): AvailabilityApi {
   const reversed: AvailabilityApi = {
     sun: [],
@@ -75,7 +52,7 @@ export function reverseTransformAvailability(
 
   for (const [day, timeRanges] of Object.entries(availability)) {
     reversed[day as keyof AvailabilityApi] = timeRanges.map(
-      (timeRange: TimeRangeObject) => {
+      (timeRange: { startTime: string; endTime: string }) => {
         return `${timeRange.startTime}-${timeRange.endTime}`;
       }
     );

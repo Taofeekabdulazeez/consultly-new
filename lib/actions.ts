@@ -40,7 +40,11 @@ export async function getCurrentUser(): Promise<User> {
   return user;
 }
 
-export async function getUserServices(): Promise<Service[]> {
+type options = {
+  populateAvailability?: boolean;
+};
+
+export async function getUserServices(): Promise<Service[] | any[]> {
   const session = await auth();
 
   const { data: services, error } = await supabase
@@ -51,6 +55,35 @@ export async function getUserServices(): Promise<Service[]> {
   if (error) throw new Error("Error getting user services");
 
   return services;
+}
+
+export async function getServicesAndAvailabilty(): Promise<
+  ServiceWithAvailability[]
+> {
+  const session = await auth();
+
+  const { data: services, error } = await supabase
+    .from("services")
+    .select("*, availabilityId(sun, mon, tue, wed, thu, fri, sat)")
+    .eq("userId", session?.user?.id);
+
+  const servicesWithAVailability = services?.map((service) => {
+    return {
+      id: service.id,
+      title: service.title,
+      description: service.description,
+      price: service.price,
+      userId: service.userId,
+      startDate: service.startDate,
+      endDate: service.endDate,
+      duration: service.duration,
+      availability: service.availabilityId,
+    };
+  }) as ServiceWithAvailability[];
+
+  if (error) throw new Error("Error getting user services");
+
+  return servicesWithAVailability;
 }
 
 export async function getUserMeetings(): Promise<Meeting[] | null | any[]> {
@@ -98,29 +131,29 @@ export async function updateProfile(formData: FormData) {
 
 export async function addService(formData: any) {
   const session = await auth();
-  console.log("userId =>", session?.user?.id);
 
-  const serviceData = { userId: session?.user?.id, ...formData };
+  const defaultAvailabilty = {
+    mon: ["07:00-17:00"],
+    tue: ["07:00-17:00"],
+    wed: ["07:00-17:00"],
+    thu: ["07:00-17:00"],
+    fri: ["07:00-17:00"],
+    sat: [],
+    sun: [],
+  };
 
-  const { data: newService } = await supabase
-    .from("services")
-    .insert([serviceData])
+  const { data: newAvailibility, error } = await supabase
+    .from("availabilities")
+    .insert([defaultAvailabilty])
     .select()
     .single();
 
-  if (newService) {
-    const defaultAvailabilty = {
-      mon: ["07:00-17:00"],
-      tue: ["07:00-17:00"],
-      wed: ["07:00-17:00"],
-      thu: ["07:00-17:00"],
-      fri: ["07:00-17:00"],
-      sat: [],
-      sun: [],
-    };
+  const serviceData = { userId: session?.user?.id, ...formData };
+
+  if (newAvailibility) {
     await supabase
-      .from("availabilities")
-      .insert([{ serviceId: newService?.id, ...defaultAvailabilty }]);
+      .from("services")
+      .insert([{ availabilityId: newAvailibility?.id, ...serviceData }]);
   }
 
   revalidatePath("dashboard/services");

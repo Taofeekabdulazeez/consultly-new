@@ -12,11 +12,7 @@ import {
 } from "@/components/ui/sheet";
 import FormAvailability from "@/components/calender/form-availabilty";
 
-type Props = {
-  id: string;
-};
-
-export default function ButtonSetAvailabilty({ id }: Props) {
+export default function ButtonSetAvailabilty() {
   const [open, setOpen] = useState(false);
   const closeSheet = () => setOpen(false);
 
@@ -30,7 +26,7 @@ export default function ButtonSetAvailabilty({ id }: Props) {
           <SheetTitle className="text-lg">Weekly hours</SheetTitle>
           <SheetDescription></SheetDescription>
         </SheetHeader>
-        <FormAvailability serviceId={id} closeForm={closeSheet} />
+        <FormAvailability closeForm={closeSheet} />
       </SheetContent>
     </Sheet>
   );

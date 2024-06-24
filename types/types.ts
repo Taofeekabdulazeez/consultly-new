@@ -38,7 +38,28 @@ type Service = {
   price: number;
   userId: string;
   duration: number;
-  availability: string[];
+};
+
+type ServiceWithAvailability = {
+  id: string;
+  title: string;
+  description: string;
+  startDate: string;
+  endDate: string;
+  price: number;
+  userId: string;
+  duration: number;
+  availability: AvailabilityApi;
+};
+
+type AvailabilityApi = {
+  sun: string[];
+  mon: string[];
+  tue: string[];
+  wed: string[];
+  thu: string[];
+  fri: string[];
+  sat: string[];
 };
 
 type ServiceSummary = Pick<

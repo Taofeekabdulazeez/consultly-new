@@ -1,8 +1,5 @@
 import { getAvalaibilty } from "@/lib/actions";
-import {
-  AvailabilityApi,
-  transformAvailability,
-} from "@/schemas/availabilitySchema";
+import { transformAvailability } from "@/schemas/availabilitySchema";
 import { useEffect, useState } from "react";
 
 export function useAvailability(serviceId: string) {
