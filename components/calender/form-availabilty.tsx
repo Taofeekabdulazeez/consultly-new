@@ -4,6 +4,8 @@ import FormWeekDay from "./form-weekday";
 import { useForm } from "react-hook-form";
 import { useAvailability } from "./availability-context";
 import { reverseTransformAvailability } from "@/schemas/availabilitySchema";
+import { updateAvailability } from "@/lib/actions";
+import { toast } from "sonner";
 
 type weekdays = "sun" | "mon" | "tue" | "wed" | "thu" | "fri" | "sat";
 
@@ -26,10 +28,14 @@ export default function FormAvailability({ closeForm }: Props) {
     getValues,
   } = form;
 
-  const onSubmit = async (data: Availability) => {
-    const formData = reverseTransformAvailability(data);
+  const onSubmit = async (formData: Availability) => {
+    toast.loading("Updating availability...", { id: serviceId });
+    const data = reverseTransformAvailability(formData);
     console.log(data);
-    console.log(formData);
+    await updateAvailability(serviceId, data);
+
+    toast.success("Availability successfully pdated!", { id: serviceId });
+    closeForm?.();
   };
 
   const onError = (error: any) => {
@@ -51,7 +57,9 @@ export default function FormAvailability({ closeForm }: Props) {
         ))}
       </div>
       <div className="flex justify-end mr-3">
-        <Button size="sm">Save</Button>
+        <Button type="submit" size="sm">
+          Save
+        </Button>
       </div>
     </form>
   );

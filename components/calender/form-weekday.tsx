@@ -56,7 +56,12 @@ export default function FormWeekDay({
               type="time"
               {...register(`${day}.${index}.endTime` as const)}
             />
-            <Button size="xs" variant="outline" onClick={() => remove(index)}>
+            <Button
+              type="button"
+              size="xs"
+              variant="outline"
+              onClick={() => remove(index)}
+            >
               <X size={16} />
             </Button>
           </div>
@@ -72,6 +77,7 @@ export default function FormWeekDay({
 
       <div className="flex gap-2 mt-2">
         <Button
+          type="button"
           variant="outline"
           size="xs"
           onClick={() => append({ startTime: "", endTime: "" })}

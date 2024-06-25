@@ -14,14 +14,14 @@ export function Service({ service, availability }: Props) {
 
   return (
     <AvailablilityProvider availaibility={availability} serviceId={id}>
-      <div className="px-6 py-4 border grid grid-cols-[1fr_auto_auto] gap-3 justify-between items-center rounded-md">
+      <div className="px-6 py-4 border flex flex-col md:flex-row gap-3 md:justify-between md:items-center rounded-md">
         <div>
           <Heading type="h6">{title}</Heading>
           <P size="sm">{description}</P>
         </div>
         <div className="flex flex-col">
-          <P size="sm">Free</P>
-          <span className="text-gray-600 text-sm">/ {duration}m</span>
+          {/* <P size="sm">Free</P>
+          <span className="text-gray-600 text-sm">/ {duration}m</span> */}
           <ButtonSetAvailabilty />
         </div>
       </div>

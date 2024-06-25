@@ -1,4 +1,3 @@
-import { generateTimeSlots } from "@/lib/utils";
 import { Calendar } from "../ui/calendar";
 import { Label } from "../ui/label";
 import { P } from "../ui/typography";
@@ -8,51 +7,48 @@ import { Heading } from "../ui/Heading";
 import BookingCalender from "./booking-calender";
 import InputDate from "../common/input-date";
 import InputTime from "../common/input-time";
+import { BookingCalendar } from "../booking/booking-calender";
+import {
+  CalendarDate,
+  // DateValue,
+  getLocalTimeZone,
+  today,
+} from "@internationalized/date";
+import { useState } from "react";
+import { DateValue } from "@react-aria/calendar";
+import { generateTimeSlots } from "@/lib/utils";
+import { BookingTime } from "../booking/bookingTime";
+import { LeftPanel } from "../booking/left-panel";
 
 export default function AvailabiltyScreen() {
   const user = useConsultUser();
   const { selectedService } = useConsultState();
-  const [availability] = selectedService.availability;
-  const duration = selectedService.duration;
-  const startTime = availability.split("-")[0];
-  const endTime = availability.split("-")[0];
+  const [date, setDate] = useState(today(getLocalTimeZone()));
+  const handleChangeDate = (date: DateValue) => {
+    setDate(date as unknown as CalendarDate);
+    console.log(date);
+    // console.log(new CalendarDate(2024, 10, 8));
+  };
 
-  console.log(startTime, endTime);
+  const handleChangeAvailableTime = (time: string) => {
+    console.log(time);
+  };
 
   return (
-    <div>
-      <Heading className="mb-2">Select an appointment Date and Time</Heading>
-      <div className="mb-4">
-        <P size="sm">
-          Below you can find a list of available time slot by{" "}
-          <strong>
-            {user.firstName} {user.lastName}
-          </strong>{" "}
-          for the <strong>{selectedService.title}</strong> service . Click on
-          the time slot and select a meeting time to proceed with booking.
-        </P>
-      </div>
-      {/* <div className="grid grid-cols-[auto_1fr] gap-6">
-        <BookingCalender />
-        <div className="flex flex-col gap-4 mt-3">
-          {availability.map((slot: any) => (
-            <TimeSlots key={slot} slot={slot} duration={duration} />
-          ))}
-        </div>
-      </div> */}
-      <div className="grid sm:grid-cols-2 gap-6">
-        <div>
-          <Label>Select a Date</Label>
-          <InputDate
-            min={selectedService.startDate}
-            max={selectedService.endDate}
-          />
-        </div>
-        <div>
-          <Label>Select a Time</Label>
-          <InputTime min={startTime} max={endTime} />
-        </div>
-      </div>
+    <div className="grid grid-cols-[200px_1fr_200px] gap-3">
+      <LeftPanel />
+      <BookingCalendar
+        minValue={today(getLocalTimeZone()) as unknown as DateValue}
+        defaultValue={today(getLocalTimeZone()) as unknown as DateValue}
+        value={date as unknown as DateValue}
+        onChange={handleChangeDate}
+      />
+      <BookingTime
+        startTime="8:00"
+        endTime="17:00"
+        duration={30}
+        handleChangeAvailableTime={handleChangeAvailableTime}
+      />
     </div>
   );
 }

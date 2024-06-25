@@ -11,6 +11,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import FormAvailability from "@/components/calender/form-availabilty";
+import { CalendarClock } from "lucide-react";
 
 export default function ButtonSetAvailabilty() {
   const [open, setOpen] = useState(false);
@@ -19,7 +20,10 @@ export default function ButtonSetAvailabilty() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button>Set your availability</Button>
+        <Button>
+          <CalendarClock size={18} />
+          Set availability
+        </Button>
       </SheetTrigger>
       <SheetContent className="min-w-full sm:min-w-[500px] pr-0">
         <SheetHeader className="mb-6">

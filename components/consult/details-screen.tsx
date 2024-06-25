@@ -1,47 +1,55 @@
+"use client";
+
+import { useForm } from "react-hook-form";
+import { LeftPanel } from "../booking/left-panel";
+import { Form } from "../ui/form";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
 import { P } from "../ui/typography";
 import { useConsultState } from "./ConsultContext";
+import FormInput from "../form/form-input";
+import FormTextarea from "../form/form-textarea";
 
 export default function DetailsScreen() {
   const { selectedService } = useConsultState();
+  const form = useForm();
+  const { control } = form;
+
   return (
     <div>
-      <div className="mb-6">
-        <P size="sm">
-          You selected a booking for <strong>{selectedService.title}</strong> by{" "}
-          <strong>Taofeek Abdulazeez</strong> at{" "}
-          <strong>10:00am on 27 June 2024.</strong>
-          Please provide your details in the form below to proceed with booking
-        </P>
-      </div>
-      <div className="grid gap-6">
-        <div className="grid sm:grid-cols-2 gap-6">
-          <div>
-            <Label>First name</Label>
-            <Input type="text" placeholder="First name" />
-          </div>
-          <div>
-            <Label>LastName</Label>
-            <Input type="text" placeholder="Last name" />
-          </div>
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-6">
-          <div>
-            <Label>Phone</Label>
-            <Input type="tel" placeholder="Phone number" />
-          </div>
-          <div>
-            <Label>Email</Label>
-            <Input type="email" placeholder="Email" />
-          </div>
-        </div>
-
+      <div className="grid grid-cols-[0.4fr_1fr] gap-6">
+        <LeftPanel />
         <div>
-          <Label>Notes</Label>
-          <Textarea rows={6} placeholder="Say something..."></Textarea>
+          <form>
+            <Form {...form}>
+              <div className="grid gap-4">
+                <FormInput
+                  name="fullName"
+                  control={control}
+                  label="Your full name *"
+                />
+                <FormInput
+                  name="email"
+                  control={control}
+                  label="Email address *"
+                  type="email"
+                />
+                <FormInput
+                  name="phoneNumber"
+                  control={control}
+                  label="Phone number *"
+                  type="phone"
+                />
+                <FormTextarea
+                  name="notes"
+                  control={control}
+                  label="Notes (optional)"
+                  placeholder="Say something..."
+                />
+              </div>
+            </Form>
+          </form>
         </div>
       </div>
     </div>

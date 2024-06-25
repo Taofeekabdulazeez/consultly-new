@@ -86,6 +86,24 @@ export async function getServicesAndAvailabilty(): Promise<
   return servicesWithAVailability;
 }
 
+export async function updateAvailability(
+  serviceId: string,
+  availability: AvailabilityApi
+) {
+  const { data: service } = await supabase
+    .from("services")
+    .select("availabilityId")
+    .eq("id", serviceId)
+    .single();
+
+  await supabase
+    .from("availabilities")
+    .update(availability)
+    .eq("id", service?.availabilityId)
+    .select()
+    .single();
+}
+
 export async function getUserMeetings(): Promise<Meeting[] | null | any[]> {
   const session = await auth();
   const { data: meetings, error } = await supabase
@@ -115,16 +133,12 @@ export async function updateProfile(formData: FormData) {
     about: formData.get("about"),
   };
 
-  console.log(rawData);
-
-  const { data } = await supabase
+  await supabase
     .from("users")
     .update(rawData)
     .eq("id", session?.user?.id)
     .select()
     .single();
-
-  console.log(data);
 
   revalidatePath("/dashboard/profile");
 }
@@ -145,7 +159,7 @@ export async function addService(formData: any) {
   const { data: newAvailibility, error } = await supabase
     .from("availabilities")
     .insert([defaultAvailabilty])
-    .select()
+    .select("*")
     .single();
 
   const serviceData = { userId: session?.user?.id, ...formData };
@@ -198,12 +212,11 @@ export async function getConsultation(username: string = "taofeek") {
 
   const { data: services } = await supabase
     .from("services")
-    .select(
-      "id, title, description, startDate, endDate, price, duration, availability"
-    )
+    .select("id, title, description, startDate, endDate, price, duration")
     .eq("userId", user?.id);
+  console.log(services);
 
-  revalidatePath("/consultv2");
+  revalidatePath("/consult");
 
   return { ...user, services };
 }

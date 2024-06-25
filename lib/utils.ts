@@ -78,48 +78,57 @@ export function formatISODate(date: Date) {
   return new Date(date).toISOString().slice(0, 10);
 }
 
+type TimeSlot = {
+  12: string;
+  24: string;
+};
+
 export function generateTimeSlots(
   startTime: string,
   endTime: string,
-  slotDuration: number
-): string[] {
-  // Helper function to convert HH:MM string to minutes since start of the day
+  duration: number
+): TimeSlot[] {
+  // Helper function to convert time in "HH:MM" format to minutes
   function timeToMinutes(time: string): number {
     const [hours, minutes] = time.split(":").map(Number);
     return hours * 60 + minutes;
   }
 
-  // Helper function to convert minutes since start of the day to 12-hour HH:MM AM/PM string
-  function minutesTo12HourTime(minutes: number): string {
-    let hours = Math.floor(minutes / 60);
+  // Helper function to convert minutes to "HH:MM" format
+  function minutesToTime(minutes: number): string {
+    const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
-    const period = hours >= 12 ? "PM" : "AM";
+    return `${hours.toString().padStart(2, "0")}:${mins
+      .toString()
+      .padStart(2, "0")}`;
+  }
 
-    hours = hours % 12;
-    hours = hours === 0 ? 12 : hours; // Convert 0 to 12 for 12 AM/PM
-
-    const formattedHours = String(hours).padStart(2, "0");
-    const formattedMinutes = String(mins).padStart(2, "0");
-
-    return `${formattedHours}:${formattedMinutes} ${period}`;
+  // Helper function to convert time from 24-hour format to 12-hour format
+  function to12HourFormat(time: string): string {
+    let [hours, minutes] = time.split(":").map(Number);
+    const suffix = hours >= 12 ? "pm" : "am";
+    hours = hours % 12 || 12; // Convert "0" or "12" to "12"
+    return `${hours}:${minutes.toString().padStart(2, "0")}${suffix}`;
   }
 
   const startMinutes = timeToMinutes(startTime);
   const endMinutes = timeToMinutes(endTime);
-  const slots: string[] = [];
+  const timeSlots: TimeSlot[] = [];
 
   for (
-    let current = startMinutes;
-    current + slotDuration <= endMinutes;
-    current += slotDuration
+    let currentMinutes = startMinutes;
+    currentMinutes <= endMinutes;
+    currentMinutes += duration
   ) {
-    const slotStart = minutesTo12HourTime(current);
-    const slotEnd = minutesTo12HourTime(current + slotDuration);
-    slots.push(`${slotStart} - ${slotEnd}`);
+    const time24 = minutesToTime(currentMinutes);
+    const time12 = to12HourFormat(time24);
+    timeSlots.push({ 12: time12, 24: time24 });
   }
 
-  return slots;
+  return timeSlots;
 }
+
+
 
 export function convert24HourTo12Hour(time24: string): string {
   // Split the input time string into hours and minutes
