@@ -1,7 +1,7 @@
 import { Info, MoveRight } from "lucide-react";
-import { Button } from "./ui/button";
-import { P } from "./ui/typography";
-import { Heading } from "./ui/Heading";
+import { Heading } from "../ui/Heading";
+import { P } from "../ui/typography";
+import { Button } from "../ui/button";
 
 export default function StripeBanner() {
   return (
