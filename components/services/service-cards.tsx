@@ -1,6 +1,6 @@
 "use client";
 
-import Service from "@/components/services/service";
+import Service from "./s";
 import { useServices } from "./services-context";
 
 export default function ServiceCards() {
