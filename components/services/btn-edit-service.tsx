@@ -17,7 +17,7 @@ export default function ButtonEditService({
   serviceId: string;
 }) {
   const { getService } = useServices();
-  const { id, userId, availability, ...service } = getService(serviceId);
+  const { id, userId, ...service } = getService(serviceId);
   const [open, setOpen] = useState(false);
 
   const closeSheet = () => setOpen(false);
