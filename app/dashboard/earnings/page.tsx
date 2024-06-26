@@ -1,6 +1,3 @@
-import ButtonAddService from "@/components/services/btn-add-service";
-// import TestForm from "./TestForm";
-
 export const metadata = {
   title: "My Earnings",
 };
