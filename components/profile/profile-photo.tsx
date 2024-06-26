@@ -11,7 +11,11 @@ export default async function ProfilePhoto() {
         <img
           // fill
           className="absolute rounded-full"
-          src={session?.user?.image ? session.user.image : profilePlaceholder}
+          src={
+            session?.user?.image
+              ? session.user.image
+              : "./profile-placeholder.png"
+          }
           alt="profile picture"
         />
       </div>
