@@ -128,8 +128,6 @@ export function generateTimeSlots(
   return timeSlots;
 }
 
-
-
 export function convert24HourTo12Hour(time24: string): string {
   // Split the input time string into hours and minutes
   const [hour, minute] = time24.split(":").map(Number);

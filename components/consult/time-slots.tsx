@@ -36,8 +36,11 @@ export default function TimeSlot({ slot, duration }: Props) {
           <SelectGroup>
             <SelectLabel>Available time</SelectLabel>
             {timeIntervals.map((timeInterval) => (
-              <SelectItem key={timeInterval} value={timeInterval}>
-                {timeInterval.toLowerCase()}
+              <SelectItem
+                key={timeInterval as unknown as React.Key}
+                value={timeInterval as unknown as string}
+              >
+                {(timeInterval as unknown as string).toLowerCase()}
               </SelectItem>
             ))}
           </SelectGroup>
