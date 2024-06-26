@@ -4,7 +4,7 @@ import ServiceActionMenu from "./service-action-menu";
 import { Heading } from "../ui/Heading";
 import { P } from "../ui/typography";
 import ButtonCopy from "../common/button-copy";
-import { Clock, Forward } from "lucide-react";
+import { Clock } from "lucide-react";
 import Link from "next/link";
 import { useServices } from "./services-context";
 import ServiceCheckbox from "./service-checkbox";
