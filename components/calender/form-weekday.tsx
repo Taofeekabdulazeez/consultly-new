@@ -1,6 +1,6 @@
 import { useFieldArray } from "react-hook-form";
 import { Button } from "../ui/button";
-import { Minus, Plus, X } from "lucide-react";
+import { Minus, Plus, Trash2, X } from "lucide-react";
 import ButtonCopy from "../common/button-copy";
 import { Checkbox } from "../ui/checkbox";
 import { Input } from "../ui/input";
@@ -62,7 +62,7 @@ export default function FormWeekDay({
               variant="outline"
               onClick={() => remove(index)}
             >
-              <X size={16} />
+              <Trash2 size={16} />
             </Button>
           </div>
         ))}

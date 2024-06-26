@@ -39,7 +39,7 @@ export default function DetailsScreen() {
                   name="phoneNumber"
                   control={control}
                   label="Phone number *"
-                  type="phone"
+                  type="tel"
                 />
                 <FormTextarea
                   name="notes"
