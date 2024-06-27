@@ -2,14 +2,19 @@ import { Calendar } from "@/components/ui/calendar";
 import MeetingsTable from "@/components/meetings/MeetingsTable";
 import { WelcomeScreen } from "@/components/dashboard/WelcomeScreen";
 import { auth } from "@/lib/auth";
+import { createClient } from "@/utils/supabase/server";
 
 export const metadata = {
   title: "Dashboard",
 };
 
 export default async function Page() {
-  const session = await auth();
-  console.log(session);
+  // const session = await auth();
+  const supabase = createClient();
+  const { data: user } = await supabase.auth.getUser();
+  console.log(user);
+
+  // console.log(session);
   return (
     <>
       {/* <StripeBanner /> */}

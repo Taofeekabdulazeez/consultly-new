@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./database/supabase";
 import { availabilities } from "./database/tables/availabilities";
+import { createClient } from "@/utils/supabase/server";
 
 export async function signInAction() {
   await signIn("google", { redirectTo: "/dashboard" });
@@ -106,10 +107,12 @@ export async function updateAvailability(
 
 export async function getUserMeetings(): Promise<Meeting[] | null | any[]> {
   const session = await auth();
-  const { data: meetings, error } = await supabase
+  const database = createClient();
+
+  const { data: meetings, error } = await database
     .from("meetings")
-    .select("id, status, time, duration, date, guest(*), service(*)")
-    .eq("userId", session?.user?.id);
+    .select("id, status, time, duration, date, guest(*), service(*)");
+  // .eq("userId", session?.user?.id);
 
   return meetings;
 }

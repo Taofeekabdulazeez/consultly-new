@@ -88,6 +88,7 @@ export const {
         sameSite: "none",
         path: "/",
         secure: process.env.NODE_ENV === "production",
+        maxAge: 900,
       },
     },
   },
