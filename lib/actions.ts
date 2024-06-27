@@ -224,7 +224,7 @@ export async function getConsultation(username: string = "taofeek") {
   const { data: services } = await supabase
     .from("services")
     .select("id, title, description, startDate, endDate, price, duration")
-    .eq("userId", user?.id);
+    .eq("userId", 9);
   console.log(services);
 
   revalidatePath("/consult");
