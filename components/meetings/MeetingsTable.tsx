@@ -5,17 +5,25 @@ import { P } from "../ui/typography";
 import StatusTag from "./StatusTag";
 import { Button } from "../ui/button";
 import NoMeetings from "./NoMeetings";
+import { createClient } from "@/utils/supabase/server";
 
 type Props = {
   filter: MeetingFilter;
 };
 
 export default async function MeetingsTable({ filter }: Props) {
-  const meetings = await getUserMeetings();
+  const database = createClient();
+
+  const { data: meetings, error } = await database
+    .from("meetings")
+    .select("id, status, time, duration, date, guest(*), service(*)");
 
   if (!meetings) return <NoMeetings />;
 
-  const displayedMeetings = filterMeetings(meetings, filter);
+  const displayedMeetings = filterMeetings(
+    meetings as unknown as Meeting[],
+    filter
+  );
 
   return (
     <div className="rounded-lg border min-w-full border-gray-300 overflow-x-scroll">

@@ -26,22 +26,17 @@ export async function login(formData: FormData) {
 export async function signup(formData: FormData) {
   const supabase = createClient();
 
-  const siignUpData = {
+  const data = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
   };
 
-  const { error } = await supabase.auth.signUp(siignUpData);
+  const { error } = await supabase.auth.signUp(data);
 
   if (error) {
     redirect("/error");
   }
 
-  await supabase
-    .from("users")
-    .insert([{ email: siignUpData.email }])
-    .select();
-
   revalidatePath("/", "layout");
-  redirect("/");
+  redirect("/dashboard");
 }

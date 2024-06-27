@@ -1,7 +1,7 @@
 import { Calendar } from "@/components/ui/calendar";
 import MeetingsTable from "@/components/meetings/MeetingsTable";
 import { WelcomeScreen } from "@/components/dashboard/WelcomeScreen";
-import { auth } from "@/lib/auth";
+// import { auth } from "@/lib/auth";
 import { createClient } from "@/utils/supabase/server";
 
 export const metadata = {
