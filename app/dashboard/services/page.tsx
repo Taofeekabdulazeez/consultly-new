@@ -25,9 +25,9 @@ export default async function Page() {
         </div>
         <ButtonAddService />
       </div>
-      <Suspense fallback={<ServiceLoader />}>
+      {/* <Suspense fallback={<ServiceLoader />}>
         <ServiceList />
-      </Suspense>
+      </Suspense> */}
     </div>
   );
 }
