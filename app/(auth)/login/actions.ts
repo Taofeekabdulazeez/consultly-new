@@ -8,17 +8,15 @@ import { createClient } from "@/utils/supabase/server";
 export async function login(formData: FormData) {
   const supabase = createClient();
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
+  const signInData = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
   };
 
-  const { error } = await supabase.auth.signInWithPassword(data);
+  const { error } = await supabase.auth.signInWithPassword(signInData);
 
   if (error) {
-    redirect("/error");
+    return redirect("/error");
   }
 
   revalidatePath("/", "layout");
@@ -28,18 +26,21 @@ export async function login(formData: FormData) {
 export async function signup(formData: FormData) {
   const supabase = createClient();
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
+  const siignUpData = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
   };
 
-  const { error } = await supabase.auth.signUp(data);
+  const { error } = await supabase.auth.signUp(siignUpData);
 
   if (error) {
     redirect("/error");
   }
+
+  await supabase
+    .from("users")
+    .insert([{ email: siignUpData.email }])
+    .select();
 
   revalidatePath("/", "layout");
   redirect("/");
