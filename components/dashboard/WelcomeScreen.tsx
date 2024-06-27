@@ -1,4 +1,4 @@
-import { auth } from "@/lib/auth";
+// import { auth } from "@/lib/auth";
 import { getCurrentHour, getTodaysDate } from "@/lib/utils";
 import Image from "next/image";
 
@@ -7,13 +7,13 @@ import { Heading } from "../ui/Heading";
 import { P } from "../ui/typography";
 
 export async function WelcomeScreen() {
-  const session = await auth();
+  // const session = await auth();
 
   return (
     <div className="bg-gray-50 p-4 rounded-md md:grid md:grid-cols-[1fr_0.8fr] md:items-center gap-4 md:gap-1">
       <div>
         <Heading>
-          {getCurrentHour()}, {session?.user?.name?.split(" ")[0]}👋
+          {/* {getCurrentHour()}, {session?.user?.name?.split(" ")[0]}👋 */}
         </Heading>
         <P size="sm">
           It&apos;s <strong className="text-primary">{getTodaysDate()}</strong>{" "}
