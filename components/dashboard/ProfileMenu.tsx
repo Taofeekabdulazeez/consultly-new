@@ -27,7 +27,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { signOutAction } from "@/lib/actions";
+// import { signOutAction } from "@/lib/actions";
 import ButtonTheme from "../common/button-theme";
 
 export default function ProfileMenu({
@@ -106,7 +106,7 @@ export default function ProfileMenu({
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <form action={signOutAction}>
+          <form>
             <Button variant="ghost" className="p-0 h-auto">
               <LogOut className="mr-2 h-4 w-4" />
               <span>Log out</span>

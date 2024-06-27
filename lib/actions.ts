@@ -1,39 +1,42 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { auth, signIn, signOut } from "./auth";
-import { supabase } from "./database/supabase";
-import { availabilities } from "./database/tables/availabilities";
+// import { auth, signIn, signOut } from "./auth";
+// import { supabase } from "./database/supabase";
+// import { availabilities } from "./database/tables/availabilities";
 import { createClient } from "@/utils/supabase/server";
 
-export async function signInAction() {
-  await signIn("google", { redirectTo: "/dashboard" });
-}
+const supabase = createClient();
 
-export async function signOutAction() {
-  await signOut({ redirectTo: "/" });
-}
+// export async function signInAction() {
+//   await signIn("google", { redirectTo: "/dashboard" });
+// }
 
-export async function createUser(user: any) {
-  await supabase.from("users").insert([user]).select();
-}
+// export async function signOutAction() {
+//   await signOut({ redirectTo: "/" });
+// }
 
-export async function getExistingUser(email: string): Promise<User> {
-  const { data: user, error } = await supabase
-    .from("users")
-    .select("*")
-    .eq("email", email)
-    .single();
+// export async function createUser(user: any) {
+//   await supabase.from("users").insert([user]).select();
+// }
 
-  return user;
-}
+// export async function getExistingUser(email: string): Promise<User> {
+//   const { data: user, error } = await supabase
+//     .from("users")
+//     .select("*")
+//     .eq("email", email)
+//     .single();
+
+//   return user;
+// }
 
 export async function getCurrentUser(): Promise<User> {
-  const session = await auth();
+  // const session = await auth();
   const { data: user, error } = await supabase
     .from("users")
     .select("*")
-    .eq("id", session?.user?.id)
+    // .eq("id", session?.user?.id)
+    .eq("id", 9)
     .single();
 
   if (error) throw new Error("Error getting current user");
@@ -46,12 +49,13 @@ type options = {
 };
 
 export async function getUserServices(): Promise<Service[] | any[]> {
-  const session = await auth();
+  // const session = await auth();
 
   const { data: services, error } = await supabase
     .from("services")
     .select("*")
-    .eq("userId", session?.user?.id);
+    .eq("userId", 9);
+  // .eq("userId", session?.user?.id);
 
   if (error) throw new Error("Error getting user services");
 
@@ -61,12 +65,13 @@ export async function getUserServices(): Promise<Service[] | any[]> {
 export async function getServicesAndAvailabilty(): Promise<
   ServiceWithAvailability[]
 > {
-  const session = await auth();
+  // const session = await auth();
 
   const { data: services, error } = await supabase
     .from("services")
     .select("*, availabilityId(sun, mon, tue, wed, thu, fri, sat)")
-    .eq("userId", session?.user?.id);
+    // .eq("userId", session?.user?.id);
+    .eq("userId", 9);
 
   const servicesWithAVailability = services?.map((service) => {
     return {
@@ -106,19 +111,20 @@ export async function updateAvailability(
 }
 
 export async function getUserMeetings(): Promise<Meeting[] | null | any[]> {
-  const session = await auth();
+  // const session = await auth();
   const database = createClient();
 
   const { data: meetings, error } = await database
     .from("meetings")
-    .select("id, status, time, duration, date, guest(*), service(*)");
-  // .eq("userId", session?.user?.id);
+    .select("id, status, time, duration, date, guest(*), service(*)")
+    // .eq("userId", session?.user?.id);
+    .eq("userId", 9);
 
   return meetings;
 }
 
 export async function updateProfile(formData: FormData) {
-  const session = await auth();
+  // const session = await auth();
 
   const rawData = {
     firstName: formData.get("firstName"),
@@ -139,7 +145,8 @@ export async function updateProfile(formData: FormData) {
   await supabase
     .from("users")
     .update(rawData)
-    .eq("id", session?.user?.id)
+    // .eq("id", session?.user?.id)
+    .eq("id", 9)
     .select()
     .single();
 
@@ -147,7 +154,7 @@ export async function updateProfile(formData: FormData) {
 }
 
 export async function addService(formData: any) {
-  const session = await auth();
+  // const session = await auth();
 
   const defaultAvailabilty = {
     mon: ["07:00-17:00"],
@@ -165,7 +172,8 @@ export async function addService(formData: any) {
     .select("*")
     .single();
 
-  const serviceData = { userId: session?.user?.id, ...formData };
+  // const serviceData = { userId: session?.user?.id, ...formData };
+  const serviceData = { userId: 9, ...formData };
 
   if (newAvailibility) {
     await supabase
@@ -183,7 +191,7 @@ export async function updateService(data: any, id: string) {
 }
 
 export async function deleteService(id: string) {
-  const session = await auth();
+  // const session = await auth();
 
   await supabase.from("services").delete().eq("id", id);
 
@@ -224,8 +232,13 @@ export async function getConsultation(username: string = "taofeek") {
   return { ...user, services };
 }
 
-export async function getAvalaibilty(serviceId: string) {
-  const data = await availabilities.getByServiceId(serviceId);
+export async function getAvalaibilty(serviceId: string = "107") {
+  // const data = await availabilities.getByServiceId(serviceId);
+  const { data } = await supabase
+    .from("avalaibilities")
+    .select("sun, mon, tue, wed, thu, fri, sat")
+    .eq("serviceId", serviceId)
+    .single();
 
   return data;
 }
