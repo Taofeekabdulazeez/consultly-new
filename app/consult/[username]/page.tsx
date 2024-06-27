@@ -16,15 +16,23 @@ type Props = {
 };
 
 export default async function Page({ params }: Props) {
-  const { username } = params;
+  // const { username } = params;
 
-  const user = await getConsultation(username);
+  // const user = await getConsultation(username);
 
   return (
-    <ConsultProvider user={user}>
-      <Steps />
-      <BookingForm />
-      <ButtonsNav />
-    </ConsultProvider>
+    <div></div>
+    // <ConsultProvider
+    //   user={{
+    //     id: 9,
+    //     title: "IT consulatancy",
+    //     description: "",
+    //     startDate: "22-04-26",
+    //   }}
+    // >
+    //   <Steps />
+    //   <BookingForm />
+    //   <ButtonsNav />
+    // </ConsultProvider>
   );
 }
