@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { P } from "@/components/ui/typography";
 import googleSVG from "@/public/google.svg";
 import microsoftSVG from "@/public/microsoft.svg";
-import { signInAction } from "@/lib/actions";
+// import { signInAction } from "@/lib/actions";
 
 export const metadata = {
   title: "Sign up",
@@ -15,7 +15,7 @@ export const metadata = {
 export default function Page() {
   return (
     <div className="bg-gray-100 min-h-screen pt-20">
-      <form action={signInAction}>
+      {/* <form >
         <div className="mb-3">
           <Logo />
         </div>
@@ -41,13 +41,12 @@ export default function Page() {
           </div>
           <div className="grid gap-4">
             <div>
-              {/* <Label>Please provide your Email address</Label> */}
               <Input type="email" placeholder="Email address" />
             </div>
             <Button>Get started</Button>
           </div>
         </div>
-      </form>
+      </form> */}
     </div>
   );
 }
