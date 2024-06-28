@@ -4,6 +4,8 @@ import { WelcomeScreen } from "@/components/dashboard/WelcomeScreen";
 // import { auth } from "@/lib/auth";
 import { createClient } from "@/utils/supabase/server";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Dashboard",
 };
