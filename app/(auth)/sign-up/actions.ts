@@ -20,5 +20,5 @@ export async function signup(formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-  redirect("/confirm");
+  redirect(`/confirm?email=${data.email}`);
 }

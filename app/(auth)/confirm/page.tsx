@@ -1,12 +1,14 @@
+"use client";
+
 import { Heading } from "@/components/ui/Heading";
 import { Button } from "@/components/ui/button";
 import { P } from "@/components/ui/typography";
-import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
-export default async function Page() {
-  const supabase = createClient();
-  const { data: user } = await supabase.auth.getUser();
+export default function Page() {
+  const serachParams = useSearchParams();
+  const email = serachParams.get("email");
   return (
     <div className="bg-gray-100 min-h-screen pt-20">
       <form action="">
@@ -17,7 +19,7 @@ export default async function Page() {
             we sent to
           </P>
           <Heading type="h6" className="my-4">
-            {user.user?.email}
+            {email}
           </Heading>
           <div className="grid my-6">
             <Button type="button">Resend email</Button>
