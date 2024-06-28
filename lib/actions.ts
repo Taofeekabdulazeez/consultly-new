@@ -113,12 +113,15 @@ export async function updateAvailability(
 export async function getUserMeetings(): Promise<Meeting[] | null | any[]> {
   // const session = await auth();
   const database = createClient();
+  const {
+    data: { user },
+  } = await database.auth.getUser();
 
   const { data: meetings, error } = await database
     .from("meeting")
     .select("id, status, time, duration, date, guest(*), service(*)")
     // .eq("userId", session?.user?.id);
-    .eq("userId", "251020f0-27a6-40db-930d-6b9389600ba9");
+    .eq("userId", user?.id);
 
   return meetings;
 }
@@ -178,17 +181,11 @@ export async function addService(formData: any) {
     ...formData,
   };
 
-  console.log(serviceData);
-
-  console.log(newAvailibility);
-
   if (newAvailibility) {
-    const { data } = await supabase
+    await supabase
       .from("service")
       .insert([{ availabilityId: newAvailibility?.id, ...serviceData }])
       .single();
-
-    console.log(data);
   }
 
   revalidatePath("dashboard/services");

@@ -17,9 +17,9 @@ export default function Page() {
         </div>
         <ButtonSetAvailabilty />
       </div> */}
-      {/* <Suspense fallback={<span>Loading services..</span>}>
+      <Suspense fallback={<span>Loading services..</span>}>
         <Services />
-      </Suspense> */}
+      </Suspense>
     </div>
   );
 }
