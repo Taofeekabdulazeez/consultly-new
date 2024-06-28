@@ -63,12 +63,12 @@ export default async function Page() {
             className="hidden"
           />
         </div>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <ButtonCopy textToCopy={`localhost:3000/consult/${username}`}>
             Copy Link
           </ButtonCopy>
           <Link
-            className="inline-flex items-center gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground px-2 rounded"
+            className="inline-flex items-center gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground px-2 rounded py-2 justify-center md:py-0 md:justify-start"
             href={`/consult/${username}`}
             target="_blank"
           >

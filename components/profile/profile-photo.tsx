@@ -33,7 +33,9 @@ export default async function ProfilePhoto() {
             type="file"
           />
         </label>
-        <P>JPG, GIF or PNG. Max size of 5MB.</P>
+        <P className="text-sm md:text:md mt-2 sm:mt-0">
+          JPG, GIF or PNG. Max size of 5MB.
+        </P>
       </div>
     </div>
   );
