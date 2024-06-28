@@ -17,7 +17,15 @@ export default function Page() {
             To start using Consultly, confirm your email address with the email
             we sent to
           </P>
-          <Email />
+          <Suspense
+            fallback={
+              <div className="h-screen grid place-items-center">
+                <div>Verifying email address...</div>
+              </div>
+            }
+          >
+            <Email />
+          </Suspense>
           <div className="grid my-6">
             <Button type="button">Resend email</Button>
           </div>
@@ -37,16 +45,8 @@ const Email = () => {
   const serachParams = useSearchParams();
   const email = serachParams.get("email");
   return (
-    <Suspense
-      fallback={
-        <div className="h-screen grid place-items-center">
-          <div>Verifying email address...</div>
-        </div>
-      }
-    >
-      <Heading type="h6" className="my-4">
-        {email}
-      </Heading>
-    </Suspense>
+    <Heading type="h6" className="my-4">
+      {email}
+    </Heading>
   );
 };
