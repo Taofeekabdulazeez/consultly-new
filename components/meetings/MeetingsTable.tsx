@@ -12,12 +12,13 @@ type Props = {
 };
 
 export default async function MeetingsTable({ filter }: Props) {
-  // const database = createClient();
+  const database = createClient();
 
-  // const { data: meetings, error } = await database
-  //   .from("meetings")
-  //   .select("id, status, time, duration, date, guest(*), service(*)");
-  const meetings = await getUserMeetings();
+  const { data: meetings, error } = await database
+    .from("meetings")
+    .select("id, status, time, duration, date, guest(*), service(*)");
+  // const meetings = await getUserMeetings();
+  console.log(meetings);
 
   if (!meetings) return <NoMeetings />;
 
