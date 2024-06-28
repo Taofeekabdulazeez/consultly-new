@@ -1,15 +1,13 @@
-import Image from "next/image";
+import { signup } from "./actions";
 import Logo from "@/components/common/logo";
 import { Heading } from "@/components/ui/Heading";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { P } from "@/components/ui/typography";
-import googleSVG from "@/public/google.svg";
-import microsoftSVG from "@/public/microsoft.svg";
 import { Label } from "@/components/ui/label";
 import ButtonSubmit from "@/components/common/button-submit";
 import Link from "next/link";
-import { signup } from "../login/actions";
+// import googleSVG from "@/public/google.svg";
+// import microsoftSVG from "@/public/microsoft.svg";
 // import { signInAction } from "@/lib/actions";
 
 export const metadata = {
