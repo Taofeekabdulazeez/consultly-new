@@ -2,11 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 // import { auth, signIn, signOut } from "./auth";
-// import { supabase } from "./database/supabase";
+import { supabase } from "./database/supabase";
 // import { availabilities } from "./database/tables/availabilities";
 import { createClient } from "@/utils/supabase/server";
 
-const supabase = createClient();
+// const supabase = createClient();
 
 // export async function signInAction() {
 //   await signIn("google", { redirectTo: "/dashboard" });

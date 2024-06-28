@@ -5,7 +5,7 @@ import { P } from "../ui/typography";
 import StatusTag from "./StatusTag";
 import { Button } from "../ui/button";
 import NoMeetings from "./NoMeetings";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/utils/supabase/server";
 
 type Props = {
   filter: MeetingFilter;
