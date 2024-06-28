@@ -29,31 +29,23 @@ import {
 } from "@/components/ui/dropdown-menu";
 // import { signOutAction } from "@/lib/actions";
 import ButtonTheme from "../common/button-theme";
+import Image from "next/image";
+import image from "@/public/profile-placeholder.png";
 
-export default function ProfileMenu({
-  name,
-  image,
-}: {
-  name: string;
-  image: string;
-}) {
+export default function ProfileMenu({ name }: { name: string }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">
           <div className="flex items-center gap-2">
             <div className="flex items-center justify-center h-8 w-8 rounded-full bg-gray-100 relative">
-              {image ? (
-                <img
-                  // fill
-                  alt="user image"
-                  className="h-8 w-8 rounded-full"
-                  src={image}
-                  referrerPolicy="no-referrer"
-                />
-              ) : (
-                <span className="text-xl font-bold">TA</span>
-              )}
+              <Image
+                // fill
+                alt="user image"
+                className="h-8 w-8 rounded-full"
+                src={image}
+                referrerPolicy="no-referrer"
+              />
             </div>
             <p className="text-sm font-medium hidden md:block">{name}</p>
             <ChevronsUpDown size={16} />
