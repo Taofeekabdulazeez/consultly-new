@@ -17,7 +17,7 @@ export default async function MeetingsTable({ filter }: Props) {
   // const { data: meetings, error } = await database
   //   .from("meetings")
   //   .select("id, status, time, duration, date, guest(*), service(*)");
-  const meetings: Meeting[] = [];
+  const meetings = await getUserMeetings();
 
   if (!meetings) return <NoMeetings />;
 
