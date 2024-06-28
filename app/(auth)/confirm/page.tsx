@@ -5,10 +5,9 @@ import { Button } from "@/components/ui/button";
 import { P } from "@/components/ui/typography";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 export default function Page() {
-  const serachParams = useSearchParams();
-  const email = serachParams.get("email");
   return (
     <div className="bg-gray-100 min-h-screen pt-20">
       <form action="">
@@ -18,9 +17,7 @@ export default function Page() {
             To start using Consultly, confirm your email address with the email
             we sent to
           </P>
-          <Heading type="h6" className="my-4">
-            {email}
-          </Heading>
+          <Email />
           <div className="grid my-6">
             <Button type="button">Resend email</Button>
           </div>
@@ -35,3 +32,21 @@ export default function Page() {
     </div>
   );
 }
+
+const Email = () => {
+  const serachParams = useSearchParams();
+  const email = serachParams.get("email");
+  return (
+    <Suspense
+      fallback={
+        <div className="h-screen grid place-items-center">
+          <div>Verifying email address...</div>
+        </div>
+      }
+    >
+      <Heading type="h6" className="my-4">
+        {email}
+      </Heading>
+    </Suspense>
+  );
+};
