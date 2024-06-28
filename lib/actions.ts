@@ -33,10 +33,10 @@ import { createClient } from "@/utils/supabase/server";
 export async function getCurrentUser(): Promise<User> {
   // const session = await auth();
   const { data: user, error } = await supabase
-    .from("users")
+    .from("user")
     .select("*")
     // .eq("id", session?.user?.id)
-    .eq("id", 9)
+    .eq("id", "251020f0-27a6-40db-930d-6b9389600ba9")
     .single();
 
   if (error) throw new Error("Error getting current user");
@@ -52,9 +52,9 @@ export async function getUserServices(): Promise<Service[] | any[]> {
   // const session = await auth();
 
   const { data: services, error } = await supabase
-    .from("services")
+    .from("service")
     .select("*")
-    .eq("userId", 9);
+    .eq("userId", "251020f0-27a6-40db-930d-6b9389600ba9");
   // .eq("userId", session?.user?.id);
 
   if (error) throw new Error("Error getting user services");
@@ -68,10 +68,10 @@ export async function getServicesAndAvailabilty(): Promise<
   // const session = await auth();
 
   const { data: services, error } = await supabase
-    .from("services")
+    .from("service")
     .select("*, availabilityId(sun, mon, tue, wed, thu, fri, sat)")
     // .eq("userId", session?.user?.id);
-    .eq("userId", 9);
+    .eq("userId", "251020f0-27a6-40db-930d-6b9389600ba9");
 
   const servicesWithAVailability = services?.map((service) => {
     return {
@@ -97,13 +97,13 @@ export async function updateAvailability(
   availability: AvailabilityApi
 ) {
   const { data: service } = await supabase
-    .from("services")
+    .from("service")
     .select("availabilityId")
     .eq("id", serviceId)
     .single();
 
   await supabase
-    .from("availabilities")
+    .from("availability")
     .update(availability)
     .eq("id", service?.availabilityId)
     .select()
@@ -115,10 +115,10 @@ export async function getUserMeetings(): Promise<Meeting[] | null | any[]> {
   const database = createClient();
 
   const { data: meetings, error } = await database
-    .from("meetings")
+    .from("meeting")
     .select("id, status, time, duration, date, guest(*), service(*)")
     // .eq("userId", session?.user?.id);
-    .eq("userId", 9);
+    .eq("userId", "251020f0-27a6-40db-930d-6b9389600ba9");
 
   return meetings;
 }
@@ -143,10 +143,10 @@ export async function updateProfile(formData: FormData) {
   };
 
   await supabase
-    .from("users")
+    .from("user")
     .update(rawData)
     // .eq("id", session?.user?.id)
-    .eq("id", 9)
+    .eq("id", "251020f0-27a6-40db-930d-6b9389600ba9")
     .select()
     .single();
 
@@ -167,25 +167,35 @@ export async function addService(formData: any) {
   };
 
   const { data: newAvailibility, error } = await supabase
-    .from("availabilities")
+    .from("availability")
     .insert([defaultAvailabilty])
     .select("*")
     .single();
 
   // const serviceData = { userId: session?.user?.id, ...formData };
-  const serviceData = { userId: 9, ...formData };
+  const serviceData = {
+    userId: "251020f0-27a6-40db-930d-6b9389600ba9",
+    ...formData,
+  };
+
+  console.log(serviceData);
+
+  console.log(newAvailibility);
 
   if (newAvailibility) {
-    await supabase
-      .from("services")
-      .insert([{ availabilityId: newAvailibility?.id, ...serviceData }]);
+    const { data } = await supabase
+      .from("service")
+      .insert([{ availabilityId: newAvailibility?.id, ...serviceData }])
+      .single();
+
+    console.log(data);
   }
 
   revalidatePath("dashboard/services");
 }
 
 export async function updateService(data: any, id: string) {
-  await supabase.from("services").update(data).eq("id", id);
+  await supabase.from("service").update(data).eq("id", id);
 
   revalidatePath("/dashboard/services");
 }
@@ -193,7 +203,7 @@ export async function updateService(data: any, id: string) {
 export async function deleteService(id: string) {
   // const session = await auth();
 
-  await supabase.from("services").delete().eq("id", id);
+  await supabase.from("service").delete().eq("id", id);
 
   revalidatePath("/dashboard/services");
 }
@@ -209,22 +219,22 @@ export async function setAvailabilty(formData: FormData) {
 
   console.log(serviceId, rawData);
 
-  await supabase.from("services").update(rawData).eq("id", serviceId);
+  await supabase.from("service").update(rawData).eq("id", serviceId);
 
   revalidatePath("/dashboard/calender");
 }
 
 export async function getConsultation(username: string = "taofeek") {
   const { data: user } = await supabase
-    .from("users")
+    .from("user")
     .select("id, firstName, lastName, email, country")
     .eq("username", username)
     .single();
 
   const { data: services } = await supabase
-    .from("services")
+    .from("service")
     .select("id, title, description, startDate, endDate, price, duration")
-    .eq("userId", 9);
+    .eq("userId", "251020f0-27a6-40db-930d-6b9389600ba9");
   console.log(services);
 
   revalidatePath("/consult");
@@ -235,7 +245,7 @@ export async function getConsultation(username: string = "taofeek") {
 export async function getAvalaibilty(serviceId: string = "107") {
   // const data = await availabilities.getByServiceId(serviceId);
   const { data } = await supabase
-    .from("avalaibilities")
+    .from("avalaibility")
     .select("sun, mon, tue, wed, thu, fri, sat")
     .eq("serviceId", serviceId)
     .single();
