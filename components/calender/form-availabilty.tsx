@@ -34,7 +34,7 @@ export default function FormAvailability({ closeForm }: Props) {
     console.log(data);
     await updateAvailability(serviceId, data);
 
-    toast.success("Availability successfully pdated!", { id: serviceId });
+    toast.success("Availability successfully updated!", { id: serviceId });
     closeForm?.();
   };
 
