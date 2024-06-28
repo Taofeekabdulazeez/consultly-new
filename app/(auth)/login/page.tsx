@@ -1,4 +1,11 @@
+import { Heading } from "@/components/ui/Heading";
 import { login, signup } from "./actions";
+import { P } from "@/components/ui/typography";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import ButtonSubmit from "@/components/common/button-submit";
+import Logo from "@/components/common/logo";
+import Link from "next/link";
 
 // import { signInAction } from "@/lib/actions";
 // import Image from "next/image";
@@ -55,13 +62,46 @@ import { login, signup } from "./actions";
 
 export default function LoginPage() {
   return (
-    <form>
-      <label htmlFor="email">Email:</label>
-      <input id="email" name="email" type="email" required />
-      <label htmlFor="password">Password:</label>
-      <input id="password" name="password" type="password" required />
-      <button formAction={login}>Log in</button>
-      <button formAction={signup}>Sign up</button>
-    </form>
+    <div className="bg-gray-100 min-h-screen pt-20">
+      <form action={login}>
+        <div className="mb-3">
+          <Logo />
+        </div>
+        <div className="w-[90%] max-w-[500px] mx-auto bg-gray-50 p-6 shadow-sm rounded-md">
+          <div className="mb-6 text-center">
+            <Heading type="h3">{`Welcome!`}</Heading>
+            <P size="sm">Login to your account</P>
+          </div>
+          <div className="grid gap-6">
+            <div>
+              <Label htmlFor="email">Email address</Label>
+              <Input id="email" name="email" type="email" required />
+            </div>
+            <div>
+              <Label htmlFor="password">Password</Label>
+              <Input id="password" name="password" type="password" required />
+            </div>
+            <div className="mt-6 grid">
+              <ButtonSubmit
+                text="Log in"
+                showToast={false}
+                pendingText=""
+                showPendingToast={false}
+              />
+              <div className="text-center mt-2">
+                <P size="sm">
+                  {`Doesn't have an account?`}{" "}
+                  <Link href="/sign-up" className="text-primary">
+                    Sign up
+                  </Link>
+                </P>
+              </div>
+            </div>
+
+            {/* <button formAction={signup}>Sign up</button> */}
+          </div>
+        </div>
+      </form>
+    </div>
   );
 }

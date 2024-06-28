@@ -1,6 +1,7 @@
 import { addService, updateService } from "@/lib/actions";
 import { ServiceSchema, ServiceSchemaType } from "@/schemas/serviceSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { title } from "process";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -17,9 +18,16 @@ export function useServiceForm({
 }: args) {
   const isEditSession = Boolean(Object.entries(data).length);
 
+  const editData = {
+    title: data.title,
+    description: data.description,
+    duration: data.duration,
+    price: data.price,
+  };
+
   const form = useForm<ServiceSchemaType>({
     resolver: zodResolver(ServiceSchema),
-    defaultValues: isEditSession ? data : undefined,
+    defaultValues: isEditSession ? editData : undefined,
   });
 
   const { control, handleSubmit, formState } = form;

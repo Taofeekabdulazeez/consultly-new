@@ -2,9 +2,11 @@
 import Logo from "../common/logo";
 import ButtonTheme from "../common/button-theme";
 import ProfileMenu from "./ProfileMenu";
+import { getCurrentUser } from "@/lib/actions";
 
 export default async function Header() {
   // const session = await auth();
+  const user = await getCurrentUser();
 
   return (
     <header className="z-10 p-4 flex justify-between items-center gap-3 bg-gray-50 fixed sm:static w-full">
@@ -15,10 +17,10 @@ export default async function Header() {
       </div>
       <div className="flex md:justify-end items-center gap-3">
         <ButtonTheme />
-        {/* <ProfileMenu
-          name={session?.user?.name as string}
-          image={session?.user?.image as string}
-        /> */}
+        <ProfileMenu
+          name={user.email as string}
+          image={"./profile-placeholder.png"}
+        />
       </div>
     </header>
   );

@@ -13,7 +13,8 @@ export function WelcomeScreen({ email }: { email: string }) {
     <div className="bg-gray-50 p-4 rounded-md md:grid md:grid-cols-[1fr_0.8fr] md:items-center gap-4 md:gap-1">
       <div>
         <Heading>
-          {email} 👋
+          👋 {getCurrentHour()}{" "}
+          {email.split("@")[0].replace(email[0], email[0].toUpperCase())}
           {/* {getCurrentHour()}, {session?.user?.name?.split(" ")[0]}👋 */}
         </Heading>
         <P size="sm">

@@ -20,7 +20,7 @@ export default async function MeetingsTable({ filter }: Props) {
   const meetings = await getUserMeetings();
   console.log(meetings);
 
-  if (!meetings) return <NoMeetings />;
+  if (!meetings || !meetings.length) return <NoMeetings />;
 
   const displayedMeetings = filterMeetings(
     meetings as unknown as Meeting[],

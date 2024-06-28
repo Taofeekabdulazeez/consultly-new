@@ -6,6 +6,10 @@ import { Input } from "@/components/ui/input";
 import { P } from "@/components/ui/typography";
 import googleSVG from "@/public/google.svg";
 import microsoftSVG from "@/public/microsoft.svg";
+import { Label } from "@/components/ui/label";
+import ButtonSubmit from "@/components/common/button-submit";
+import Link from "next/link";
+import { signup } from "../login/actions";
 // import { signInAction } from "@/lib/actions";
 
 export const metadata = {
@@ -15,38 +19,45 @@ export const metadata = {
 export default function Page() {
   return (
     <div className="bg-gray-100 min-h-screen pt-20">
-      {/* <form >
+      <form action={signup}>
         <div className="mb-3">
           <Logo />
         </div>
         <div className="w-[90%] max-w-[500px] mx-auto bg-gray-50 p-6 shadow-sm rounded-md">
           <div className="mb-6 text-center">
-            <Heading type="h4">{`Let's get started`}</Heading>
-            <P size="sm">Sign-up to with Consultly for free </P>
+            <Heading type="h3">Sign up</Heading>
+            <P size="sm">Please provide your details</P>
           </div>
-          <div className="grid gap-4 mb-6">
-            <Button variant="outline">
-              <Image src={googleSVG} alt="google icon" /> Sign up with Google
-            </Button>
-            <Button variant="outline">
-              {" "}
-              <Image src={microsoftSVG} alt="google icon" /> Sign up with
-              Microsoft
-            </Button>
-          </div>
-          <div className="grid grid-cols-[1fr_auto_1fr] mb-6 items-center gap-3">
-            <span className="h-[1px] bg-gray-500"></span>
-            <span className="text-sm text-gray-700">or</span>
-            <span className="h-[1px] bg-gray-500"></span>
-          </div>
-          <div className="grid gap-4">
+          <div className="grid gap-6">
             <div>
-              <Input type="email" placeholder="Email address" />
+              <Label htmlFor="email">Email address</Label>
+              <Input id="email" name="email" type="email" required />
             </div>
-            <Button>Get started</Button>
+            <div>
+              <Label htmlFor="password">Password</Label>
+              <Input id="password" name="password" type="password" required />
+            </div>
+            <div className="mt-6 grid">
+              <ButtonSubmit
+                text="Sign up"
+                showToast={false}
+                pendingText=""
+                showPendingToast={false}
+              />
+              <div className="text-center mt-2">
+                <P size="sm" className="flex items-center gap-2 justify-center">
+                  Already have an account?
+                  <Link href="/login" className="text-primary">
+                    Login
+                  </Link>
+                </P>
+              </div>
+            </div>
+
+            {/* <button formAction={signup}>Sign up</button> */}
           </div>
         </div>
-      </form> */}
+      </form>
     </div>
   );
 }
