@@ -32,11 +32,14 @@ import { createClient } from "@/utils/supabase/server";
 
 export async function getCurrentUser(): Promise<User> {
   // const session = await auth();
+  const database = createClient();
+  const { data } = await database.auth.getUser();
+
   const { data: user, error } = await supabase
     .from("user")
     .select("*")
     // .eq("id", session?.user?.id)
-    .eq("id", "251020f0-27a6-40db-930d-6b9389600ba9")
+    .eq("id", data.user?.id)
     .single();
 
   if (error) throw new Error("Error getting current user");
@@ -50,12 +53,15 @@ type options = {
 
 export async function getUserServices(): Promise<Service[] | any[]> {
   // const session = await auth();
+  const database = createClient();
+  const {
+    data: { user },
+  } = await database.auth.getUser();
 
   const { data: services, error } = await supabase
     .from("service")
     .select("*")
-    .eq("userId", "251020f0-27a6-40db-930d-6b9389600ba9");
-  // .eq("userId", session?.user?.id);
+    .eq("userId", user?.id);
 
   if (error) throw new Error("Error getting user services");
 
@@ -66,12 +72,16 @@ export async function getServicesAndAvailabilty(): Promise<
   ServiceWithAvailability[]
 > {
   // const session = await auth();
+  const database = createClient();
+  const {
+    data: { user },
+  } = await database.auth.getUser();
 
   const { data: services, error } = await supabase
     .from("service")
     .select("*, availabilityId(sun, mon, tue, wed, thu, fri, sat)")
-    // .eq("userId", session?.user?.id);
-    .eq("userId", "251020f0-27a6-40db-930d-6b9389600ba9");
+    .eq("userId", user?.id);
+  // .eq("userId", "251020f0-27a6-40db-930d-6b9389600ba9");
 
   const servicesWithAVailability = services?.map((service) => {
     return {
@@ -128,6 +138,10 @@ export async function getUserMeetings(): Promise<Meeting[] | null | any[]> {
 
 export async function updateProfile(formData: FormData) {
   // const session = await auth();
+  const database = createClient();
+  const {
+    data: { user },
+  } = await database.auth.getUser();
 
   const rawData = {
     firstName: formData.get("firstName"),
@@ -148,8 +162,7 @@ export async function updateProfile(formData: FormData) {
   await supabase
     .from("user")
     .update(rawData)
-    // .eq("id", session?.user?.id)
-    .eq("id", "251020f0-27a6-40db-930d-6b9389600ba9")
+    .eq("id", user?.id)
     .select()
     .single();
 
@@ -158,6 +171,10 @@ export async function updateProfile(formData: FormData) {
 
 export async function addService(formData: any) {
   // const session = await auth();
+  const database = createClient();
+  const {
+    data: { user },
+  } = await database.auth.getUser();
 
   const defaultAvailabilty = {
     mon: ["07:00-17:00"],
@@ -175,11 +192,11 @@ export async function addService(formData: any) {
     .select("*")
     .single();
 
-  // const serviceData = { userId: session?.user?.id, ...formData };
-  const serviceData = {
-    userId: "251020f0-27a6-40db-930d-6b9389600ba9",
-    ...formData,
-  };
+  const serviceData = { userId: user?.id, ...formData };
+  // const serviceData = {
+  //   userId: "251020f0-27a6-40db-930d-6b9389600ba9",
+  //   ...formData,
+  // };
 
   if (newAvailibility) {
     await supabase
@@ -231,8 +248,7 @@ export async function getConsultation(username: string = "taofeek") {
   const { data: services } = await supabase
     .from("service")
     .select("id, title, description, startDate, endDate, price, duration")
-    .eq("userId", "251020f0-27a6-40db-930d-6b9389600ba9");
-  console.log(services);
+    .eq("userId", user?.id);
 
   revalidatePath("/consult");
 

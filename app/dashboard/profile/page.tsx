@@ -10,170 +10,170 @@ import ButtonCopy from "@/components/common/button-copy";
 import Link from "next/link";
 import ButtonSubmit from "@/components/common/button-submit";
 import ProfilePhoto from "@/components/profile/profile-photo";
+import { getCurrentUser, updateProfile } from "@/lib/actions";
 
 export const metadata = {
   title: "My Profile",
 };
 
 export default async function Page() {
-  // const {
-  //   email,
-  //   username,
-  //   firstName,
-  //   lastName,
-  //   language,
-  //   country,
-  //   city,
-  //   profession,
-  //   website_url,
-  //   linkedIn_url,
-  //   about,
-  //   twitter_url,
-  //   facebook_url,
-  //   instagram_url,
-  // } = await getCurrentUser();
+  const {
+    email,
+    username,
+    firstName,
+    lastName,
+    language,
+    country,
+    city,
+    profession,
+    website_url,
+    linkedIn_url,
+    about,
+    twitter_url,
+    facebook_url,
+    instagram_url,
+  } = await getCurrentUser();
 
   return (
-    <div></div>
-    // <form action={updateProfile} className="bg-gray-50 p-6 rounded-md">
-    //   <span className="text-lg font-medium text-gray-600 inline-block mb-4">
-    //     Account Details
-    //   </span>
+    <form action={updateProfile} className="bg-gray-50 p-6 rounded-md">
+      <span className="text-lg font-medium text-gray-600 inline-block mb-4">
+        Account Details
+      </span>
 
-    //   <h2 className="text-[24px] font-semibold mb-4">Profile</h2>
-    //   <ProfilePhoto />
+      <h2 className="text-[24px] font-semibold mb-4">Profile</h2>
+      <ProfilePhoto />
 
-    //   <P size="sm" className="mb-10 font-normal">
-    //     Fill in the fields below to share your profile publicly via a link on
-    //     your social media or website. You can preview your profile by clicking
-    //     the {`"View Public Profile" button`}. Remember to click the {`"Save"`}
-    //     button after filling in the fields or changing the data.
-    //   </P>
+      <P size="sm" className="mb-10 font-normal">
+        Fill in the fields below to share your profile publicly via a link on
+        your social media or website. You can preview your profile by clicking
+        the {`"View Public Profile" button`}. Remember to click the {`"Save"`}
+        button after filling in the fields or changing the data.
+      </P>
 
-    //   <Label htmlFor="username">Username</Label>
-    //   <div className="grid gap-4 md:grid-cols-[1fr_auto] mb-10">
-    //     <div className="grid grid-cols-[auto_1fr] border rounded-md">
-    //       <Input disabled type="text" value={`consultly.com/consult/`} />
-    //       <Input value={username} type="text" disabled />
-    //       <Input
-    //         defaultValue={username}
-    //         value={username}
-    //         name="username"
-    //         type="text"
-    //         className="hidden"
-    //       />
-    //     </div>
-    //     <div className="grid grid-cols-2 gap-3">
-    //       <ButtonCopy textToCopy={`localhost:3000/consult/${username}`}>
-    //         Copy Link
-    //       </ButtonCopy>
-    //       <Link
-    //         className="inline-flex items-center gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground px-2 rounded"
-    //         href={`/consult/${username}`}
-    //         target="_blank"
-    //       >
-    //         <RiExternalLinkLine />
-    //         <P size="sm">View public profile</P>
-    //       </Link>
-    //     </div>
-    //   </div>
+      <Label htmlFor="username">Username</Label>
+      <div className="grid gap-4 md:grid-cols-[1fr_auto] mb-10">
+        <div className="grid grid-cols-[auto_1fr] border rounded-md">
+          <Input disabled type="text" value={`consultly.com/consult/`} />
+          <Input value={username} type="text" disabled />
+          <Input
+            defaultValue={username}
+            value={username}
+            name="username"
+            type="text"
+            className="hidden"
+          />
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          <ButtonCopy textToCopy={`localhost:3000/consult/${username}`}>
+            Copy Link
+          </ButtonCopy>
+          <Link
+            className="inline-flex items-center gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground px-2 rounded"
+            href={`/consult/${username}`}
+            target="_blank"
+          >
+            <RiExternalLinkLine />
+            <P size="sm">View public profile</P>
+          </Link>
+        </div>
+      </div>
 
-    //   <div className="grid gap-6 md:w-[60%]">
-    //     <div>
-    //       <Label htmlFor="firstName">First name</Label>
-    //       <Input name="firstName" type="text" defaultValue={firstName} />
-    //     </div>
+      <div className="grid gap-6 md:w-[60%]">
+        <div>
+          <Label htmlFor="firstName">First name</Label>
+          <Input name="firstName" type="text" defaultValue={firstName} />
+        </div>
 
-    //     <div>
-    //       <Label htmlFor="lastName">Last name</Label>
-    //       <Input name="lastName" type="text" defaultValue={lastName} />
-    //     </div>
+        <div>
+          <Label htmlFor="lastName">Last name</Label>
+          <Input name="lastName" type="text" defaultValue={lastName} />
+        </div>
 
-    //     <div>
-    //       <div className="mb-1 flex items-center justify-between">
-    //         <P size="xs" className="mt-0 m-0">
-    //           0 / 80
-    //         </P>
-    //         <Label htmlFor="profession">Your profession</Label>
-    //       </div>
+        <div>
+          <div className="mb-1 flex items-center justify-between">
+            <P size="xs" className="mt-0 m-0">
+              0 / 80
+            </P>
+            <Label htmlFor="profession">Your profession</Label>
+          </div>
 
-    //       <Input name="profession" type="text" defaultValue={profession} />
-    //     </div>
+          <Input name="profession" type="text" defaultValue={profession} />
+        </div>
 
-    //     {/* country */}
-    //     <div className="grid md:grid-cols-2 gap-6 ">
-    //       <div>
-    //         <Label htmlFor="country">Country</Label>
-    //         <input name="country" type="text" hidden value={country} />
-    //         <CustomSelect options={countryOptions} />
-    //       </div>
+        {/* country */}
+        <div className="grid md:grid-cols-2 gap-6 ">
+          <div>
+            <Label htmlFor="country">Country</Label>
+            <input name="country" type="text" hidden value={country} />
+            <CustomSelect options={countryOptions} />
+          </div>
 
-    //       <div>
-    //         <Label htmlFor="city">City</Label>
-    //         <Input name="city" type="text" defaultValue={city} />
-    //       </div>
-    //     </div>
+          <div>
+            <Label htmlFor="city">City</Label>
+            <Input name="city" type="text" defaultValue={city} />
+          </div>
+        </div>
 
-    //     <div>
-    //       <Label htmlFor="city" className="text-sm font-medium mb-1 block">
-    //         Language
-    //       </Label>
-    //       <input name="language" type="text" hidden defaultValue={language} />
-    //       {/* <CustomSelect /> */}
-    //     </div>
+        <div>
+          <Label htmlFor="city" className="text-sm font-medium mb-1 block">
+            Language
+          </Label>
+          <input name="language" type="text" hidden defaultValue={language} />
+          {/* <CustomSelect /> */}
+        </div>
 
-    //     <div>
-    //       <Label htmlFor="city">Website</Label>
-    //       <Input name="website_url" type="text" defaultValue={website_url} />
-    //     </div>
-    //     <div className="grid md:grid-cols-2 gap-6">
-    //       <div>
-    //         <Label htmlFor="city">Linkedin</Label>
-    //         <Input
-    //           name="linkedIn_url"
-    //           type="text"
-    //           defaultValue={linkedIn_url}
-    //         />
-    //       </div>
-    //       <div>
-    //         <Label htmlFor="twitter">Twitter</Label>
-    //         <Input name="twitter_url" type="text" defaultValue={twitter_url} />
-    //       </div>
-    //       <div>
-    //         <Label htmlFor="facebook">Facebook</Label>
-    //         <Input
-    //           name="facebook_url"
-    //           type="text"
-    //           defaultValue={facebook_url}
-    //         />
-    //       </div>
-    //       <div>
-    //         <Label htmlFor="instagram">Instagram</Label>
-    //         <Input
-    //           name="instagram_url"
-    //           type="text"
-    //           defaultValue={instagram_url}
-    //         />
-    //       </div>
-    //     </div>
-    //     <div>
-    //       <Label htmlFor="about">About</Label>
-    //       <Textarea
-    //         name="about"
-    //         rows={6}
-    //         defaultValue={about}
-    //         placeholder="A few words about you and your professional experience?"
-    //       ></Textarea>
-    //     </div>
-    //     <div className="flex justify-end">
-    //       <ButtonSubmit
-    //         text="Save changes"
-    //         pendingText="Saving"
-    //         toastPendingMessage="Updating your Profile"
-    //         toastSucessMessage="Profile successfully updated!"
-    //       />
-    //     </div>
-    //   </div>
-    // </form>
+        <div>
+          <Label htmlFor="city">Website</Label>
+          <Input name="website_url" type="text" defaultValue={website_url} />
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <Label htmlFor="city">Linkedin</Label>
+            <Input
+              name="linkedIn_url"
+              type="text"
+              defaultValue={linkedIn_url}
+            />
+          </div>
+          <div>
+            <Label htmlFor="twitter">Twitter</Label>
+            <Input name="twitter_url" type="text" defaultValue={twitter_url} />
+          </div>
+          <div>
+            <Label htmlFor="facebook">Facebook</Label>
+            <Input
+              name="facebook_url"
+              type="text"
+              defaultValue={facebook_url}
+            />
+          </div>
+          <div>
+            <Label htmlFor="instagram">Instagram</Label>
+            <Input
+              name="instagram_url"
+              type="text"
+              defaultValue={instagram_url}
+            />
+          </div>
+        </div>
+        <div>
+          <Label htmlFor="about">About</Label>
+          <Textarea
+            name="about"
+            rows={6}
+            defaultValue={about}
+            placeholder="A few words about you and your professional experience?"
+          ></Textarea>
+        </div>
+        <div className="flex justify-end">
+          <ButtonSubmit
+            text="Save changes"
+            pendingText="Saving"
+            toastPendingMessage="Updating your Profile"
+            toastSucessMessage="Profile successfully updated!"
+          />
+        </div>
+      </div>
+    </form>
   );
 }

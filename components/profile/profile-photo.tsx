@@ -17,6 +17,12 @@ export default async function ProfilePhoto() {
           }
           alt="profile picture"
         /> */}
+        <Image
+          fill
+          className="absolute rounded-full"
+          src={profilePlaceholder}
+          alt="profile picture"
+        />
       </div>
       <div>
         <label className="focus:ring-primary relative inline-flex cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-gray-50 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2">
