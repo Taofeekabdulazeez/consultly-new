@@ -1,5 +1,5 @@
 import { Heading } from "@/components/ui/Heading";
-import { login, signup } from "./actions";
+import { login } from "./actions";
 import { P } from "@/components/ui/typography";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
