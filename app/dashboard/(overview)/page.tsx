@@ -19,7 +19,7 @@ export default async function Page() {
     <>
       {/* <StripeBanner /> */}
       <div className="grid md:grid-cols-[1fr_auto] md:gap-6 md:grid-rows-2 mb-10">
-        <WelcomeScreen />
+        <WelcomeScreen email={user.user?.email as string} />
         <div className="bg-gray-50 hidden md:block md:row-span-2 rounded-md">
           <Calendar />
         </div>
