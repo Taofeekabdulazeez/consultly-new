@@ -1,7 +1,6 @@
 import { addService, updateService } from "@/lib/actions";
 import { ServiceSchema, ServiceSchemaType } from "@/schemas/serviceSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { title } from "process";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -47,7 +46,6 @@ export function useServiceForm({
       : toast.success("Service successfully added!", { id: "1" });
 
     onSubmitted?.();
-    console.log("executed!");
   };
 
   const onError = (error: any) => {
