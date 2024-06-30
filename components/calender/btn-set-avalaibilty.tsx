@@ -25,7 +25,7 @@ export default function ButtonSetAvailabilty() {
           Set availability
         </Button>
       </SheetTrigger>
-      <SheetContent className="min-w-full w-full sm:w-auto sm:min-w-[500px] pr-0">
+      <SheetContent className="min-w-full sm:min-w-[500px] pr-0">
         <SheetHeader className="mb-6">
           <SheetTitle className="text-lg">Weekly hours</SheetTitle>
           <SheetDescription></SheetDescription>
