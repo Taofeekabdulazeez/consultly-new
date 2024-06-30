@@ -28,7 +28,7 @@ export default function FormWeekDay({
   });
 
   return (
-    <div className="grid grid-cols-[4rem_1fr_auto_auto_auto] gap-4">
+    <div className="grid md:grid-cols-[4rem_1fr_auto_auto_auto] gap-4">
       <div className="mt-3 flex gap-2">
         <Checkbox
           checked={value.length !== 0}
