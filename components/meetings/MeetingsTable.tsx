@@ -12,11 +12,6 @@ type Props = {
 };
 
 export default async function MeetingsTable({ filter }: Props) {
-  // const database = createClient();
-
-  // const { data: meetings, error } = await database
-  //   .from("meeting")
-  //   .select("id, status, time, duration, date, guest(*), service(*)");
   const meetings = await getUserMeetings();
   console.log(meetings);
 
@@ -51,7 +46,7 @@ export default async function MeetingsTable({ filter }: Props) {
                       {formatDateString(meeting.date)}
                     </P>
                     <P size="xs" className="text-gray-500">
-                      {meeting.time}
+                      {formatTo12Hour(meeting.time)}
                     </P>
                   </span>
                 </td>
@@ -104,3 +99,13 @@ const filterMeetings = (meetings: Meeting[], filter: MeetingFilter) => {
   if (filter === "paid")
     return meetings.filter((meeting: any) => meeting.status === "paid");
 };
+
+function formatTo12Hour(time: string): string {
+  const [hours, minutes] = time.split(":").map(Number);
+  const suffix = hours >= 12 ? "PM" : "AM";
+  const adjustedHours = hours % 12 || 12; // convert 0 to 12 for 12 AM
+  const formattedHours = adjustedHours.toString().padStart(2, "0");
+  const formattedMinutes = minutes.toString().padStart(2, "0");
+
+  return `${formattedHours}:${formattedMinutes} ${suffix}`;
+}
