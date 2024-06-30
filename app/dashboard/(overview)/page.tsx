@@ -3,6 +3,7 @@ import MeetingsTable from "@/components/meetings/MeetingsTable";
 import { WelcomeScreen } from "@/components/dashboard/WelcomeScreen";
 // import { auth } from "@/lib/auth";
 import { createClient } from "@/utils/supabase/server";
+import StripeBanner from "@/components/dashboard/StripeBanner";
 
 export const dynamic = "force-dynamic";
 
@@ -11,15 +12,13 @@ export const metadata = {
 };
 
 export default async function Page() {
-  // const session = await auth();
   const supabase = createClient();
   const { data: user } = await supabase.auth.getUser();
   console.log(user.user);
 
-  // console.log(session);
   return (
     <>
-      {/* <StripeBanner /> */}
+      <StripeBanner />
       <div className="grid md:grid-cols-[1fr_auto] md:gap-6 md:grid-rows-2 mb-10">
         <WelcomeScreen email={user?.user?.email as string} />
         <div className="bg-gray-50 hidden md:block md:row-span-2 rounded-md">
