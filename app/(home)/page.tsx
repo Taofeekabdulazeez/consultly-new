@@ -6,10 +6,8 @@ import { FaCalendarAlt, FaInstagram } from "react-icons/fa";
 import { FaVideo } from "react-icons/fa6";
 import { BiWorld } from "react-icons/bi";
 import { BiMessageDetail } from "react-icons/bi";
-import { RxHamburgerMenu } from "react-icons/rx";
+import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoMdClose } from "react-icons/io";
-import { FaTwitter } from "react-icons/fa";
-import { FaPhone } from "react-icons/fa";
 import React, { useState } from "react";
 import Link from "next/link";
 import Logo from "@/components/common/logo";
@@ -56,7 +54,7 @@ export default function Home() {
             {showMenu ? (
               <IoMdClose className="text-2xl" />
             ) : (
-              <RxHamburgerMenu className="text-2xl" />
+              <HiOutlineMenuAlt3 className="text-2xl" />
             )}
           </button>
         </div>
@@ -124,6 +122,7 @@ export default function Home() {
         </div>
       </header>
 
+      
       <div
         id="home"
         className="min-h-screen flex flex-col justify-center sm:mt-20 items-center px-8 text-center bg-gray-100"
