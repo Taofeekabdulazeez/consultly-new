@@ -1,13 +1,15 @@
 "use client";
-
+import ButtonTheme from "@/components/common/button-theme";
 import { BiNotepad } from "react-icons/bi";
 import { AiOutlineIdcard } from "react-icons/ai";
-import { FaCalendarAlt } from "react-icons/fa";
+import { FaCalendarAlt, FaInstagram } from "react-icons/fa";
 import { FaVideo } from "react-icons/fa6";
 import { BiWorld } from "react-icons/bi";
 import { BiMessageDetail } from "react-icons/bi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
+import { FaTwitter } from "react-icons/fa";
+import { FaPhone } from "react-icons/fa";
 import React, { useState } from "react";
 import Link from "next/link";
 import Logo from "@/components/common/logo";
@@ -17,17 +19,18 @@ export default function Home() {
 
   return (
     <div className="mx-auto min-h-full w-full overflow-auto">
-      <header className="bg-white z-10 fixed top-0 left-0 right-0">
+      <header className="bg-gray-100 z-10 fixed top-0 left-0 right-0">
         <div className="header:justify-start header:space-x-10 header:px-16 mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-6 sm:px-6">
           <div className="relative top-[-5px] flex gap-10 items-center">
             <Logo />
           </div>
-          <nav className="hidden sm:flex space-x-8 text-sm">
+          <nav className="hidden sm:flex space-x-8 text-xl">
             <a href="#features">Features</a>
             <a href="#how-it-works">How It Works</a>
-            <a href="#contact">Contact</a>
+            <a href="#contact">Contact</a> 
           </nav>
-          <div className="hidden sm:flex sm:gap-8 items-center">
+          <div className="hidden sm:flex sm:gap-5 items-center">
+            <ButtonTheme />
             <Link
               href="/login"
               className="px-4 py-3 rounded-full hover:bg-gray-300"
@@ -36,11 +39,15 @@ export default function Home() {
             </Link>
             <Link
               href="/sign-up"
-              className="rounded-full bg-primary px-4 py-3 text-white hover:bg-purple-800"
+              className="rounded-full bg-primary px-4 py-3 text-white hover:bg-blue-500"
             >
               Get Started
             </Link>
           </div>
+          <div className="flex gap-5 sm:hidden">
+          <div className="flex  sm:hidden"> 
+      <ButtonTheme />
+    </div>
           <button
             className="block sm:hidden ml-4"
             aria-label="Toggle Menu"
@@ -52,6 +59,7 @@ export default function Home() {
               <RxHamburgerMenu className="text-2xl" />
             )}
           </button>
+        </div>
         </div>
 
         <div
@@ -107,7 +115,7 @@ export default function Home() {
             </Link>
             <Link
               href="/sign-up"
-              className=" px-4 py-3 text-center rounded-full bg-primary text-white hover:bg-purple-800"
+              className=" px-4 py-3 text-center rounded-full bg-primary text-white hover:bg-blue-500"
               onClick={() => setShowMenu(false)}
             >
               Get Started
@@ -136,7 +144,7 @@ export default function Home() {
           </p>
           <div className="mt-10 flex justify-center gap-x-6 mb-4">
             <a
-              className="relative inline-flex items-center justify-center duration-150 ease-in-out border border-primary/70 hover:bg-purple-300 font-medium text-primary py-2 rounded-full hover:border-gray-300 px-5 md:px-10"
+              className="relative inline-flex items-center justify-center duration-150 ease-in-out border border-primary/70 hover:bg-blue-500 font-medium text-primary py-2 rounded-full hover:border-gray-300 px-5 md:px-10"
               href="#"
             >
               Learn more
@@ -148,7 +156,7 @@ export default function Home() {
       <section className="scroll-mt-24 py-16 bg-white w-full" id="features">
         <div className="mx-auto max-w-screen-2xl text-center px-4  sm:px-6 lg:px-8">
           <div className="space-y-8">
-            <h2 className="text-primary text-base font-medium uppercase tracking-wider">
+            <h2 className="text-primary text-2xl font-bold uppercase tracking-wider">
               Features
             </h2>
             <h3 className="text-balance font-display mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -164,7 +172,7 @@ export default function Home() {
               <img src="./dashboard.png" alt="dashboard" />
             </div>
           </div>
-          <h2 className="text-primary text-base font-medium uppercase tracking-wider mt-10 text-center">
+          <h2 className="text-primary text-2xl font-medium uppercase tracking-wider mt-10 text-center">
             Key Features
           </h2>
           <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
@@ -178,7 +186,7 @@ export default function Home() {
                   Complete the simple form to send your client an invitation by
                   email.
                 </p>
-                <a href="#" className="text-primary mt-2 underline">
+                <a href="#" className="bg-primary  mx-auto px-4 mt-5 hover:text-black py-3 text-white hover:bg-blue-500 rounded-full">
                   Learn more
                 </a>
               </div>
@@ -193,7 +201,7 @@ export default function Home() {
                   Create your Consultly profile and share it anywhere on the
                   web.
                 </p>
-                <a href="#" className="text-primary mt-2 underline">
+                <a href="#" className=" mx-auto bg-primary px-4 mt-5 hover:text-black py-3 text-white hover:bg-blue-500 rounded-full">
                   See the demo
                 </a>
               </div>
@@ -208,7 +216,7 @@ export default function Home() {
                   Share the calendar with available time slots to automate
                   scheduling meetings and accepting payments.
                 </p>
-                <a href="#" className="text-primary mt-2 underline">
+                <a href="#" className=" mx-auto bg-primary px-4 mt-5 hover:text-black py-3 text-white hover:bg-blue-500 rounded-full">
                   Learn more
                 </a>
               </div>
@@ -223,7 +231,7 @@ export default function Home() {
                   Use our browser built-in video solution to connect with
                   clients without the need for external applications.
                 </p>
-                <a href="#" className="text-primary mt-2 underline">
+                <a href="#" className=" mx-auto bg-primary px-4 mt-5 hover:text-black py-3 text-white hover:bg-blue-500 rounded-full">
                   Learn more
                 </a>
               </div>
@@ -237,7 +245,7 @@ export default function Home() {
                 <p className="mt-2">
                   Always be on time with our time zone converter.
                 </p>
-                <a href="#" className="text-primary mt-2 underline">
+                <a href="#" className="bg-primary mx-auto px-4 mt-5 hover:text-black py-3 text-white hover:bg-blue-500 rounded-full">
                   Learn more
                 </a>
               </div>
@@ -252,7 +260,7 @@ export default function Home() {
                   No more chaos in your social media inboxes. Receive meeting
                   requests in one place.
                 </p>
-                <a href="#" className="text-primary mt-2 underline">
+                <a href="#" className=" mx-auto bg-primary px-4 mt-5 hover:text-black py-3 text-white hover:bg-blue-500 rounded-full">
                   Learn more
                 </a>
               </div>
@@ -267,7 +275,7 @@ export default function Home() {
       >
         <div className="mx-auto max-w-screen-2xl px-4 text-center sm:px-6 lg:px-8">
           <div className="space-y-8">
-            <h2 className="text-primary text-base font-medium uppercase tracking-wider">
+            <h2 className="text-primary text-2xl font-medium uppercase tracking-wider">
               How it works
             </h2>
             <h3 className="text-balance font-display mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -281,11 +289,11 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+     
       <section className="scroll-mt-24 py-16 bg-gray-100" id="contact">
         <div className="mx-auto max-w-screen-2xl px-4 text-center sm:px-6 lg:px-8">
           <div className="space-y-8">
-            <h2 className="text-primary text-base font-medium uppercase tracking-wider">
+            <h2 className="text-primary text-2xl font-medium uppercase tracking-wider">
               Contact us
             </h2>
             <h3 className="text-balance font-display mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -367,7 +375,7 @@ export default function Home() {
                     {" "}
                     <button
                       type="submit"
-                      className="transition-color relative inline-flex items-center justify-center duration-150 ease-in-out border border-transparent shadow-sm bg-primary focus:outline-none  font-medium text-white px-3 py-2 rounded-full sm:w-auto md:px-12 cursor-pointer hover:bg-purple-700"
+                      className="transition-color relative inline-flex items-center justify-center duration-150 ease-in-out border border-transparent shadow-sm bg-primary focus:outline-none  font-medium text-white px-3 py-2 rounded-full sm:w-auto md:px-12 cursor-pointer hover:bg-blue-500"
                     >
                       <span className="inline-flex items-center">
                         Let&apos;s talk
@@ -381,9 +389,9 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-white text-black p-10 relative">
+      <footer className="bg-white text-black p-12 relative">
         <div className="max-w-6xl mx-auto py-2 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4 w-full ">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-4 w-full ">
             <div>
               <h3 className="text-lg font-bold mb-2">Company</h3>
               <ul>
@@ -414,15 +422,8 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            <div className="">
-              <h3 className="text-lg font-bold mb-2">Languages</h3>
-              <select className="text-black border text-md  rounded-lg px-5 py-3">
-                <option value="en">English</option>
-                <option value="en">French</option>
-              </select>
-            </div>
           </div>
-          <p className="text-sm text-center">
+          <p className="text-sm text-center mt-10">
             &copy; {new Date().getFullYear()} Consultify. All rights reserved.
           </p>
         </div>
