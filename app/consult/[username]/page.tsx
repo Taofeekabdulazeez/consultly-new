@@ -19,6 +19,7 @@ export default async function Page({ params }: Props) {
   const { username } = params;
 
   const user = await getConsultation(username);
+  console.log(user);
 
   return (
     <ConsultProvider user={user}>

@@ -155,8 +155,8 @@ export async function updateProfile(formData: FormData) {
     instagram_url: formData.get("instagram_url"),
     username: formData.get("username"),
     profession: formData.get("profession"),
-    language: formData.get("language"),
     about: formData.get("about"),
+    // language: formData.get("language"),
   };
 
   await supabase
@@ -231,11 +231,10 @@ export async function setAvailabilty(formData: FormData) {
     availability: [`${formData.get("startTime")}-${formData.get("endTime")}`],
   };
 
-  console.log(serviceId, rawData);
-
   await supabase.from("service").update(rawData).eq("id", serviceId);
 
   revalidatePath("/dashboard/calender");
+  revalidatePath("/dashboard/services");
 }
 
 export async function getConsultation(username: string = "taofeek") {

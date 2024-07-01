@@ -11,5 +11,5 @@ const value = {
 };
 
 export default function Page() {
-  return <div>{/* <TestForm data={value} /> <ButtonAddService /> */}</div>;
+  return <div>Coming soon...</div>;
 }

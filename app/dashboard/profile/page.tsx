@@ -17,6 +17,7 @@ export const metadata = {
 };
 
 export default async function Page() {
+  const user = await getCurrentUser();
   const {
     email,
     username,
@@ -32,7 +33,9 @@ export default async function Page() {
     twitter_url,
     facebook_url,
     instagram_url,
-  } = await getCurrentUser();
+  } = user;
+
+  console.log(user);
 
   return (
     <form action={updateProfile} className="bg-gray-50 p-6 rounded-md">
