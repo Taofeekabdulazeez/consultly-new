@@ -125,35 +125,25 @@ export default async function Page() {
           <Label htmlFor="city">Website</Label>
           <Input name="website_url" type="text" defaultValue={website_url} />
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div>
-            <Label htmlFor="city">Linkedin</Label>
-            <Input
-              name="linkedIn_url"
-              type="text"
-              defaultValue={linkedIn_url}
-            />
-          </div>
-          <div>
-            <Label htmlFor="twitter">Twitter</Label>
-            <Input name="twitter_url" type="text" defaultValue={twitter_url} />
-          </div>
-          <div>
-            <Label htmlFor="facebook">Facebook</Label>
-            <Input
-              name="facebook_url"
-              type="text"
-              defaultValue={facebook_url}
-            />
-          </div>
-          <div>
-            <Label htmlFor="instagram">Instagram</Label>
-            <Input
-              name="instagram_url"
-              type="text"
-              defaultValue={instagram_url}
-            />
-          </div>
+        <div>
+          <Label htmlFor="city">Linkedin</Label>
+          <Input name="linkedIn_url" type="text" defaultValue={linkedIn_url} />
+        </div>
+        <div>
+          <Label htmlFor="twitter">Twitter</Label>
+          <Input name="twitter_url" type="text" defaultValue={twitter_url} />
+        </div>
+        <div>
+          <Label htmlFor="facebook">Facebook</Label>
+          <Input name="facebook_url" type="text" defaultValue={facebook_url} />
+        </div>
+        <div>
+          <Label htmlFor="instagram">Instagram</Label>
+          <Input
+            name="instagram_url"
+            type="text"
+            defaultValue={instagram_url}
+          />
         </div>
         <div>
           <Label htmlFor="about">About</Label>
