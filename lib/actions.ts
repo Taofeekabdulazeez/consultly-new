@@ -118,10 +118,11 @@ export async function updateAvailability(
     .eq("id", service?.availabilityId)
     .select()
     .single();
+
+  revalidatePath("/dashboard/calender");
 }
 
 export async function getUserMeetings(): Promise<Meeting[] | null | any[]> {
-  // const session = await auth();
   const database = createClient();
   const {
     data: { user },
@@ -130,7 +131,6 @@ export async function getUserMeetings(): Promise<Meeting[] | null | any[]> {
   const { data: meetings, error } = await database
     .from("meeting")
     .select("id, status, time, duration, date, guest(*), service(*)")
-    // .eq("userId", session?.user?.id);
     .eq("userId", user?.id);
 
   return meetings;
