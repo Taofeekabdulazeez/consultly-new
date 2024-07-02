@@ -7,8 +7,8 @@ import { Toaster as ActionToaster } from "@/components/ui/toaster";
 
 const ubuntu = Ubuntu({
   subsets: ["latin"],
-  display: "swap",
   weight: ["300", "400", "500", "700"],
+  display: "auto",
 });
 
 export const metadata: Metadata = {

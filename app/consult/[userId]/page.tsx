@@ -1,14 +1,8 @@
 import { ConsultProvider } from "../../../components/consult/ConsultContext";
 import Steps from "@/components/consult/steps";
-
 import ButtonsNav from "@/components/consult/buttons-nav";
 import BookingForm from "@/components/consult/booking-form";
-import {
-  getConsultation,
-  getCurrentUser,
-  getUserServices,
-} from "@/lib/actions";
-import { createClient } from "@/utils/supabase/server";
+import { getConsultation } from "@/lib/actions";
 
 type Props = {
   params: {

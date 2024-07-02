@@ -27,6 +27,7 @@ type User = {
   twitter_url: string;
   facebook_url: string;
   instagram_url: string;
+  image_url: string;
 };
 
 type Service = {

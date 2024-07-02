@@ -34,24 +34,23 @@ export default async function Page() {
     twitter_url,
     facebook_url,
     instagram_url,
+    image_url,
   } = user;
 
   return (
-    <form action={updateProfile} className="bg-gray-50 p-6 rounded-md">
+    <div className="bg-gray-50 p-6 rounded-md">
       <span className="text-lg font-medium text-gray-600 inline-block mb-4">
         Account Details
       </span>
 
       <h2 className="text-[24px] font-semibold mb-4">Profile</h2>
-      <ProfilePhoto />
-
+      <ProfilePhoto image={image_url} />
       <P size="sm" className="mb-10 font-normal">
         Fill in the fields below to share your profile publicly via a link on
         your social media or website. You can preview your profile by clicking
         the {`"View Public Profile" button`}. Remember to click the {`"Save"`}
         button after filling in the fields or changing the data.
       </P>
-
       <Label htmlFor="username">Username</Label>
       <div className="grid gap-4 md:grid-cols-[1fr_auto] mb-10">
         <div className="grid grid-cols-[auto_1fr] border rounded-md">
@@ -59,7 +58,6 @@ export default async function Page() {
           <Input value={id} type="text" disabled />
           <Input
             defaultValue={username}
-            value={username}
             name="username"
             type="text"
             className="hidden"
@@ -79,8 +77,7 @@ export default async function Page() {
           </Link>
         </div>
       </div>
-
-      <div className="grid gap-6 md:w-[60%]">
+      <form action={updateProfile} className="grid gap-6 md:w-[60%]">
         <div>
           <Label htmlFor="firstName">First name</Label>
           <Input name="firstName" type="text" defaultValue={firstName} />
@@ -175,7 +172,7 @@ export default async function Page() {
             toastSucessMessage="Profile successfully updated!"
           />
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }

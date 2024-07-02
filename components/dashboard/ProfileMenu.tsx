@@ -32,16 +32,23 @@ import ButtonTheme from "../common/button-theme";
 import Image from "next/image";
 import image from "@/public/profile-placeholder.png";
 
-export default function ProfileMenu({ name }: { name: string }) {
+export default function ProfileMenu({
+  name,
+  image,
+}: {
+  name: string;
+  image: string;
+}) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">
           <div className="flex items-center gap-2">
             <div className="flex items-center justify-center h-8 w-8 rounded-full bg-gray-100 relative">
-              <Image
-                // fill
+              <img
                 alt="user image"
+                width={500}
+                height={400}
                 className="h-8 w-8 rounded-full"
                 src={image}
                 referrerPolicy="no-referrer"

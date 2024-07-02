@@ -153,10 +153,10 @@ export async function updateProfile(formData: FormData) {
     twitter_url: formData.get("twitter_url"),
     facebook_url: formData.get("facebook_url"),
     instagram_url: formData.get("instagram_url"),
-    username: formData.get("username"),
     profession: formData.get("profession"),
     about: formData.get("about"),
     language: formData.get("language"),
+    // username: formData.get("username"),
   };
 
   await supabase
@@ -169,8 +169,31 @@ export async function updateProfile(formData: FormData) {
   revalidatePath("/dashboard/profile");
 }
 
+export async function updatePhoto(formData: FormData) {
+  const supabase = createClient();
+  const { data: user } = await supabase.auth.getUser();
+
+  const file = formData.get("image") as File;
+
+  const imageName = `${Math.random()}-${file.name}`.replace("/", "");
+
+  const imagePath = `https://vedzqbtiblztcusalehg.supabase.co/storage/v1/object/public/user-images/${imageName}`;
+
+  const { error: storgaeError } = await supabase.storage
+    .from("user-images")
+    .upload(imageName, file);
+
+  if (!storgaeError)
+    await supabase
+      .from("user")
+      .update({ image_url: imagePath })
+      .eq("id", user.user?.id)
+      .select();
+
+  revalidatePath("/dashboard", "layout");
+}
+
 export async function addService(formData: any) {
-  // const session = await auth();
   const database = createClient();
   const {
     data: { user },
