@@ -27,7 +27,7 @@ export default function ButtonEditService({
       <SheetTrigger className="w-full flex items-center gap-3 px-6 py-1.5 text-gray-600 font-normal hover:text-gray-900 hover:bg-gray-50">
         <MdEdit size={18} /> Edit
       </SheetTrigger>
-      <SheetContent className="min-w-full sm:min-w-[500px]">
+      <SheetContent className="min-w-full md:min-w-[550px]">
         <SheetHeader className="mb-6">
           <SheetTitle className="text-lg">Edit Service</SheetTitle>
           <SheetDescription>Provide details of the service</SheetDescription>

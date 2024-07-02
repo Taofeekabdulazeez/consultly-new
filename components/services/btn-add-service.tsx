@@ -26,7 +26,7 @@ export default function ButtonAddService() {
           Add a new service
         </Button>
       </SheetTrigger>
-      <SheetContent className="min-w-full sm:min-w-[500px]">
+      <SheetContent className="min-w-full sm:min-w-[550px]">
         <SheetHeader className="mb-6">
           <SheetTitle className="text-lg">Add a new service</SheetTitle>
           <SheetDescription>Provide details of the service</SheetDescription>

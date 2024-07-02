@@ -27,10 +27,8 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-// import { signOutAction } from "@/lib/actions";
-import ButtonTheme from "../common/button-theme";
-import Image from "next/image";
-import image from "@/public/profile-placeholder.png";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/utils/supabase/client";
 
 export default function ProfileMenu({
   name,
@@ -39,6 +37,9 @@ export default function ProfileMenu({
   name: string;
   image: string;
 }) {
+  const router = useRouter();
+  const supabase = createClient();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -63,11 +64,11 @@ export default function ProfileMenu({
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
+          <DropdownMenuItem onClick={() => router.push("/dashboard/profile")}>
             <User className="mr-2 h-4 w-4" />
             <span>Profile</span>
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem onClick={() => router.push("/dashboard/settings")}>
             <Settings className="mr-2 h-4 w-4" />
             <span>Settings</span>
           </DropdownMenuItem>
@@ -99,13 +100,18 @@ export default function ProfileMenu({
           </DropdownMenuSub>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={() => router.push("/dashboard/help")}>
           <LifeBuoy className="mr-2 h-4 w-4" />
           <span>Support</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <form>
+          <form
+            action={async () => {
+              await supabase.auth.signOut();
+              router.push("/login");
+            }}
+          >
             <Button variant="ghost" className="p-0 h-auto">
               <LogOut className="mr-2 h-4 w-4" />
               <span>Log out</span>
