@@ -8,17 +8,19 @@ import {
   getCurrentUser,
   getUserServices,
 } from "@/lib/actions";
+import { createClient } from "@/utils/supabase/server";
 
 type Props = {
   params: {
-    username: string;
+    userId: string;
   };
 };
 
 export default async function Page({ params }: Props) {
-  const { username } = params;
+  const { userId } = params;
 
-  const user = await getConsultation(username);
+  const user = await getConsultation(userId);
+
   console.log(user);
 
   return (

@@ -7,6 +7,10 @@ import { getCurrentUser } from "@/lib/actions";
 export default async function Header() {
   // const session = await auth();
   const user = await getCurrentUser();
+  const displayName =
+    user.firstName || user.lastName
+      ? `${user.firstName} ${user.lastName}`
+      : user.email;
 
   return (
     <header className="z-10 p-4 flex justify-between items-center gap-3 bg-gray-50 fixed sm:static w-full">
@@ -17,7 +21,7 @@ export default async function Header() {
       </div>
       <div className="flex md:justify-end items-center gap-3">
         <ButtonTheme />
-        <ProfileMenu name={user.email as string} />
+        <ProfileMenu name={displayName} />
       </div>
     </header>
   );

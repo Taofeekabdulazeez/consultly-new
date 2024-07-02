@@ -19,6 +19,7 @@ export const metadata = {
 export default async function Page() {
   const user = await getCurrentUser();
   const {
+    id,
     email,
     username,
     firstName,
@@ -34,8 +35,6 @@ export default async function Page() {
     facebook_url,
     instagram_url,
   } = user;
-
-  console.log(user);
 
   return (
     <form action={updateProfile} className="bg-gray-50 p-6 rounded-md">
@@ -57,7 +56,7 @@ export default async function Page() {
       <div className="grid gap-4 md:grid-cols-[1fr_auto] mb-10">
         <div className="grid grid-cols-[auto_1fr] border rounded-md">
           <Input disabled type="text" value={`consultly.com/consult/`} />
-          <Input value={username} type="text" disabled />
+          <Input value={id} type="text" disabled />
           <Input
             defaultValue={username}
             value={username}
@@ -67,12 +66,12 @@ export default async function Page() {
           />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <ButtonCopy textToCopy={`localhost:3000/consult/${username}`}>
+          <ButtonCopy textToCopy={`localhost:3000/consult/${id}`}>
             Copy Link
           </ButtonCopy>
           <Link
             className="inline-flex items-center gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground px-2 rounded py-2 justify-center md:py-0 md:justify-start"
-            href={`/consult/${username}`}
+            href={`/consult/${id}`}
             target="_blank"
           >
             <RiExternalLinkLine />
@@ -121,7 +120,7 @@ export default async function Page() {
           <Label htmlFor="city" className="text-sm font-medium mb-1 block">
             Language
           </Label>
-          <input name="language" type="text" hidden defaultValue={language} />
+          <Input name="language" type="text" defaultValue={language} />
           {/* <CustomSelect /> */}
         </div>
 

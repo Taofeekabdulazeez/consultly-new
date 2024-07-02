@@ -156,7 +156,7 @@ export async function updateProfile(formData: FormData) {
     username: formData.get("username"),
     profession: formData.get("profession"),
     about: formData.get("about"),
-    // language: formData.get("language"),
+    language: formData.get("language"),
   };
 
   await supabase
@@ -237,11 +237,11 @@ export async function setAvailabilty(formData: FormData) {
   revalidatePath("/dashboard/services");
 }
 
-export async function getConsultation(username: string = "taofeek") {
+export async function getConsultation(userId: string) {
   const { data: user } = await supabase
     .from("user")
     .select("id, firstName, lastName, email, country")
-    .eq("username", username)
+    .eq("id", userId)
     .single();
 
   const { data: services } = await supabase
