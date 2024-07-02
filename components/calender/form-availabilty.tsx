@@ -56,7 +56,7 @@ export default function FormAvailability({ closeForm }: Props) {
           />
         ))}
       </div>
-      <div className="flex justify-end mr-3">
+      <div className="flex justify-end mr-3 mt-12">
         <Button type="submit" size="sm">
           Save
         </Button>
