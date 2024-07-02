@@ -13,7 +13,7 @@ export const revalidate = 0;
 
 export default async function Page() {
   return (
-    <div className="bg-gray-50 rounded p-6">
+    <div className="bg-gray-50 rounded p-2 md:p-6">
       <div className="grid md:grid-cols-[1fr_auto] gap-6 md:gap-48 mb-10">
         <div>
           <Heading>My Services</Heading>

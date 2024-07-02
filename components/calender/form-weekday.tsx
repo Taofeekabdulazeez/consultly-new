@@ -45,7 +45,7 @@ export default function FormWeekDay({
         {fields.map((field, index) => (
           <div
             key={field.id}
-            className="grid grid-cols-[1fr_auto_1fr_auto] gap-2 items-center"
+            className="grid grid-cols-[1fr_auto_1fr_.3fr] md:grid-cols-[1fr_auto_1fr_auto] gap-2 items-center"
           >
             <Input
               type="time"
@@ -58,7 +58,7 @@ export default function FormWeekDay({
             />
             <Button
               type="button"
-              size="xs"
+              size="sm"
               variant="outline"
               onClick={() => remove(index)}
             >
@@ -75,16 +75,16 @@ export default function FormWeekDay({
         )}
       </div>
 
-      <div className="flex gap-2 mt-2">
+      <div className="flex gap-2 items-center">
         <Button
           type="button"
           variant="outline"
-          size="xs"
+          size="sm"
           onClick={() => append({ startTime: "", endTime: "" })}
         >
           <Plus size={16} />
         </Button>
-        <ButtonCopy size="xs"></ButtonCopy>
+        <ButtonCopy size="sm"></ButtonCopy>
       </div>
     </div>
   );

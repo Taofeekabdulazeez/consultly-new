@@ -8,7 +8,7 @@ export async function Services() {
   if (!services || !services.length) return <NoService showAddButton={true} />;
 
   return (
-    <div className="grid grid-cols-1 gap-3">
+    <div className="grid grid-cols-1 gap-6">
       {services.map((service) => {
         return (
           <Service

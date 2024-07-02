@@ -55,7 +55,7 @@ export default function ProfilePhoto({ image }: { image: string }) {
           </label>
 
           {imageToUpload && (
-            <div className="flex items-center gap-2 ml-3">
+            <div className="flex flex-col md:flex-row items-center gap-2 ml-3">
               <P size="sm">{imageToUpload.split(`\\`).slice(-1)[0]}</P>
               <Button>Upload</Button>
             </div>
