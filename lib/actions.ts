@@ -177,7 +177,7 @@ export async function updatePhoto(formData: FormData) {
 
   const imageName = `${Math.random()}-${file.name}`.replace("/", "");
 
-  const imagePath = `https://vedzqbtiblztcusalehg.supabase.co/storage/v1/object/public/user-images/${imageName}`;
+  const imagePath = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/user-images/${imageName}`;
 
   const { error: storgaeError } = await supabase.storage
     .from("user-images")
