@@ -51,7 +51,7 @@ export default async function Page() {
         the {`"View Public Profile" button`}. Remember to click the {`"Save"`}
         button after filling in the fields or changing the data.
       </P>
-      <Label htmlFor="username">Username</Label>
+      <Label htmlFor="username">Public URL</Label>
       <div className="grid gap-4 md:grid-cols-[1fr_auto] mb-10">
         <div className="grid grid-cols-[auto_1fr] border rounded-md">
           <Input disabled type="text" value={`consultly.com/consult/`} />

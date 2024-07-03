@@ -1,10 +1,6 @@
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "../ui/skeleton";
 
-export const metadata = {
-  title: "My Earnings",
-};
-
-export default function Page() {
+export default function AvailaibilityLoader() {
   return (
     <div className="p-3 md:p-6">
       <div className="grid gap-12">
