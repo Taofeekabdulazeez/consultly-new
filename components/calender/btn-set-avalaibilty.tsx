@@ -22,7 +22,7 @@ export default function ButtonSetAvailabilty() {
       <SheetTrigger asChild>
         <Button>
           <CalendarClock size={18} />
-          Set availability
+          Edit availability
         </Button>
       </SheetTrigger>
       <SheetContent className="min-w-full sm:min-w-[580px] pr-0">

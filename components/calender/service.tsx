@@ -7,6 +7,7 @@ import { Heading } from "../ui/Heading";
 import { P } from "../ui/typography";
 import { AvailablilityProvider } from "./availability-context";
 import ButtonSetAvailabilty from "./btn-set-avalaibilty";
+import { convert24HourTo12Hour } from "@/lib/utils";
 
 type Props = {
   service: Service;
@@ -43,9 +44,9 @@ export function Service({ service, availability }: Props) {
           <ButtonSetAvailabilty />
         </div>
 
-        <div className="flex flex-col gap-4 md:gap-0 md:flex-row justify-between">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {days.map((day) => (
-            <ul key={day}>
+            <ul className="" key={day}>
               <P size="sm" className="text-gray-800">
                 {daysMap.get(day)}
               </P>
@@ -54,7 +55,12 @@ export function Service({ service, availability }: Props) {
                   console.log(day, a);
                   return (
                     <li className="italic text-sm text-gray-600" key={i}>
-                      {a ? a.split("-").join(" - ") : "Unavailable"}
+                      {a
+                        ? a
+                            .split("-")
+                            .map((a) => [convert24HourTo12Hour(a)])
+                            .join(" - ")
+                        : "Unavailable"}
                     </li>
                   );
                 })
