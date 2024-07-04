@@ -55,7 +55,7 @@ export function BookingTime({
               {availableTimes.map((availableTime) => (
                 <Button
                   variant="outline"
-                  className="hover:bg-blue-50"
+                  className="hover:bg-blue-50 dark:hover:bg-muted"
                   onClick={() =>
                     handleChangeAvailableTime(
                       availableTime[time as "12" | "24"]

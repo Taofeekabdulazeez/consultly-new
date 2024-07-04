@@ -7,7 +7,11 @@ export default function ButtonsNav() {
   const { dispatch } = useConsultState();
   return (
     <div className="flex justify-between">
-      <Button onClick={() => dispatch({ type: "prev" })} variant="outline">
+      <Button
+        onClick={() => dispatch({ type: "prev" })}
+        className="bg-muted"
+        variant="outline"
+      >
         Back
       </Button>
       <Button onClick={() => dispatch({ type: "next" })}>Next</Button>

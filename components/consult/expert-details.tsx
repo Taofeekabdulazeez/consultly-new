@@ -8,8 +8,8 @@ export function ExpertDetails() {
   const { selectedService } = useConsultState();
 
   return (
-    <div className="flex items-center justify-between border-b pb-6">
-      <div className="flex flex-col">
+    <div className="flex flex-col md:flex-row items-center justify-between border-b pb-6">
+      <div className="flex flex-col mb-6 md:mb-0">
         <Heading type="h4" className="font-bold">
           {user.firstName} {user.lastName}
         </Heading>
@@ -23,7 +23,9 @@ export function ExpertDetails() {
         </div>
       </div>
       <div>
-        <P size="xs">Starting at</P>
+        <P size="xs" className="hidden md:block">
+          Starting at
+        </P>
         <div className="flex gap-2">
           <Heading type="h2" className="font-bold">
             PLN 0.00
