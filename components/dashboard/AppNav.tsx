@@ -96,10 +96,10 @@ export default function AppNav() {
                 href={href}
                 onClick={toggleNav}
                 className={`
-                  flex gap-3 items-center py-2.5 px-3 md:text-sm font-medium hover:bg-gray-75 hover:text-primary relative overflow-hidden rounded-sm
+                  flex gap-3 items-center py-2.5 px-3 md:text-sm font-medium hover:bg-gray-75 hover:text-primary dark:hover:bg-muted relative overflow-hidden rounded-sm
                      after:content-[''] after:block after:h-full after:absolute after:w-[3px] after:right-0 ${
                        href === pathname
-                         ? "bg-blue-50 dark:bg-blue-950 text-primary after:bg-primary"
+                         ? "bg-blue-50 dark:bg-muted text-primary after:bg-primary"
                          : ""
                      } ${
                   href === "/dashboard/meetings"
