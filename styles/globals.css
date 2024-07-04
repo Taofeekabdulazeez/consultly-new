@@ -18,6 +18,7 @@
     --popover-foreground: 224 71.4% 4.1%;
     /* --primary: 262.1 83.3% 57.8%; */
     --primary: 218 73% 41%;
+    /* --x: #1c54b5; */
     /* --primary: 267 78% 57%; */
     --primary-foreground: 210 20% 98%;
     --secondary: 220 14.3% 95.9%;
@@ -59,8 +60,9 @@
     --popover: var(--color-gray-50);
     --popover-foreground: 210 20% 98%;
     /* --primary: 263.4 70% 50.4%; */
-    --primary: 211 88% 60%;
+    /* --primary: 211 88% 60%; */
     --primary: 217, 64%, 58%;
+    --x: #4f84d8;
     /* --primary: 238 65% 57%; */
     /* --primary: 267 95% 77%; */
     --primary-foreground: 210 20% 98%;
