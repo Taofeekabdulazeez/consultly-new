@@ -156,3 +156,22 @@ export function getCurrentDateFormatted() {
 
   return `${year}-${month}-${day}`;
 }
+
+export function convertTo24Hour(time: string): string {
+  // Extract the components of the time
+  const [timePart, modifier] = time.split(" ");
+  let [hours, minutes] = timePart.split(":").map(Number);
+
+  // Convert the hours to 24-hour format
+  if (modifier === "AM" && hours === 12) {
+    hours = 0;
+  } else if (modifier === "PM" && hours !== 12) {
+    hours += 12;
+  }
+
+  // Format the hours and minutes to ensure two digits
+  const formattedHours = hours.toString().padStart(2, "0");
+  const formattedMinutes = minutes.toString().padStart(2, "0");
+
+  return `${formattedHours}:${formattedMinutes}`;
+}

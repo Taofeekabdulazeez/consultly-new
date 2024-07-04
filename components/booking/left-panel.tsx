@@ -8,11 +8,12 @@ import {
 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { Heading } from "../ui/Heading";
-import { useConsultUser } from "../consult/ConsultContext";
+import { useConsultState, useConsultUser } from "../consult/ConsultContext";
 import { P } from "../ui/typography";
 
 export function LeftPanel() {
   const user = useConsultUser();
+  const { selectedDate, selectedService } = useConsultState();
   return (
     <div className="border-r pr-6">
       <div className="relative bg-gray-75 flex items-center justify-center h-[5rem] aspect-square rounded border">
@@ -30,18 +31,18 @@ export function LeftPanel() {
       <div className="my-2 flex flex-col gap-1">
         <div className="flex items-center gap-2 text-gray-800">
           <P size="sm" className="text-gray-800">
-            Frontend Mentorship
+            {selectedService.title}
           </P>
         </div>
 
         <div className="flex items-center gap-2 text-gray-800">
           <CalendarCheck className="size-5" />
-          <P size="sm"></P>
+          <P size="sm">{selectedDate}</P>
         </div>
 
         <div className="flex items-center gap-2 text-gray-800">
           <Clock4 className="size-5" />
-          <P size="sm">15 mins</P>
+          <P size="sm">{selectedService.duration} mins</P>
         </div>
 
         <div className="flex items-center gap-2 text-gray-800">

@@ -260,7 +260,7 @@ export async function setAvailabilty(formData: FormData) {
   revalidatePath("/dashboard/services");
 }
 
-export async function getConsultation(userId: string) {
+export async function getConsultationData(userId: string) {
   const { data: user } = await supabase
     .from("user")
     .select("id, firstName, lastName, email, country, image_url")

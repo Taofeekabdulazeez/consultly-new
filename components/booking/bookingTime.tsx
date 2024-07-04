@@ -33,6 +33,7 @@ export function BookingTime({
   //   })
   //   .split(" ");
   const availableTimes = generateTimeSlots(startTime, endTime, duration);
+  console.log(availableTimes);
   return (
     <Tabs defaultValue="12" className="flex flex-col gap-4 border-l pl-6">
       <div className="flex justify-center">

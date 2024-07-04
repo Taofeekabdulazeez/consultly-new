@@ -51,6 +51,7 @@ function ConsultProvider({
   console.log(user);
   const [{ step, status }, dispatch] = useReducer(reducer, initialState);
   const [selectedService, setSelectedService] = useState(user.services[0]);
+  const [selectedDate, setSelectedDate] = useState();
 
   const handleSelectService = (value: string) => {
     setSelectedService(() =>
@@ -67,6 +68,8 @@ function ConsultProvider({
         user,
         selectedService,
         handleSelectService,
+        selectedDate,
+        setSelectedDate,
       }}
     >
       {children}

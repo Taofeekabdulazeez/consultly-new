@@ -60,6 +60,7 @@
     --popover-foreground: 210 20% 98%;
     /* --primary: 263.4 70% 50.4%; */
     --primary: 211 88% 60%;
+    --primary: 217, 64%, 58%;
     /* --primary: 238 65% 57%; */
     /* --primary: 267 95% 77%; */
     --primary-foreground: 210 20% 98%;
@@ -120,9 +121,9 @@
   background-color: var(--color-gray-100);
 }
 
-.dark ::-webkit-scrollbar-thumb {
-  /* background-color: rgb(67, 10, 158); */
-}
+/* .dark ::-webkit-scrollbar-thumb {
+  background-color: rgb(67, 10, 158);
+} */
 
 .loader {
   width: 18px;

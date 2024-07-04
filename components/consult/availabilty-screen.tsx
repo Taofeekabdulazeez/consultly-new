@@ -9,22 +9,25 @@ import {
 } from "@internationalized/date";
 import { useState } from "react";
 import { DateValue } from "@react-aria/calendar";
-import { generateTimeSlots } from "@/lib/utils";
+import { convertTo24Hour, generateTimeSlots } from "@/lib/utils";
 import { BookingTime } from "../booking/bookingTime";
 import { LeftPanel } from "../booking/left-panel";
 
 export default function AvailabiltyScreen() {
   const user = useConsultUser();
-  const { selectedService } = useConsultState();
+  const { selectedService, setSelectedDate } = useConsultState();
   const [date, setDate] = useState(today(getLocalTimeZone()));
   const handleChangeDate = (date: DateValue) => {
     setDate(date as unknown as CalendarDate);
-    console.log(date);
+    // console.log(date.toString());
+    setSelectedDate(date.toString());
     // console.log(new CalendarDate(2024, 10, 8));
   };
 
   const handleChangeAvailableTime = (time: string) => {
-    console.log(time);
+    // console.log(time);
+    if (time.includes("m")) console.log(convertTo24Hour(time));
+    else console.log(time);
   };
 
   return (
