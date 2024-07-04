@@ -16,10 +16,14 @@ export function LeftPanel() {
   return (
     <div className="border-r pr-6">
       <div className="relative bg-gray-75 flex items-center justify-center h-[5rem] aspect-square rounded border">
-        <Heading type="h3" className="uppercase">
-          {user.firstName[0]}
-          {user.lastName[0]}
-        </Heading>
+        {user.image_url ? (
+          <img src={user.image_url} alt="user image" />
+        ) : (
+          <Heading type="h3" className="uppercase">
+            {user.firstName[0]}
+            {user.lastName[0]}
+          </Heading>
+        )}
         <BadgeCheck className="absolute top-0 right-0 text-gray-50 fill-green-500 translate-x-[50%] -translate-y-[50%]" />
       </div>
 

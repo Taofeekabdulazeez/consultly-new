@@ -1,12 +1,5 @@
-import { Calendar } from "../ui/calendar";
-import { Label } from "../ui/label";
-import { P } from "../ui/typography";
 import { useConsultState, useConsultUser } from "./ConsultContext";
-import TimeSlots from "./time-slots";
-import { Heading } from "../ui/Heading";
-import BookingCalender from "./booking-calender";
-import InputDate from "../common/input-date";
-import InputTime from "../common/input-time";
+
 import { BookingCalendar } from "../booking/booking-calender";
 import {
   CalendarDate,

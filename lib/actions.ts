@@ -263,7 +263,7 @@ export async function setAvailabilty(formData: FormData) {
 export async function getConsultation(userId: string) {
   const { data: user } = await supabase
     .from("user")
-    .select("id, firstName, lastName, email, country")
+    .select("id, firstName, lastName, email, country, image_url")
     .eq("id", userId)
     .single();
 
