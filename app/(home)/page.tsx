@@ -11,13 +11,15 @@ import { IoMdClose } from "react-icons/io";
 import React, { useState } from "react";
 import Link from "next/link";
 import Logo from "@/components/common/logo";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function Home() {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
     <div className="mx-auto min-h-full w-full overflow-auto">
-      <header className="bg-gray-100 z-10 fixed top-0 left-0 right-0">
+      <header className="bg-gray-50 z-10 fixed top-0 left-0 right-0">
         <div className="header:justify-start header:space-x-10 header:px-16 mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-6 sm:px-6">
           <div className="relative top-[-5px] flex gap-10 items-center">
             <Logo />
@@ -125,7 +127,7 @@ export default function Home() {
       
       <div
         id="home"
-        className="min-h-screen flex flex-col justify-center sm:mt-20 items-center px-8 text-center bg-gray-100"
+        className="min-h-screen flex flex-col justify-center sm:mt-20 items-center px-8 text-center bg-gray-50 "
       >
         <div>
           <h1 className="font-display text-4xl font-extrabold mx-auto max-w-2xl tracking-tight sm:text-6xl md:text-7xl">
@@ -135,7 +137,7 @@ export default function Home() {
             </span>
             <span className="block">Process.</span>
           </h1>
-          <p className="mx-auto mt-8 max-w-2xl text-slate-700 md:text-lg">
+          <p className="mx-auto mt-8 max-w-2xl text-slate-700 md:text-lg dark:text-white">
             Consultify is an integrated platform for managing online
             consultations comprehensively, offering all the essential tools for{" "}
             <strong>scheduling meetings</strong> and{" "}
@@ -152,7 +154,7 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="scroll-mt-24 py-16 bg-white w-full" id="features">
+      <section className="scroll-mt-24 py-16 bg-gray-50 w-full" id="features">
         <div className="mx-auto max-w-screen-2xl text-center px-4  sm:px-6 lg:px-8">
           <div className="space-y-8">
             <h2 className="text-primary text-2xl font-bold uppercase tracking-wider">
@@ -161,14 +163,14 @@ export default function Home() {
             <h3 className="text-balance font-display mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Everything you need in one place
             </h3>
-            <p className="text-balance header:px-16 mx-auto max-w-4xl px-6 text-slate-700 md:text-lg">
+            <p className="text-balance dark:text-white header:px-16 mx-auto max-w-4xl px-6 text-slate-700 md:text-lg">
               Explore our feature set that helps you manage your online
               consultations workflow.
             </p>
           </div>
           <div>
             <div className="relative mx-auto mt-8 mx-w-6xl rounded-md bg-gray-100 p-1 sm:p-4">
-              <img src="./dashboard.png" alt="dashboard" />
+              {/* <img src="./dashboard.png" alt="dashboard" /> */}
             </div>
           </div>
           <h2 className="text-primary text-2xl font-medium uppercase tracking-wider mt-10 text-center">
@@ -176,7 +178,7 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
             <div className="flex flex-col p-4 bg-gray-100 rounded-md">
-              <div className="self-start rounded-lg p-3 bg-purple-100">
+              <div className="self-start rounded-2xl p-3 bg-purple-100">
                 <BiNotepad className="text-2xl text-indigo-300" />
               </div>
               <div className="flex flex-col mt-4">
@@ -191,7 +193,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col p-4 bg-gray-100 rounded-md">
-              <div className="self-start rounded-lg p-3 bg-blue-50">
+              <div className="self-start rounded-2xl p-3 bg-blue-50">
                 <AiOutlineIdcard className="text-2xl text-blue-300" />
               </div>
               <div className="flex flex-col mt-4">
@@ -206,7 +208,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col p-4 bg-gray-100 rounded-md">
-              <div className="self-start rounded-lg p-3 bg-pink-100">
+              <div className="self-start rounded-2xl p-3 bg-pink-100">
                 <FaCalendarAlt className="text-2xl text-pink-400" />
               </div>
               <div className="flex flex-col mt-4">
@@ -221,7 +223,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col p-4 bg-gray-100 rounded-md">
-              <div className="self-start rounded-lg p-3 bg-indigo-100">
+              <div className="self-start rounded-2xl p-3 bg-indigo-100">
                 <FaVideo className="text-2xl text-purple-300" />
               </div>
               <div className="flex flex-col mt-4">
@@ -236,7 +238,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col p-4 bg-gray-100 rounded-md">
-              <div className="self-start rounded-lg p-3 bg-indigo-200">
+              <div className="self-start rounded-2xl p-3 bg-indigo-200">
                 <BiWorld className="text-2xl text-blue-400" />
               </div>
               <div className="flex flex-col mt-4">
@@ -250,7 +252,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col p-4 bg-gray-100 rounded-md">
-              <div className="self-start rounded-lg p-3 bg-pink-50">
+              <div className="self-start rounded-2xl p-3 bg-pink-50">
                 <BiMessageDetail className="text-2xl text-pink-400" />
               </div>
               <div className="flex flex-col mt-4">
@@ -269,7 +271,7 @@ export default function Home() {
       </section>
 
       <section
-        className="scroll-mt-24 py-16 pb-2 sm:pb-8 bg-gray-100"
+        className="scroll-mt-24 py-16 pb-2 bg-gray-50 sm:pb-8 bg-gray-100"
         id="how-it-works"
       >
         <div className="mx-auto max-w-screen-2xl px-4 text-center sm:px-6 lg:px-8">
@@ -280,7 +282,7 @@ export default function Home() {
             <h3 className="text-balance font-display mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Arrange a consultation in 3 simple steps
             </h3>
-            <p className="text-balance header:px-16 mx-auto max-w-4xl px-6 text-slate-700 md:text-lg">
+            <p className="text-balance header:px-16 mx-auto max-w-4xl dark:text-white px-6 text-slate-700 md:text-lg">
               Our goal is to shorten and simplify the process of holding digital
               consultations as much as possible so that you do not have to waste
               your valuable time.
@@ -289,16 +291,16 @@ export default function Home() {
         </div>
       </section>
      
-      <section className="scroll-mt-24 py-16 bg-gray-100" id="contact">
+      <section className="scroll-mt-24 py-16 bg-gray-50" id="contact">
         <div className="mx-auto max-w-screen-2xl px-4 text-center sm:px-6 lg:px-8">
           <div className="space-y-8">
             <h2 className="text-primary text-2xl font-medium uppercase tracking-wider">
               Contact us
             </h2>
-            <h3 className="text-balance font-display mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h3 className="text-balance font-display mt-2 text-3xl   font-bold tracking-tight text-gray-900 sm:text-4xl">
               Get In Touch
             </h3>
-            <p className="text-balance header:px-16 mx-auto max-w-4xl px-6 text-slate-700 md:text-lg">
+            <p className="text-balance header:px-16 mx-auto max-w-4xl px-6  dark:text-white text-slate-700 md:text-lg">
               Still have questions? Send us a message.
             </p>
           </div>
@@ -313,11 +315,10 @@ export default function Home() {
                     First name
                   </label>
                   <div className="mt-1">
-                    <input
+                    <Input
                       type="text"
                       name="first-name"
                       id="first-name"
-                      className=" block w-full rounded-md border-gray-300 px-4 py-3 shadow-sm focus:outline-primary"
                       value=""
                     />
                   </div>
@@ -330,11 +331,10 @@ export default function Home() {
                     Last name
                   </label>
                   <div className="mt-1">
-                    <input
+                    <Input
                       type="text"
                       name="last-name"
                       id="last-name"
-                      className=" block w-full rounded-md border-gray-300 px-4 py-3 shadow-sm focus:outline-primary"
                       value=""
                     />
                   </div>
@@ -344,11 +344,10 @@ export default function Home() {
                     Email
                   </label>
                   <div className="mt-1">
-                    <input
+                    <Input
                       id="email"
                       name="email"
                       type="email"
-                      className="block w-full rounded-md border-gray-300 px-4 py-3 shadow-sm focus:outline-primary"
                       value=""
                     />
                   </div>
@@ -361,12 +360,10 @@ export default function Home() {
                     Message
                   </label>
                   <div className="mt-1">
-                    <textarea
+                    <Textarea
                       id="message"
                       name="message"
-                      className=" block w-full  rounded-md  border-3 border-gray-300 px-4 py-3 shadow-sm focus:outline-primary"
-                      rows={5}
-                    ></textarea>
+                      rows={5} />
                   </div>
                 </div>
                 <div className="flex flex-col items-center justify-center text-center sm:col-span-2">
@@ -388,9 +385,9 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-white text-black p-12 relative">
+      <footer className="bg-gray-100 dark:text-white text-black p-12 relative">
         <div className="max-w-6xl mx-auto py-2 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-4 w-full ">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 mb-4 w-full ">
             <div>
               <h3 className="text-lg font-bold mb-2">Company</h3>
               <ul>
